@@ -19,6 +19,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
 		FirebaseApp.configure()
+		if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+			let managedContext = appDelegate.persistentContainer.viewContext
+			let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Login")
+			do {
+				let login = try managedContext.fetch(fetchRequest)
+				if login.count == 1 {
+					let localEmail = login[0].value(forKey: "email") as? String
+					Auth.auth().signIn(withEmail: localEmail!, password: login[0].value(forKey: "password") as! String) { user, error in
+						if error == nil {
+							id = Auth.auth().currentUser!.uid
+							ref.child("users/\(id!)/name").observeSingleEvent(of: .value) { snapshot in
+								name = snapshot.value as? String
+							}
+							email = localEmail
+							loadData()
+						}
+					}
+				}
+			} catch {}
+		}
+		ref.child("users").observe(.childAdded) { snapshot in
+			users.append(User(id: snapshot.key, name: retrieveDataValue(snapshot: snapshot, field: "name") as! String, email: retrieveDataValue(snapshot: snapshot, field: "email") as! String))
+		}
 		return true
 	}
 

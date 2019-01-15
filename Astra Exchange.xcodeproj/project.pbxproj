@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D279DD521ED5FBC00D09DDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D279DD421ED5FBC00D09DDA /* AppDelegate.swift */; };
-		4D279DD721ED5FBC00D09DDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D279DD621ED5FBC00D09DDA /* ViewController.swift */; };
+		4D279DD721ED5FBC00D09DDA /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D279DD621ED5FBC00D09DDA /* UserViewController.swift */; };
 		4D279DDA21ED5FBC00D09DDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D279DD821ED5FBC00D09DDA /* Main.storyboard */; };
 		4D279DDD21ED5FBC00D09DDA /* Astra_Exchange.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D279DDB21ED5FBC00D09DDA /* Astra_Exchange.xcdatamodeld */; };
 		4D279DDF21ED5FBC00D09DDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D279DDE21ED5FBC00D09DDA /* Assets.xcassets */; };
@@ -16,6 +16,24 @@
 		4D279DED21ED5FBC00D09DDA /* Astra_ExchangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D279DEC21ED5FBC00D09DDA /* Astra_ExchangeTests.swift */; };
 		4D279DF821ED5FBC00D09DDA /* Astra_ExchangeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D279DF721ED5FBC00D09DDA /* Astra_ExchangeUITests.swift */; };
 		4D279E0621ED625200D09DDA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D279E0521ED625200D09DDA /* GoogleService-Info.plist */; };
+		4D5A27A121ED9D5200232294 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5A27A021ED9D5200232294 /* HomeViewController.swift */; };
+		4D5A27A321EDA89A00232294 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5A27A221EDA89A00232294 /* SignUpViewController.swift */; };
+		4DD190F121ED6B4E003EE93A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD190F021ED6B4E003EE93A /* SignInViewController.swift */; };
+		4DD190F321ED6C43003EE93A /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD190F221ED6C43003EE93A /* Global.swift */; };
+		4DD1910521ED910B003EE93A /* Nunito-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DD190F621ED910B003EE93A /* Nunito-ExtraBoldItalic.ttf */; };
+		4DD1910621ED910B003EE93A /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DD190F721ED910B003EE93A /* Nunito-ExtraBold.ttf */; };
+		4DD1910721ED910B003EE93A /* Nunito-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DD190F821ED910B003EE93A /* Nunito-ExtraLightItalic.ttf */; };
+		4DD1910821ED910B003EE93A /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DD190F921ED910B003EE93A /* Nunito-Light.ttf */; };
+		4DD1910921ED910B003EE93A /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DD190FA21ED910B003EE93A /* Nunito-Regular.ttf */; };
+		4DD1910A21ED910B003EE93A /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DD190FB21ED910B003EE93A /* Nunito-SemiBold.ttf */; };
+		4DD1910B21ED910B003EE93A /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DD190FC21ED910B003EE93A /* Nunito-Bold.ttf */; };
+		4DD1910C21ED910B003EE93A /* Nunito-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DD190FD21ED910B003EE93A /* Nunito-BoldItalic.ttf */; };
+		4DD1910D21ED910B003EE93A /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DD190FE21ED910B003EE93A /* Nunito-Black.ttf */; };
+		4DD1910E21ED910B003EE93A /* Nunito-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DD190FF21ED910B003EE93A /* Nunito-ExtraLight.ttf */; };
+		4DD1910F21ED910B003EE93A /* Nunito-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DD1910021ED910B003EE93A /* Nunito-SemiBoldItalic.ttf */; };
+		4DD1911021ED910B003EE93A /* Nunito-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DD1910121ED910B003EE93A /* Nunito-BlackItalic.ttf */; };
+		4DD1911221ED910B003EE93A /* Nunito-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DD1910321ED910B003EE93A /* Nunito-Italic.ttf */; };
+		4DD1911321ED910B003EE93A /* Nunito-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DD1910421ED910B003EE93A /* Nunito-LightItalic.ttf */; };
 		8244812523AFF8A43090B916 /* Pods_Astra_Exchange.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DCC27FDC3647EBDF1337B3B /* Pods_Astra_Exchange.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +59,7 @@
 		0DCC27FDC3647EBDF1337B3B /* Pods_Astra_Exchange.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Astra_Exchange.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D279DD121ED5FBC00D09DDA /* Astra Exchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Astra Exchange.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D279DD421ED5FBC00D09DDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4D279DD621ED5FBC00D09DDA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4D279DD621ED5FBC00D09DDA /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		4D279DD921ED5FBC00D09DDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D279DDC21ED5FBC00D09DDA /* Astra_Exchange.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Astra_Exchange.xcdatamodel; sourceTree = "<group>"; };
 		4D279DDE21ED5FBC00D09DDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,6 +72,24 @@
 		4D279DF721ED5FBC00D09DDA /* Astra_ExchangeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Astra_ExchangeUITests.swift; sourceTree = "<group>"; };
 		4D279DF921ED5FBC00D09DDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D279E0521ED625200D09DDA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4D5A27A021ED9D5200232294 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		4D5A27A221EDA89A00232294 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		4DD190F021ED6B4E003EE93A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		4DD190F221ED6C43003EE93A /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		4DD190F621ED910B003EE93A /* Nunito-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		4DD190F721ED910B003EE93A /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
+		4DD190F821ED910B003EE93A /* Nunito-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		4DD190F921ED910B003EE93A /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
+		4DD190FA21ED910B003EE93A /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		4DD190FB21ED910B003EE93A /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
+		4DD190FC21ED910B003EE93A /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		4DD190FD21ED910B003EE93A /* Nunito-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-BoldItalic.ttf"; sourceTree = "<group>"; };
+		4DD190FE21ED910B003EE93A /* Nunito-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Black.ttf"; sourceTree = "<group>"; };
+		4DD190FF21ED910B003EE93A /* Nunito-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraLight.ttf"; sourceTree = "<group>"; };
+		4DD1910021ED910B003EE93A /* Nunito-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		4DD1910121ED910B003EE93A /* Nunito-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-BlackItalic.ttf"; sourceTree = "<group>"; };
+		4DD1910321ED910B003EE93A /* Nunito-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Italic.ttf"; sourceTree = "<group>"; };
+		4DD1910421ED910B003EE93A /* Nunito-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-LightItalic.ttf"; sourceTree = "<group>"; };
 		B32D42D0C3E79E2DC3BD681E /* Pods-Astra Exchange.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Astra Exchange.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Astra Exchange/Pods-Astra Exchange.debug.xcconfig"; sourceTree = "<group>"; };
 		D8573BC66CA0EB1D31236285 /* Pods_Astra_ExchangeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Astra_ExchangeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F95C4C4661CAA17CF5C780CD /* Pods_Astra_ExchangeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Astra_ExchangeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,14 +156,19 @@
 		4D279DD321ED5FBC00D09DDA /* Astra Exchange */ = {
 			isa = PBXGroup;
 			children = (
+				4DD190F221ED6C43003EE93A /* Global.swift */,
 				4D279DD821ED5FBC00D09DDA /* Main.storyboard */,
-				4D279DD621ED5FBC00D09DDA /* ViewController.swift */,
+				4D279DD621ED5FBC00D09DDA /* UserViewController.swift */,
+				4D5A27A021ED9D5200232294 /* HomeViewController.swift */,
+				4D5A27A221EDA89A00232294 /* SignUpViewController.swift */,
+				4DD190F021ED6B4E003EE93A /* SignInViewController.swift */,
 				4D279DDE21ED5FBC00D09DDA /* Assets.xcassets */,
 				4D279DD421ED5FBC00D09DDA /* AppDelegate.swift */,
 				4D279DE021ED5FBC00D09DDA /* LaunchScreen.storyboard */,
 				4D279DE321ED5FBC00D09DDA /* Info.plist */,
 				4D279E0521ED625200D09DDA /* GoogleService-Info.plist */,
 				4D279DDB21ED5FBC00D09DDA /* Astra_Exchange.xcdatamodeld */,
+				4DD190F521ED910B003EE93A /* Nunito */,
 			);
 			path = "Astra Exchange";
 			sourceTree = "<group>";
@@ -148,6 +189,27 @@
 				4D279DF921ED5FBC00D09DDA /* Info.plist */,
 			);
 			path = "Astra ExchangeUITests";
+			sourceTree = "<group>";
+		};
+		4DD190F521ED910B003EE93A /* Nunito */ = {
+			isa = PBXGroup;
+			children = (
+				4DD190F621ED910B003EE93A /* Nunito-ExtraBoldItalic.ttf */,
+				4DD190F721ED910B003EE93A /* Nunito-ExtraBold.ttf */,
+				4DD190F821ED910B003EE93A /* Nunito-ExtraLightItalic.ttf */,
+				4DD190F921ED910B003EE93A /* Nunito-Light.ttf */,
+				4DD190FA21ED910B003EE93A /* Nunito-Regular.ttf */,
+				4DD190FB21ED910B003EE93A /* Nunito-SemiBold.ttf */,
+				4DD190FC21ED910B003EE93A /* Nunito-Bold.ttf */,
+				4DD190FD21ED910B003EE93A /* Nunito-BoldItalic.ttf */,
+				4DD190FE21ED910B003EE93A /* Nunito-Black.ttf */,
+				4DD190FF21ED910B003EE93A /* Nunito-ExtraLight.ttf */,
+				4DD1910021ED910B003EE93A /* Nunito-SemiBoldItalic.ttf */,
+				4DD1910121ED910B003EE93A /* Nunito-BlackItalic.ttf */,
+				4DD1910321ED910B003EE93A /* Nunito-Italic.ttf */,
+				4DD1910421ED910B003EE93A /* Nunito-LightItalic.ttf */,
+			);
+			path = Nunito;
 			sourceTree = "<group>";
 		};
 		A84D7432F5E5DE63E0361BFD /* Pods */ = {
@@ -265,10 +327,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DD1911221ED910B003EE93A /* Nunito-Italic.ttf in Resources */,
+				4DD1910721ED910B003EE93A /* Nunito-ExtraLightItalic.ttf in Resources */,
+				4DD1910E21ED910B003EE93A /* Nunito-ExtraLight.ttf in Resources */,
 				4D279DE221ED5FBC00D09DDA /* LaunchScreen.storyboard in Resources */,
+				4DD1910F21ED910B003EE93A /* Nunito-SemiBoldItalic.ttf in Resources */,
+				4DD1910521ED910B003EE93A /* Nunito-ExtraBoldItalic.ttf in Resources */,
 				4D279E0621ED625200D09DDA /* GoogleService-Info.plist in Resources */,
+				4DD1910A21ED910B003EE93A /* Nunito-SemiBold.ttf in Resources */,
+				4DD1910621ED910B003EE93A /* Nunito-ExtraBold.ttf in Resources */,
+				4DD1910C21ED910B003EE93A /* Nunito-BoldItalic.ttf in Resources */,
+				4DD1910B21ED910B003EE93A /* Nunito-Bold.ttf in Resources */,
 				4D279DDF21ED5FBC00D09DDA /* Assets.xcassets in Resources */,
+				4DD1910D21ED910B003EE93A /* Nunito-Black.ttf in Resources */,
+				4DD1910921ED910B003EE93A /* Nunito-Regular.ttf in Resources */,
+				4DD1910821ED910B003EE93A /* Nunito-Light.ttf in Resources */,
 				4D279DDA21ED5FBC00D09DDA /* Main.storyboard in Resources */,
+				4DD1911321ED910B003EE93A /* Nunito-LightItalic.ttf in Resources */,
+				4DD1911021ED910B003EE93A /* Nunito-BlackItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,9 +422,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DD190F121ED6B4E003EE93A /* SignInViewController.swift in Sources */,
+				4D5A27A321EDA89A00232294 /* SignUpViewController.swift in Sources */,
 				4D279DDD21ED5FBC00D09DDA /* Astra_Exchange.xcdatamodeld in Sources */,
-				4D279DD721ED5FBC00D09DDA /* ViewController.swift in Sources */,
+				4D279DD721ED5FBC00D09DDA /* UserViewController.swift in Sources */,
+				4DD190F321ED6C43003EE93A /* Global.swift in Sources */,
 				4D279DD521ED5FBC00D09DDA /* AppDelegate.swift in Sources */,
+				4D5A27A121ED9D5200232294 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
