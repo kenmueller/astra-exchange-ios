@@ -1,0 +1,608 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4D279DD521ED5FBC00D09DDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D279DD421ED5FBC00D09DDA /* AppDelegate.swift */; };
+		4D279DD721ED5FBC00D09DDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D279DD621ED5FBC00D09DDA /* ViewController.swift */; };
+		4D279DDA21ED5FBC00D09DDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D279DD821ED5FBC00D09DDA /* Main.storyboard */; };
+		4D279DDD21ED5FBC00D09DDA /* Astra_Exchange.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D279DDB21ED5FBC00D09DDA /* Astra_Exchange.xcdatamodeld */; };
+		4D279DDF21ED5FBC00D09DDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D279DDE21ED5FBC00D09DDA /* Assets.xcassets */; };
+		4D279DE221ED5FBC00D09DDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D279DE021ED5FBC00D09DDA /* LaunchScreen.storyboard */; };
+		4D279DED21ED5FBC00D09DDA /* Astra_ExchangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D279DEC21ED5FBC00D09DDA /* Astra_ExchangeTests.swift */; };
+		4D279DF821ED5FBC00D09DDA /* Astra_ExchangeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D279DF721ED5FBC00D09DDA /* Astra_ExchangeUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4D279DE921ED5FBC00D09DDA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4D279DC921ED5FBC00D09DDA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D279DD021ED5FBC00D09DDA;
+			remoteInfo = "Astra Exchange";
+		};
+		4D279DF421ED5FBC00D09DDA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4D279DC921ED5FBC00D09DDA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D279DD021ED5FBC00D09DDA;
+			remoteInfo = "Astra Exchange";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4D279DD121ED5FBC00D09DDA /* Astra Exchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Astra Exchange.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D279DD421ED5FBC00D09DDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4D279DD621ED5FBC00D09DDA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4D279DD921ED5FBC00D09DDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4D279DDC21ED5FBC00D09DDA /* Astra_Exchange.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Astra_Exchange.xcdatamodel; sourceTree = "<group>"; };
+		4D279DDE21ED5FBC00D09DDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4D279DE121ED5FBC00D09DDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4D279DE321ED5FBC00D09DDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D279DE821ED5FBC00D09DDA /* Astra ExchangeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Astra ExchangeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D279DEC21ED5FBC00D09DDA /* Astra_ExchangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Astra_ExchangeTests.swift; sourceTree = "<group>"; };
+		4D279DEE21ED5FBC00D09DDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D279DF321ED5FBC00D09DDA /* Astra ExchangeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Astra ExchangeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D279DF721ED5FBC00D09DDA /* Astra_ExchangeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Astra_ExchangeUITests.swift; sourceTree = "<group>"; };
+		4D279DF921ED5FBC00D09DDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4D279DCE21ED5FBC00D09DDA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D279DE521ED5FBC00D09DDA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D279DF021ED5FBC00D09DDA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4D279DC821ED5FBC00D09DDA = {
+			isa = PBXGroup;
+			children = (
+				4D279DD321ED5FBC00D09DDA /* Astra Exchange */,
+				4D279DEB21ED5FBC00D09DDA /* Astra ExchangeTests */,
+				4D279DF621ED5FBC00D09DDA /* Astra ExchangeUITests */,
+				4D279DD221ED5FBC00D09DDA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4D279DD221ED5FBC00D09DDA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4D279DD121ED5FBC00D09DDA /* Astra Exchange.app */,
+				4D279DE821ED5FBC00D09DDA /* Astra ExchangeTests.xctest */,
+				4D279DF321ED5FBC00D09DDA /* Astra ExchangeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4D279DD321ED5FBC00D09DDA /* Astra Exchange */ = {
+			isa = PBXGroup;
+			children = (
+				4D279DD421ED5FBC00D09DDA /* AppDelegate.swift */,
+				4D279DD621ED5FBC00D09DDA /* ViewController.swift */,
+				4D279DD821ED5FBC00D09DDA /* Main.storyboard */,
+				4D279DDE21ED5FBC00D09DDA /* Assets.xcassets */,
+				4D279DE021ED5FBC00D09DDA /* LaunchScreen.storyboard */,
+				4D279DE321ED5FBC00D09DDA /* Info.plist */,
+				4D279DDB21ED5FBC00D09DDA /* Astra_Exchange.xcdatamodeld */,
+			);
+			path = "Astra Exchange";
+			sourceTree = "<group>";
+		};
+		4D279DEB21ED5FBC00D09DDA /* Astra ExchangeTests */ = {
+			isa = PBXGroup;
+			children = (
+				4D279DEC21ED5FBC00D09DDA /* Astra_ExchangeTests.swift */,
+				4D279DEE21ED5FBC00D09DDA /* Info.plist */,
+			);
+			path = "Astra ExchangeTests";
+			sourceTree = "<group>";
+		};
+		4D279DF621ED5FBC00D09DDA /* Astra ExchangeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4D279DF721ED5FBC00D09DDA /* Astra_ExchangeUITests.swift */,
+				4D279DF921ED5FBC00D09DDA /* Info.plist */,
+			);
+			path = "Astra ExchangeUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4D279DD021ED5FBC00D09DDA /* Astra Exchange */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D279DFC21ED5FBC00D09DDA /* Build configuration list for PBXNativeTarget "Astra Exchange" */;
+			buildPhases = (
+				4D279DCD21ED5FBC00D09DDA /* Sources */,
+				4D279DCE21ED5FBC00D09DDA /* Frameworks */,
+				4D279DCF21ED5FBC00D09DDA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Astra Exchange";
+			productName = "Astra Exchange";
+			productReference = 4D279DD121ED5FBC00D09DDA /* Astra Exchange.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4D279DE721ED5FBC00D09DDA /* Astra ExchangeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D279DFF21ED5FBC00D09DDA /* Build configuration list for PBXNativeTarget "Astra ExchangeTests" */;
+			buildPhases = (
+				4D279DE421ED5FBC00D09DDA /* Sources */,
+				4D279DE521ED5FBC00D09DDA /* Frameworks */,
+				4D279DE621ED5FBC00D09DDA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4D279DEA21ED5FBC00D09DDA /* PBXTargetDependency */,
+			);
+			name = "Astra ExchangeTests";
+			productName = "Astra ExchangeTests";
+			productReference = 4D279DE821ED5FBC00D09DDA /* Astra ExchangeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4D279DF221ED5FBC00D09DDA /* Astra ExchangeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D279E0221ED5FBC00D09DDA /* Build configuration list for PBXNativeTarget "Astra ExchangeUITests" */;
+			buildPhases = (
+				4D279DEF21ED5FBC00D09DDA /* Sources */,
+				4D279DF021ED5FBC00D09DDA /* Frameworks */,
+				4D279DF121ED5FBC00D09DDA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4D279DF521ED5FBC00D09DDA /* PBXTargetDependency */,
+			);
+			name = "Astra ExchangeUITests";
+			productName = "Astra ExchangeUITests";
+			productReference = 4D279DF321ED5FBC00D09DDA /* Astra ExchangeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4D279DC921ED5FBC00D09DDA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Ken Mueller";
+				TargetAttributes = {
+					4D279DD021ED5FBC00D09DDA = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					4D279DE721ED5FBC00D09DDA = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 4D279DD021ED5FBC00D09DDA;
+					};
+					4D279DF221ED5FBC00D09DDA = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 4D279DD021ED5FBC00D09DDA;
+					};
+				};
+			};
+			buildConfigurationList = 4D279DCC21ED5FBC00D09DDA /* Build configuration list for PBXProject "Astra Exchange" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4D279DC821ED5FBC00D09DDA;
+			productRefGroup = 4D279DD221ED5FBC00D09DDA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4D279DD021ED5FBC00D09DDA /* Astra Exchange */,
+				4D279DE721ED5FBC00D09DDA /* Astra ExchangeTests */,
+				4D279DF221ED5FBC00D09DDA /* Astra ExchangeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4D279DCF21ED5FBC00D09DDA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D279DE221ED5FBC00D09DDA /* LaunchScreen.storyboard in Resources */,
+				4D279DDF21ED5FBC00D09DDA /* Assets.xcassets in Resources */,
+				4D279DDA21ED5FBC00D09DDA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D279DE621ED5FBC00D09DDA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D279DF121ED5FBC00D09DDA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4D279DCD21ED5FBC00D09DDA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D279DDD21ED5FBC00D09DDA /* Astra_Exchange.xcdatamodeld in Sources */,
+				4D279DD721ED5FBC00D09DDA /* ViewController.swift in Sources */,
+				4D279DD521ED5FBC00D09DDA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D279DE421ED5FBC00D09DDA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D279DED21ED5FBC00D09DDA /* Astra_ExchangeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D279DEF21ED5FBC00D09DDA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D279DF821ED5FBC00D09DDA /* Astra_ExchangeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4D279DEA21ED5FBC00D09DDA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D279DD021ED5FBC00D09DDA /* Astra Exchange */;
+			targetProxy = 4D279DE921ED5FBC00D09DDA /* PBXContainerItemProxy */;
+		};
+		4D279DF521ED5FBC00D09DDA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D279DD021ED5FBC00D09DDA /* Astra Exchange */;
+			targetProxy = 4D279DF421ED5FBC00D09DDA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4D279DD821ED5FBC00D09DDA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D279DD921ED5FBC00D09DDA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4D279DE021ED5FBC00D09DDA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D279DE121ED5FBC00D09DDA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4D279DFA21ED5FBC00D09DDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4D279DFB21ED5FBC00D09DDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4D279DFD21ED5FBC00D09DDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JUP7FZ7QC3;
+				INFOPLIST_FILE = "Astra Exchange/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "exchange.astra.Astra-Exchange";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4D279DFE21ED5FBC00D09DDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JUP7FZ7QC3;
+				INFOPLIST_FILE = "Astra Exchange/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "exchange.astra.Astra-Exchange";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4D279E0021ED5FBC00D09DDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JUP7FZ7QC3;
+				INFOPLIST_FILE = "Astra ExchangeTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "exchange.astra.Astra-ExchangeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Astra Exchange.app/Astra Exchange";
+			};
+			name = Debug;
+		};
+		4D279E0121ED5FBC00D09DDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JUP7FZ7QC3;
+				INFOPLIST_FILE = "Astra ExchangeTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "exchange.astra.Astra-ExchangeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Astra Exchange.app/Astra Exchange";
+			};
+			name = Release;
+		};
+		4D279E0321ED5FBC00D09DDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JUP7FZ7QC3;
+				INFOPLIST_FILE = "Astra ExchangeUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "exchange.astra.Astra-ExchangeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Astra Exchange";
+			};
+			name = Debug;
+		};
+		4D279E0421ED5FBC00D09DDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JUP7FZ7QC3;
+				INFOPLIST_FILE = "Astra ExchangeUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "exchange.astra.Astra-ExchangeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Astra Exchange";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4D279DCC21ED5FBC00D09DDA /* Build configuration list for PBXProject "Astra Exchange" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D279DFA21ED5FBC00D09DDA /* Debug */,
+				4D279DFB21ED5FBC00D09DDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4D279DFC21ED5FBC00D09DDA /* Build configuration list for PBXNativeTarget "Astra Exchange" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D279DFD21ED5FBC00D09DDA /* Debug */,
+				4D279DFE21ED5FBC00D09DDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4D279DFF21ED5FBC00D09DDA /* Build configuration list for PBXNativeTarget "Astra ExchangeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D279E0021ED5FBC00D09DDA /* Debug */,
+				4D279E0121ED5FBC00D09DDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4D279E0221ED5FBC00D09DDA /* Build configuration list for PBXNativeTarget "Astra ExchangeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D279E0321ED5FBC00D09DDA /* Debug */,
+				4D279E0421ED5FBC00D09DDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4D279DDB21ED5FBC00D09DDA /* Astra_Exchange.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4D279DDC21ED5FBC00D09DDA /* Astra_Exchange.xcdatamodel */,
+			);
+			currentVersion = 4D279DDC21ED5FBC00D09DDA /* Astra_Exchange.xcdatamodel */;
+			path = Astra_Exchange.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 4D279DC921ED5FBC00D09DDA /* Project object */;
+}
