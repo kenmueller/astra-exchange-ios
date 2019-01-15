@@ -9,6 +9,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var passwordTextField: UITextField!
 	@IBOutlet weak var passwordErrorLabel: UILabel!
 	@IBOutlet weak var signUpButton: UIButton!
+	@IBOutlet weak var signUpActivityIndicator: UIActivityIndicatorView!
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 	
 	@IBAction func signUp() {
 		guard let nameText = nameTextField.text?.trim(), let emailText = emailTextField.text?.trim(), let passwordText = passwordTextField.text?.trim() else { return }
+		showActivityIndicator()
 		Auth.auth().createUser(withEmail: emailText, password: passwordText) { authResult, error in
 			if error == nil {
 				let userId = authResult!.user.uid
@@ -56,11 +58,30 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 				name = nameText
 				saveLogin(email: emailText, password: passwordText)
 				loadData()
+				self.hideActivityIndicator()
 				self.view.removeFromSuperview()
-			} else {
-				self.showAlert("There was a problem creating a new account")
+			} else if let error = error {
+				self.hideActivityIndicator()
+				switch error.localizedDescription {
+				case "FIRAuthErrorCodeNetworkError":
+					self.showAlert("No internet")
+				default:
+					self.showAlert("There was a problem creating a new account")
+				}
 			}
 		}
+	}
+	
+	func showActivityIndicator() {
+		signUpButton.isEnabled = false
+		signUpButton.setTitle(nil, for: .normal)
+		signUpActivityIndicator.startAnimating()
+	}
+	
+	func hideActivityIndicator() {
+		signUpButton.isEnabled = true
+		signUpButton.setTitle("SIGN UP", for: .normal)
+		signUpActivityIndicator.stopAnimating()
 	}
 	
 	func enable() {
@@ -75,11 +96,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 	
 	func updateSignUpButton() {
 		guard let nameText = nameTextField.text?.trim(), let emailText = emailTextField.text?.trim(), let passwordText = passwordTextField.text?.trim() else { return }
-		if !nameText.isEmpty && emailText.checkEmail() && passwordText.count >= 6 {
-			enable()
-		} else {
-			disable()
-		}
+		!nameText.isEmpty && emailText.checkEmail() && passwordText.count >= 6 ? enable() : disable()
 	}
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
