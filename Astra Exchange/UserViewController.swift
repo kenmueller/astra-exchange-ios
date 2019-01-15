@@ -1,4 +1,6 @@
 import UIKit
+import CoreData
+import Firebase
 
 class UserViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 	@IBOutlet weak var balanceLabel: UILabel!
@@ -17,11 +19,36 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		if let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as? HomeViewController, id == nil {
-			addChild(homeVC)
-			homeVC.view.frame = view.frame
-			view.addSubview(homeVC.view)
-			homeVC.didMove(toParent: self)
+		if startup {
+			ref.child("users").observe(.childAdded) { snapshot in
+				users.append(User(id: snapshot.key, name: retrieveDataValue(snapshot: snapshot, field: "name") as! String, email: retrieveDataValue(snapshot: snapshot, field: "email") as! String))
+			}
+			if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+				let managedContext = appDelegate.persistentContainer.viewContext
+				let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Login")
+				do {
+					let login = try managedContext.fetch(fetchRequest)
+					if login.count == 1 {
+						let localEmail = login[0].value(forKey: "email") as? String
+						Auth.auth().signIn(withEmail: localEmail!, password: login[0].value(forKey: "password") as! String) { user, error in
+							if error == nil {
+								id = user?.user.uid
+								ref.child("users/\(id!)/name").observeSingleEvent(of: .value) { snapshot in
+									name = snapshot.value as? String
+								}
+								email = localEmail
+								loadData()
+							}
+						}
+					} else if let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as? HomeViewController {
+						addChild(homeVC)
+						homeVC.view.frame = view.frame
+						view.addSubview(homeVC.view)
+						homeVC.didMove(toParent: self)
+					}
+				} catch {}
+			}
+			startup = false
 		}
 		navigationController?.title = name
 	}

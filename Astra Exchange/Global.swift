@@ -4,6 +4,7 @@ import Firebase
 
 var ref: DatabaseReference! = Database.database().reference()
 var changeHandler: (() -> Void)?
+var startup = true
 var id: String?
 var name: String?
 var email: String?
@@ -64,7 +65,7 @@ struct Invoice {
 
 func loadData() {
 	ref.child("users/\(id!)/balance").observe(.value) { snapshot in
-		balance = snapshot.value as! Double
+		balance = Double(snapshot.value as! String)!
 		callChangeHandler()
 	}
 }

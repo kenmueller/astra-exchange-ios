@@ -53,7 +53,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 		Auth.auth().createUser(withEmail: emailText, password: passwordText) { authResult, error in
 			if error == nil {
 				let userId = authResult!.user.uid
-				ref.child("users/\(userId)").setValue(["name": nameText, "email": emailText, "balance": "0"])
+				ref.child("users/\(userId)").setValue(["name": nameText, "email": emailText, "balance": "0.0"])
 				id = userId
 				name = nameText
 				saveLogin(email: emailText, password: passwordText)
