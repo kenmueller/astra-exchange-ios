@@ -1,0 +1,6 @@
+framework module Pods_Astra_Exchange {
+  umbrella header "Pods-Astra Exchange-umbrella.h"
+
+  export *
+  module * { export * }
+}
