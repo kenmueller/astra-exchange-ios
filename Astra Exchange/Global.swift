@@ -52,7 +52,7 @@ struct Transaction {
 	let from: String
 	let to: String
 	let amount: Double
-	let balance: Double
+	let remainingBalance: Double
 }
 
 struct Invoice {
