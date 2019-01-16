@@ -54,6 +54,7 @@ class AmountViewController: UIViewController, UITextFieldDelegate {
 			sendMoneyVC.amount = amount
 			sendMoneyVC.actions[1].label = String(amount)
 			sendMoneyVC.sendMoneyTableView.reloadData()
+			sendMoneyVC.updateSendButton()
 		}
 		hideAnimation()
 	}

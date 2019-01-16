@@ -2,6 +2,7 @@ import UIKit
 
 class SendMoneyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 	@IBOutlet weak var sendMoneyTableView: UITableView!
+	@IBOutlet weak var sendButton: UIButton!
 	
 	struct Action {
 		let group: String
@@ -39,6 +40,42 @@ class SendMoneyViewController: UIViewController, UITableViewDataSource, UITableV
 			amountVC.view.frame = view.frame
 			view.addSubview(amountVC.view)
 			amountVC.didMove(toParent: self)
+		}
+	}
+	
+	@IBAction func send() {
+		UIView.animate(withDuration: 0.15, animations: {
+			self.sendButton.transform = CGAffineTransform(translationX: 0, y: 150)
+		}) { finished in
+			if finished {
+				self.sendButton.isHidden = true
+				if let confirmVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "confirm") as? ConfirmViewController {
+					self.addChild(confirmVC)
+					confirmVC.view.frame = self.view.frame
+					self.view.addSubview(confirmVC.view)
+					confirmVC.didMove(toParent: self)
+				}
+			}
+		}
+	}
+	
+	func updateSendButton() {
+		if sendButton.isHidden {
+			if !(recipient == nil || amount == 0) && amount <= balance {
+				sendButton.transform = CGAffineTransform(translationX: 0, y: 150)
+				sendButton.isHidden = false
+				UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveLinear, animations: {
+					self.sendButton.transform = CGAffineTransform.identity
+				}, completion: nil)
+			}
+		} else if recipient == nil || amount == 0 {
+			UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveLinear, animations: {
+				self.sendButton.transform = CGAffineTransform(translationX: 0, y: 150)
+			}) { finished in
+				if finished {
+					self.sendButton.isHidden = true
+				}
+			}
 		}
 	}
 	

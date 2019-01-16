@@ -42,6 +42,7 @@ class RecipientViewController: UIViewController, UIPickerViewDataSource, UIPicke
 			sendMoneyVC.recipient = recipient
 			sendMoneyVC.actions[0].label = users[recipient!].name
 			sendMoneyVC.sendMoneyTableView.reloadData()
+			sendMoneyVC.updateSendButton()
 		}
 		hideAnimation()
 	}

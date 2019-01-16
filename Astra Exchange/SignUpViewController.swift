@@ -70,7 +70,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 				self.hideActivityIndicator()
 				AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
 				switch error.localizedDescription {
-				case "FIRAuthErrorCodeNetworkError":
+				case "Network error (such as timeout, interrupted connection or unreachable host) has occurred.":
 					self.showAlert("No internet")
 				default:
 					self.showAlert("There was a problem creating a new account")
