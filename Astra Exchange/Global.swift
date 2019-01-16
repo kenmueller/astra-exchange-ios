@@ -145,3 +145,12 @@ extension String {
 		return NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}").evaluate(with: self)
 	}
 }
+
+extension UIView {
+	func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+		let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+		let mask = CAShapeLayer()
+		mask.path = path.cgPath
+		layer.mask = mask
+	}
+}

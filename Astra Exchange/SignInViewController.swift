@@ -1,5 +1,6 @@
 import UIKit
 import Firebase
+import AudioToolbox
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var emailTextField: UITextField!
@@ -12,6 +13,11 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 		hideKeyboard()
 		disable()
     }
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		navigationController?.isNavigationBarHidden = false
+	}
 	
 	@IBAction func textFieldChanged() {
 		guard let emailText = emailTextField.text?.trim(), let passwordText = passwordTextField.text?.trim() else { return }
@@ -34,6 +40,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 				self.view.removeFromSuperview()
 			} else if let error = error {
 				self.hideActivityIndicator()
+				AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
 				switch error.localizedDescription {
 				case "FIRAuthErrorCodeNetworkError":
 					self.showAlert("No internet")

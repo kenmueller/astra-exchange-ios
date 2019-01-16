@@ -12,9 +12,8 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	}
 	
 	let actions = [
-		Action(name: "Send Money", action: #selector(sendMoney)),
-		Action(name: "Create Invoice", action: #selector(createInvoice)),
-		Action(name: "Transaction History", action: #selector(transactionHistory))
+		[Action(name: "Send Money", action: #selector(sendMoney)), Action(name: "Create Invoice", action: #selector(createInvoice))],
+		[Action(name: "Transaction History", action: #selector(transactionHistory))]
 	]
 	
 	override func viewDidLoad() {
@@ -35,22 +34,26 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 								id = user?.user.uid
 								ref.child("users/\(id!)/name").observeSingleEvent(of: .value) { snapshot in
 									name = snapshot.value as? String
+									self.navigationItem.title = name
 								}
 								email = localEmail
 								loadData()
+							} else if let error = error {
+								switch error.localizedDescription {
+								case "FIRAuthErrorCodeNetworkError":
+									self.showAlert("No internet")
+								default:
+									self.showHomeVC()
+								}
 							}
 						}
-					} else if let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as? HomeViewController {
-						addChild(homeVC)
-						homeVC.view.frame = view.frame
-						view.addSubview(homeVC.view)
-						homeVC.didMove(toParent: self)
+					} else {
+						showHomeVC()
 					}
 				} catch {}
 			}
 			startup = false
 		}
-		navigationController?.title = name
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +62,10 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 			self.balanceLabel.text = String(balance)
 			self.actionsTableView.reloadData()
 		}
+	}
+	
+	func showHomeVC() {
+		performSegue(withIdentifier: "home", sender: self)
 	}
 	
 	@objc func sendMoney() {
@@ -73,14 +80,30 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		performSegue(withIdentifier: "transactionHistory", sender: self)
 	}
 	
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	func numberOfSections(in tableView: UITableView) -> Int {
 		return actions.count
+	}
+	
+	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		switch section {
+		case 0:
+			return "ACTIONS"
+		case 1:
+			return "LOOKUP"
+		default:
+			return nil
+		}
+	}
+	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return actions[section].count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-		cell.textLabel?.text = actions[indexPath.row].name
-		if indexPath.row == 0 {
+		cell.textLabel?.text = actions[indexPath.section][indexPath.row].name
+		cell.detailTextLabel?.text = nil
+		if indexPath.section == 0, indexPath.row == 0 {
 			let unpaidInvoices = invoices.filter { $0.to == id! }
 			if unpaidInvoices.count == 1 {
 				cell.detailTextLabel?.text = "⚠️ 1 unpaid invoice"
@@ -92,6 +115,6 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		performSelector(inBackground: actions[indexPath.row].action, with: nil)
+		performSelector(onMainThread: actions[indexPath.section][indexPath.row].action, with: nil, waitUntilDone: false)
 	}
 }
