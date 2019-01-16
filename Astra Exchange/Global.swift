@@ -3,7 +3,7 @@ import CoreData
 import Firebase
 
 var ref: DatabaseReference! = Database.database().reference()
-var changeHandler: (() -> Void)?
+var changeHandler: ((Change) -> Void)?
 var startup = true
 var id: String?
 var name: String?
@@ -63,10 +63,16 @@ struct Invoice {
 	let message: String
 }
 
+enum Change {
+	case balance
+	case transaction
+	case invoice
+}
+
 func loadData() {
 	ref.child("users/\(id!)/balance").observe(.value) { snapshot in
 		balance = Double(snapshot.value as! String)!
-		callChangeHandler()
+		callChangeHandler(.balance)
 	}
 }
 
@@ -74,15 +80,14 @@ func retrieveDataValue(snapshot: DataSnapshot, field: String) -> Any? {
 	return (snapshot.value as? [String: AnyObject])?[field]
 }
 
-func callChangeHandler() {
+func callChangeHandler(_ change: Change) {
 	if let changeHandlerUnwrapped = changeHandler {
-		changeHandlerUnwrapped()
+		changeHandlerUnwrapped(change)
 	}
 }
 
-func updateChangeHandler(_ cH: (() -> Void)?) {
+func updateChangeHandler(_ cH: ((Change) -> Void)?) {
 	changeHandler = cH
-	callChangeHandler()
 }
 
 func deleteLogin() {

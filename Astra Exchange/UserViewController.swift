@@ -54,6 +54,7 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 			}
 			startup = false
 		}
+		navigationItem.setHidesBackButton(true, animated: true)
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {

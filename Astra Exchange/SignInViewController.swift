@@ -33,15 +33,15 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 		showActivityIndicator()
 		Auth.auth().signIn(withEmail: emailText, password: passwordText) { user, error in
 			if error == nil {
-				id = user?.user.uid
 				ref.child("users/\(id!)/name").observeSingleEvent(of: .value) { snapshot in
+					id = user?.user.uid
 					name = snapshot.value as? String
+					email = emailText
+					saveLogin(email: emailText, password: passwordText)
+					loadData()
+					self.hideActivityIndicator()
+					self.performSegue(withIdentifier: "signIn", sender: self)
 				}
-				email = emailText
-				saveLogin(email: emailText, password: passwordText)
-				loadData()
-				self.hideActivityIndicator()
-				self.performSegue(withIdentifier: "signIn", sender: self)
 			} else if let error = error {
 				self.hideActivityIndicator()
 				AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
