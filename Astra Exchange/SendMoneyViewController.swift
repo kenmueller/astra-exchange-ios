@@ -1,9 +1,6 @@
 import UIKit
 
 class SendMoneyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-	@IBOutlet weak var invoiceView: UIView!
-	@IBOutlet weak var invoiceLabel: UILabel!
-	@IBOutlet weak var sendMoneyTableViewTopConstraint: NSLayoutConstraint!
 	@IBOutlet weak var sendMoneyTableView: UITableView!
 	
 	struct Action {
@@ -12,7 +9,7 @@ class SendMoneyViewController: UIViewController, UITableViewDataSource, UITableV
 		let action: Selector
 	}
 	
-	let actions = [
+	var actions = [
 		Action(group: "RECIPIENT", label: "Select User", action: #selector(showUsers)),
 		Action(group: "AMOUNT", label: "0.0", action: #selector(showAmount))
 	]
@@ -23,9 +20,9 @@ class SendMoneyViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
     }
 	
-	@IBAction func payInvoices() {
-		performSegue(withIdentifier: "payInvoices", sender: self)
-	}
+//	@IBAction func payInvoices() {
+//		performSegue(withIdentifier: "payInvoices", sender: self)
+//	}
 	
 	@objc func showUsers() {
 		if let recipientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "recipient") as? RecipientViewController {
@@ -37,7 +34,12 @@ class SendMoneyViewController: UIViewController, UITableViewDataSource, UITableV
 	}
 	
 	@objc func showAmount() {
-		
+		if let amountVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "amount") as? AmountViewController {
+			addChild(amountVC)
+			amountVC.view.frame = view.frame
+			view.addSubview(amountVC.view)
+			amountVC.didMove(toParent: self)
+		}
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {

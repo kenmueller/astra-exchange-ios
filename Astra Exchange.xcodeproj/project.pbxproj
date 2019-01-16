@@ -16,6 +16,7 @@
 		4D279DED21ED5FBC00D09DDA /* Astra_ExchangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D279DEC21ED5FBC00D09DDA /* Astra_ExchangeTests.swift */; };
 		4D279DF821ED5FBC00D09DDA /* Astra_ExchangeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D279DF721ED5FBC00D09DDA /* Astra_ExchangeUITests.swift */; };
 		4D279E0621ED625200D09DDA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D279E0521ED625200D09DDA /* GoogleService-Info.plist */; };
+		4D47AAE021EF05C200FD40EC /* AmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D47AADF21EF05C200FD40EC /* AmountViewController.swift */; };
 		4D5A27A121ED9D5200232294 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5A27A021ED9D5200232294 /* HomeViewController.swift */; };
 		4D5A27A321EDA89A00232294 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5A27A221EDA89A00232294 /* SignUpViewController.swift */; };
 		4DBAA59A21EE733500F26913 /* SendMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBAA59921EE733500F26913 /* SendMoneyViewController.swift */; };
@@ -74,6 +75,7 @@
 		4D279DF721ED5FBC00D09DDA /* Astra_ExchangeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Astra_ExchangeUITests.swift; sourceTree = "<group>"; };
 		4D279DF921ED5FBC00D09DDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D279E0521ED625200D09DDA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4D47AADF21EF05C200FD40EC /* AmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountViewController.swift; sourceTree = "<group>"; };
 		4D5A27A021ED9D5200232294 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4D5A27A221EDA89A00232294 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4DBAA59921EE733500F26913 /* SendMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				4DD190F021ED6B4E003EE93A /* SignInViewController.swift */,
 				4DBAA59921EE733500F26913 /* SendMoneyViewController.swift */,
 				4DBAA59B21EE9E7000F26913 /* RecipientViewController.swift */,
+				4D47AADF21EF05C200FD40EC /* AmountViewController.swift */,
 				4D279DDE21ED5FBC00D09DDA /* Assets.xcassets */,
 				4D279DD421ED5FBC00D09DDA /* AppDelegate.swift */,
 				4D279DE021ED5FBC00D09DDA /* LaunchScreen.storyboard */,
@@ -428,6 +431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D47AAE021EF05C200FD40EC /* AmountViewController.swift in Sources */,
 				4DD190F121ED6B4E003EE93A /* SignInViewController.swift in Sources */,
 				4DBAA59A21EE733500F26913 /* SendMoneyViewController.swift in Sources */,
 				4D5A27A321EDA89A00232294 /* SignUpViewController.swift in Sources */,

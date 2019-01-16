@@ -9,13 +9,14 @@ class RecipientViewController: UIViewController, UIPickerViewDataSource, UIPicke
 	var recipients: [User?] = {
 		var usersCopy: [User?] = users
 		usersCopy.insert(nil, at: 0)
-		return usersCopy
+		return usersCopy.filter { $0?.id != id }
 	}()
 	var selectedUserId: String?
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		titleBar.roundCorners(corners: [.topLeft, .topRight], radius: 10)
+		disable()
 		recipientView.transform = CGAffineTransform(scaleX: 0, y: 0)
 		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
 			self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
@@ -23,16 +24,31 @@ class RecipientViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		}, completion: nil)
     }
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		updateChangeHandler { change in
+			if change == .user {
+				var usersCopy: [User?] = users
+				usersCopy.insert(nil, at: 0)
+				self.recipients = usersCopy.filter { $0?.id != id }
+				self.usersPickerView.reloadAllComponents()
+			}
+		}
+	}
+	
 	@IBAction func select() {
-		if let sendMoneyVC = parent as? SendMoneyViewController, let selectedUserIdUnwrapped = selectedUserId {
-			sendMoneyVC.recipient = User.id(selectedUserIdUnwrapped)
+		if let sendMoneyVC = parent as? SendMoneyViewController {
+			let recipient = User.id(selectedUserId!)
+			sendMoneyVC.recipient = recipient
+			sendMoneyVC.actions[0].label = users[recipient!].name
+			sendMoneyVC.sendMoneyTableView.reloadData()
 		}
 		hideAnimation()
 	}
 	
 	@IBAction func hideAnimation() {
-		UIView.animate(withDuration: 0.5, animations: {
-			self.recipientView.transform = CGAffineTransform(scaleX: 0, y: 0)
+		UIView.animate(withDuration: 0.2, animations: {
+			self.recipientView.transform = CGAffineTransform(translationX: self.view.bounds.width, y: 0)
 			self.view.backgroundColor = .clear
 		}) { finished in
 			if finished {
@@ -59,5 +75,20 @@ class RecipientViewController: UIViewController, UIPickerViewDataSource, UIPicke
 	
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		selectedUserId = recipients[row]?.id
+		if selectedUserId == nil {
+			disable()
+		} else {
+			enable()
+		}
+	}
+	
+	func enable() {
+		selectButton.isEnabled = true
+		selectButton.setTitleColor(.white, for: .normal)
+	}
+	
+	func disable() {
+		selectButton.isEnabled = false
+		selectButton.setTitleColor(UIColor(red: 229 / 255, green: 229 / 255, blue: 229 / 255, alpha: 1), for: .normal)
 	}
 }

@@ -65,6 +65,7 @@ struct Invoice {
 
 enum Change {
 	case balance
+	case user
 	case transaction
 	case invoice
 }
