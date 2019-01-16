@@ -19,6 +19,10 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 		navigationController?.isNavigationBarHidden = false
 	}
 	
+	@IBAction func back() {
+		navigationController?.popViewController(animated: true)
+	}
+	
 	@IBAction func textFieldChanged() {
 		guard let emailText = emailTextField.text?.trim(), let passwordText = passwordTextField.text?.trim() else { return }
 		!(emailText.isEmpty || passwordText.isEmpty) ? enable() : disable()
@@ -37,7 +41,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 				saveLogin(email: emailText, password: passwordText)
 				loadData()
 				self.hideActivityIndicator()
-				self.view.removeFromSuperview()
+				self.performSegue(withIdentifier: "signIn", sender: self)
 			} else if let error = error {
 				self.hideActivityIndicator()
 				AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))

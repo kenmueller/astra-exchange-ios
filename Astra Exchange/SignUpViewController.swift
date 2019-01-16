@@ -65,7 +65,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 				saveLogin(email: emailText, password: passwordText)
 				loadData()
 				self.hideActivityIndicator()
-				self.view.removeFromSuperview()
+				self.performSegue(withIdentifier: "signUp", sender: self)
 			} else if let error = error {
 				self.hideActivityIndicator()
 				AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
