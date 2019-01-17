@@ -1,5 +1,6 @@
 import UIKit
 import Firebase
+import AudioToolbox
 
 class ConfirmViewController: UIViewController {
 	@IBOutlet weak var confirmView: UIView!
@@ -16,6 +17,7 @@ class ConfirmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		titleBar.roundCorners(corners: [.topLeft, .topRight], radius: 10)
+		loadingView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 10)
 		if let sendMoneyVC = parent as? SendMoneyViewController {
 			recipientText.text = users[sendMoneyVC.recipient!].name
 			amountText.text = String(sendMoneyVC.amount)
@@ -55,15 +57,28 @@ class ConfirmViewController: UIViewController {
 			activityIndicator.startAnimating()
 			let recipientId = users[sendMoneyVC.recipient!].id
 			ref.child("users/\(recipientId)/balance").observeSingleEvent(of: .value) { snapshot in
-				let recipientBalance = String(Double(snapshot.value as! String)! + sendMoneyVC.amount)
-				ref.child("users/\(recipientId)/balance").setValue(recipientBalance)
-				ref.child("users/\(id!)/balance").setValue(String(balance - sendMoneyVC.amount))
-				let autoId = ref.childByAutoId().key!
-				let time = Date().format("MMM d, yyyy @ h:mm a")
-				ref.child("transactions/\(id!)/\(autoId)").setValue(["time": time, "from": id!, "to": recipientId, "amount": String(sendMoneyVC.amount), "balance": String(balance)])
-				ref.child("transactions/\(recipientId)/\(autoId)").setValue(["time": time, "from": id!, "to": recipientId, "amount": String(sendMoneyVC.amount), "balance": recipientBalance])
-				self.activityIndicator.stopAnimating()
-				self.loadingView.isHidden = true
+				ref.child("users/\(id!)/balance").setValue(String(balance - sendMoneyVC.amount)) { error, reference in
+					if error == nil {
+						let recipientBalance = String(Double(snapshot.value as! String)! + sendMoneyVC.amount)
+						ref.child("users/\(recipientId)/balance").setValue(recipientBalance)
+						let autoId = ref.childByAutoId().key!
+						let time = Date().format("MMM d, yyyy @ h:mm a")
+						ref.child("transactions/\(id!)/\(autoId)").setValue(["time": time, "from": id!, "to": recipientId, "amount": String(sendMoneyVC.amount), "balance": String(balance)])
+						ref.child("transactions/\(recipientId)/\(autoId)").setValue(["time": time, "from": id!, "to": recipientId, "amount": String(sendMoneyVC.amount), "balance": recipientBalance])
+						self.activityIndicator.stopAnimating()
+						self.loadingView.isHidden = true
+					} else if let error = error {
+						self.activityIndicator.stopAnimating()
+						self.loadingView.isHidden = true
+						AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+						switch error.localizedDescription {
+						case "Network error (such as timeout, interrupted connection or unreachable host) has occurred.":
+							self.showAlert("No internet")
+						default:
+							self.showAlert("There was a problem sending money. Please try again.")
+						}
+					}
+				}
 				UIView.animate(withDuration: 0.2, animations: {
 					self.confirmView.transform = CGAffineTransform(translationX: 0, y: self.view.bounds.height)
 					self.view.backgroundColor = .clear
