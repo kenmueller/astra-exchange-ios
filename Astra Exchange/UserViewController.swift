@@ -108,30 +108,28 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 		if indexPath.section == 0 {
-			cell.textLabel?.font = UIFont(name: "Nunito-SemiBold", size: 45)
+			let cell = tableView.dequeueReusableCell(withIdentifier: "balance", for: indexPath) as! BalanceTableViewCell
 			updateChangeHandler { change in
 				if change == .balance {
 					UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
-						cell.textLabel?.transform = CGAffineTransform(scaleX: 2, y: 2)
-						cell.textLabel?.alpha = 0.4
-						cell.textLabel?.text = String(balance)
+						cell.balanceLabel.transform = CGAffineTransform(scaleX: 2, y: 2)
+						cell.balanceLabel.alpha = 0.4
+						cell.balanceLabel.text = String(balance)
 					}) { finished in
 						if finished {
 							UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
-								cell.textLabel?.transform = CGAffineTransform.identity
-								cell.textLabel?.alpha = 1
+								cell.balanceLabel.transform = CGAffineTransform.identity
+								cell.balanceLabel.alpha = 1
 							}, completion: nil)
 						}
 					}
 				}
 			}
-			cell.textLabel?.text = String(balance)
-			cell.detailTextLabel?.text = nil
-			cell.accessoryType = .none
+			cell.balanceLabel.text = String(balance)
 			return cell
 		} else {
+			let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 			cell.textLabel?.font = UIFont(name: "Nunito-SemiBold", size: 18)
 			cell.detailTextLabel?.font = UIFont(name: "Nunito-SemiBold", size: 18)
 			cell.detailTextLabel?.textColor = .red
@@ -153,4 +151,8 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		if indexPath.section == 0 { return }
 		performSelector(onMainThread: actions[indexPath.section - 1][indexPath.row].action, with: nil, waitUntilDone: false)
 	}
+}
+
+class BalanceTableViewCell: UITableViewCell {
+	@IBOutlet weak var balanceLabel: UILabel!
 }
