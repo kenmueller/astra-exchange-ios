@@ -59,7 +59,6 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 					}
 				} catch {}
 			}
-			startup = false
 		}
 		navigationItem.title = name
 		navigationItem.setHidesBackButton(true, animated: true)
@@ -110,23 +109,39 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if indexPath.section == 0 {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "balance", for: indexPath) as! BalanceTableViewCell
-			updateChangeHandler { change in
-				if change == .balance {
-					UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
-						cell.balanceLabel.transform = CGAffineTransform(scaleX: 2, y: 2)
-						cell.balanceLabel.alpha = 0.4
-						cell.balanceLabel.text = String(balance)
-					}) { finished in
-						if finished {
-							UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
-								cell.balanceLabel.transform = CGAffineTransform.identity
-								cell.balanceLabel.alpha = 1
-							}, completion: nil)
-						}
+			let updateFunction = {
+				UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
+					cell.balanceLabel.transform = CGAffineTransform(scaleX: 2, y: 2)
+					cell.balanceLabel.alpha = 0.4
+					cell.balanceLabel.text = String(balance)
+				}) { finished in
+					if finished {
+						UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
+							cell.balanceLabel.transform = CGAffineTransform.identity
+							cell.balanceLabel.alpha = 1
+						}, completion: nil)
 					}
 				}
 			}
-			cell.balanceLabel.text = String(balance)
+			if startup {
+				updateChangeHandler { change in
+					if change == .balance {
+						updateChangeHandler { change in
+							if change == .balance {
+								updateFunction()
+							}
+						}
+						cell.balanceLabel.text = String(balance)
+					}
+				}
+				startup = false
+			} else {
+				updateChangeHandler { change in
+					if change == .balance {
+						updateFunction()
+					}
+				}
+			}
 			return cell
 		} else {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
