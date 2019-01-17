@@ -214,46 +214,49 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="199" id="j0I-Jc-CW9">
-                                        <rect key="frame" x="0.0" y="55.333333333333343" width="414" height="199"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="TMj-CD-Cw1" detailTextLabel="xUl-WD-mrK" style="IBUITableViewCellStyleValue1" id="j0I-Jc-CW9">
+                                        <rect key="frame" x="0.0" y="55.333333333333343" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j0I-Jc-CW9" id="mmH-cK-jKW">
-                                            <rect key="frame" x="0.0" y="0.0" width="376" height="198.66666666666666"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWD-Y0-cue">
-                                                    <rect key="frame" x="20" y="20" width="42" height="24"/>
-                                                    <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="17"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TMj-CD-Cw1">
+                                                    <rect key="frame" x="20.000000000000004" y="11.999999999999998" width="33.333333333333336" height="20.333333333333332"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="From" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJ3-FT-czC">
-                                                    <rect key="frame" x="20" y="80.000000000000142" width="40" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="17"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xUl-WD-mrK">
+                                                    <rect key="frame" x="332" y="11.999999999999998" width="44" height="20.333333333333332"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="JWD-Y0-cue" firstAttribute="leading" secondItem="mmH-cK-jKW" secondAttribute="leading" constant="20" id="CGq-U6-hTC"/>
-                                                <constraint firstItem="JWD-Y0-cue" firstAttribute="top" secondItem="mmH-cK-jKW" secondAttribute="top" constant="20" id="GOM-uH-htk"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="JWD-Y0-cue" secondAttribute="trailing" id="P8x-5q-IG5"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="yaM-b6-CXP" id="itc-YM-EUq"/>
+                                    <outlet property="delegate" destination="yaM-b6-CXP" id="GdT-rC-7ml"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="aOP-YZ-TCP" firstAttribute="top" secondItem="HF5-Qk-tcj" secondAttribute="top" id="6hf-if-hDQ"/>
                             <constraint firstItem="aOP-YZ-TCP" firstAttribute="leading" secondItem="HF5-Qk-tcj" secondAttribute="leading" id="8Ct-n9-i7T"/>
-                            <constraint firstItem="HF5-Qk-tcj" firstAttribute="bottom" secondItem="aOP-YZ-TCP" secondAttribute="bottom" id="bT8-eH-eIJ"/>
+                            <constraint firstItem="aOP-YZ-TCP" firstAttribute="bottom" secondItem="jue-eU-kGd" secondAttribute="bottom" id="bT8-eH-eIJ"/>
                             <constraint firstItem="HF5-Qk-tcj" firstAttribute="trailing" secondItem="aOP-YZ-TCP" secondAttribute="trailing" id="eH3-fa-dVr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HF5-Qk-tcj"/>
                     </view>
+                    <connections>
+                        <outlet property="transactionsTableView" destination="aOP-YZ-TCP" id="dqs-XT-NUf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="joK-6p-rBl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -287,6 +290,9 @@
                                                 <state key="normal" image="X">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="hideAnimation" destination="Zqc-G3-nQV" eventType="touchUpInside" id="9rR-rs-pNx"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.28235294119999998" green="0.80000000000000004" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -387,18 +393,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INCOMING/OUTGOING" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIW-2K-gN8">
-                                <rect key="frame" x="60" y="180" width="138" height="18"/>
-                                <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="13"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="sIW-2K-gN8" firstAttribute="leading" secondItem="Gok-UO-8sl" secondAttribute="leading" constant="60" id="Cco-MW-Vpd"/>
                             <constraint firstItem="2Es-at-9q2" firstAttribute="leading" secondItem="Gok-UO-8sl" secondAttribute="leading" constant="40" id="EXu-uJ-sZi"/>
-                            <constraint firstItem="2Es-at-9q2" firstAttribute="top" secondItem="sIW-2K-gN8" secondAttribute="bottom" constant="8" id="M4L-Gh-POl"/>
                             <constraint firstItem="2Es-at-9q2" firstAttribute="centerY" secondItem="ERq-ac-WS6" secondAttribute="centerY" id="awn-s2-v6E"/>
                             <constraint firstItem="Gok-UO-8sl" firstAttribute="trailing" secondItem="2Es-at-9q2" secondAttribute="trailing" constant="40" id="dTw-56-gct"/>
                             <constraint firstItem="2Es-at-9q2" firstAttribute="centerX" secondItem="ERq-ac-WS6" secondAttribute="centerX" id="thn-vY-tp5"/>
@@ -413,8 +411,8 @@
                         <outlet property="remainingBalanceNewBalanceText" destination="xlF-sO-3yw" id="i6N-aN-fMv"/>
                         <outlet property="timeText" destination="1AA-Xl-FCb" id="dnQ-Gk-qkv"/>
                         <outlet property="titleBar" destination="uVr-hK-G9J" id="crG-7b-Fbc"/>
+                        <outlet property="titleLabel" destination="bHJ-07-aLu" id="9BT-sp-E8x"/>
                         <outlet property="transactionView" destination="2Es-at-9q2" id="oR3-xn-ykx"/>
-                        <outlet property="typeLabel" destination="sIW-2K-gN8" id="sjv-TN-sQW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gg3-TZ-cAc" userLabel="First Responder" sceneMemberID="firstResponder"/>
