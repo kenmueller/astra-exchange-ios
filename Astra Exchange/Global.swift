@@ -58,6 +58,7 @@ struct Transaction {
 
 struct Invoice {
 	let id: String
+	let time: String
 	var status: String
 	let from: String
 	let to: String
@@ -91,7 +92,7 @@ func loadData() {
 		callChangeHandler(.transaction)
 	}
 	ref.child("invoices/\(id!)").observe(.childAdded) { snapshot in
-		invoices.insert(Invoice(id: snapshot.key, status: retrieveDataValue(snapshot: snapshot, field: "status") as! String, from: retrieveDataValue(snapshot: snapshot, field: "from") as! String, to: retrieveDataValue(snapshot: snapshot, field: "to") as! String, amount: Double(retrieveDataValue(snapshot: snapshot, field: "amount") as! String)!, message: retrieveDataValue(snapshot: snapshot, field: "message") as! String), at: 0)
+		invoices.insert(Invoice(id: snapshot.key, time: retrieveDataValue(snapshot: snapshot, field: "time") as! String, status: retrieveDataValue(snapshot: snapshot, field: "status") as! String, from: retrieveDataValue(snapshot: snapshot, field: "from") as! String, to: retrieveDataValue(snapshot: snapshot, field: "to") as! String, amount: Double(retrieveDataValue(snapshot: snapshot, field: "amount") as! String)!, message: retrieveDataValue(snapshot: snapshot, field: "message") as! String), at: 0)
 		callChangeHandler(.invoice)
 		ref.child("invoices/\(id!)/\(snapshot.key)/status").observe(.value) { statusSnapshot in
 			invoices[Invoice.id(snapshot.key)!].status = statusSnapshot.value as! String
