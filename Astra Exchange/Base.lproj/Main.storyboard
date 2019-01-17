@@ -1677,6 +1677,9 @@
                                                 <state key="normal" title="Add">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="add" destination="61C-y5-ldL" eventType="touchUpInside" id="DV5-hK-ajc"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBi-Qx-4fV">
                                                 <rect key="frame" x="15" y="0.0" width="53" height="40"/>
@@ -1684,6 +1687,9 @@
                                                 <state key="normal" title="Cancel">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="hideAnimation" destination="61C-y5-ldL" eventType="touchUpInside" id="E3H-Jj-zeN"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.28235294119999998" green="0.80000000000000004" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -1710,6 +1716,10 @@
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                        <connections>
+                                            <action selector="amountChanged" destination="61C-y5-ldL" eventType="editingChanged" id="ylC-76-K12"/>
+                                            <outlet property="delegate" destination="61C-y5-ldL" id="tfG-hO-eHr"/>
+                                        </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RbU-V6-smW">
                                         <rect key="frame" x="20" y="113" width="294" height="1.6666666666666714"/>
@@ -1724,7 +1734,7 @@
                                         <color key="textColor" red="0.28235294119999998" green="0.80000000000000004" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Hvi-4R-XLh">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Hvi-4R-XLh">
                                         <rect key="frame" x="20" y="167.66666666666669" width="294" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="qTn-9h-sqD"/>
@@ -1732,15 +1742,19 @@
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                        <connections>
+                                            <action selector="newBalanceChanged" destination="61C-y5-ldL" eventType="editingChanged" id="D9d-Cx-daa"/>
+                                            <outlet property="delegate" destination="61C-y5-ldL" id="sD5-a7-man"/>
+                                        </connections>
                                     </textField>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bwC-nq-t4x">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwC-nq-t4x">
                                         <rect key="frame" x="20" y="202.66666666666669" width="294" height="1.3333333333333428"/>
                                         <color key="backgroundColor" red="0.28235294119999998" green="0.80000000000000004" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1.5" id="iev-zI-Laa"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="NEW BALANCE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71U-ig-iN5">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEW BALANCE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71U-ig-iN5">
                                         <rect key="frame" x="20" y="149.66666666666669" width="294" height="18"/>
                                         <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="13"/>
                                         <color key="textColor" red="0.28235294119999998" green="0.80000000000000004" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -1764,6 +1778,7 @@
                                     <constraint firstAttribute="trailing" secondItem="bwC-nq-t4x" secondAttribute="trailing" constant="20" id="RxA-sj-BIC"/>
                                     <constraint firstItem="dxZ-6e-QzP" firstAttribute="top" secondItem="eJ3-Vz-v6V" secondAttribute="bottom" id="Scb-3O-eVA"/>
                                     <constraint firstItem="Hvi-4R-XLh" firstAttribute="leading" secondItem="GmH-Qk-19E" secondAttribute="leading" constant="20" id="T2U-pY-zO4"/>
+                                    <constraint firstItem="71U-ig-iN5" firstAttribute="top" secondItem="RbU-V6-smW" secondAttribute="bottom" constant="35" id="W4f-TJ-bIl"/>
                                     <constraint firstAttribute="trailing" secondItem="z1P-7K-1aK" secondAttribute="trailing" id="XCX-dT-wjW"/>
                                     <constraint firstItem="z1P-7K-1aK" firstAttribute="top" secondItem="GmH-Qk-19E" secondAttribute="top" id="XeY-bf-c1B"/>
                                     <constraint firstAttribute="trailing" secondItem="71U-ig-iN5" secondAttribute="trailing" constant="20" id="ema-qn-Y6L"/>
@@ -1787,6 +1802,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="u6T-8N-Vuq"/>
                     </view>
+                    <connections>
+                        <outlet property="addButton" destination="xGS-mL-u1t" id="QUP-OM-NwG"/>
+                        <outlet property="amountBarView" destination="RbU-V6-smW" id="Opk-S2-vp7"/>
+                        <outlet property="amountLabel" destination="eJ3-Vz-v6V" id="vLp-Dv-Qgv"/>
+                        <outlet property="amountTextField" destination="dxZ-6e-QzP" id="BgZ-8a-FqX"/>
+                        <outlet property="amountView" destination="GmH-Qk-19E" id="j3b-1f-SFg"/>
+                        <outlet property="newBalanceBarView" destination="bwC-nq-t4x" id="Fif-Dm-70k"/>
+                        <outlet property="newBalanceLabel" destination="71U-ig-iN5" id="bgg-YF-7Ij"/>
+                        <outlet property="newBalanceTextField" destination="Hvi-4R-XLh" id="4S7-F0-3Ur"/>
+                        <outlet property="titleBar" destination="z1P-7K-1aK" id="8X8-r3-jcc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dCS-vm-9P8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
