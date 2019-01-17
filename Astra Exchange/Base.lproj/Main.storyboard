@@ -210,7 +210,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="PXt-YI-jyO" detailTextLabel="Sxl-ve-xaz" style="IBUITableViewCellStyleValue1" id="j1d-SA-6fa">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="PXt-YI-jyO" style="IBUITableViewCellStyleDefault" id="j1d-SA-6fa">
                                         <rect key="frame" x="0.0" y="55.333333333333343" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j1d-SA-6fa" id="zcD-U6-Q6d">
@@ -218,14 +218,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PXt-YI-jyO">
-                                                    <rect key="frame" x="20.000000000000004" y="11.999999999999998" width="33.333333333333336" height="20.333333333333332"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sxl-ve-xaz">
-                                                    <rect key="frame" x="332" y="11.999999999999998" width="44" height="20.333333333333332"/>
+                                                    <rect key="frame" x="20" y="0.0" width="356" height="43.666666666666664"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -235,6 +228,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="SYE-dl-Wcp" id="Vjo-ZN-NS7"/>
+                                    <outlet property="delegate" destination="SYE-dl-Wcp" id="Rz7-h7-GqN"/>
+                                </connections>
                             </tableView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvw-mr-SsQ">
                                 <rect key="frame" x="40" y="636" width="334" height="60"/>
@@ -251,6 +248,9 @@
                                         <integer key="value" value="30"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="send" destination="SYE-dl-Wcp" eventType="touchUpInside" id="sCu-bZ-xJq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -265,6 +265,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mX4-gx-whs"/>
                     </view>
+                    <connections>
+                        <outlet property="createInvoiceTableView" destination="7NU-OU-gTj" id="JJ1-83-MIr"/>
+                        <outlet property="sendButton" destination="jvw-mr-SsQ" id="7rZ-p3-dH6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QCg-ZI-dh3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1544,10 +1548,10 @@
             </objects>
             <point key="canvasLocation" x="1500" y="-537"/>
         </scene>
-        <!--Recipient View Controller-->
+        <!--Invoice Recipient View Controller-->
         <scene sceneID="OgX-hP-x3W">
             <objects>
-                <viewController storyboardIdentifier="recipient" id="qlc-Gh-lWx" customClass="RecipientViewController" customModule="Astra_Exchange" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="invoiceRecipient" id="qlc-Gh-lWx" customClass="InvoiceRecipientViewController" customModule="Astra_Exchange" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fGA-fV-ANC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1631,10 +1635,10 @@
             </objects>
             <point key="canvasLocation" x="819" y="805"/>
         </scene>
-        <!--Amount View Controller-->
+        <!--Invoice Amount View Controller-->
         <scene sceneID="Vzn-nl-7JO">
             <objects>
-                <viewController storyboardIdentifier="amount" id="61C-y5-ldL" customClass="AmountViewController" customModule="Astra_Exchange" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="invoiceAmount" id="61C-y5-ldL" customClass="InvoiceAmountViewController" customModule="Astra_Exchange" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WbW-l1-i9z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1772,10 +1776,10 @@
             </objects>
             <point key="canvasLocation" x="1500" y="805"/>
         </scene>
-        <!--Confirm View Controller-->
+        <!--Invoice Confirm View Controller-->
         <scene sceneID="eeX-vl-bN7">
             <objects>
-                <viewController storyboardIdentifier="confirm" id="Uok-YH-ckW" customClass="ConfirmViewController" customModule="Astra_Exchange" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="invoiceConfirm" id="Uok-YH-ckW" customClass="InvoiceConfirmViewController" customModule="Astra_Exchange" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dFE-mU-6a2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
