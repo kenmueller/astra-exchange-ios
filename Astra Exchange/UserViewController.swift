@@ -60,6 +60,7 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 				} catch {}
 			}
 		}
+		navigationController?.navigationBar.tintColor = .white
 		navigationItem.title = name
 		navigationItem.setHidesBackButton(true, animated: true)
 	}
