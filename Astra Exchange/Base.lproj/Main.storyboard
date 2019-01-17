@@ -1574,6 +1574,9 @@
                                                 <state key="normal" title="Select">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="select" destination="qlc-Gh-lWx" eventType="touchUpInside" id="mpR-Ge-Fma"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWa-bJ-fdP">
                                                 <rect key="frame" x="15" y="0.0" width="53" height="40"/>
@@ -1581,6 +1584,9 @@
                                                 <state key="normal" title="Cancel">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="hideAnimation" destination="qlc-Gh-lWx" eventType="touchUpInside" id="tUD-hu-sEB"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.28235294119999998" green="0.80000000000000004" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -1601,6 +1607,10 @@
                                     </view>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T9q-aK-b24">
                                         <rect key="frame" x="20" y="40" width="294" height="294"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="qlc-Gh-lWx" id="FRt-kW-eCE"/>
+                                            <outlet property="delegate" destination="qlc-Gh-lWx" id="X9i-Ji-9cv"/>
+                                        </connections>
                                     </pickerView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1630,6 +1640,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hwc-1i-4Bs"/>
                     </view>
+                    <connections>
+                        <outlet property="recipientView" destination="oFG-hG-bZS" id="P9s-fL-hTd"/>
+                        <outlet property="selectButton" destination="prX-PR-wA7" id="5GW-uz-QUB"/>
+                        <outlet property="titleBar" destination="amz-TR-3Kz" id="DEV-22-adG"/>
+                        <outlet property="usersPickerView" destination="T9q-aK-b24" id="MUb-Ad-dmL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="62W-xV-70Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
