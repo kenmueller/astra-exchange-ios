@@ -76,7 +76,7 @@ func loadData() {
 		callChangeHandler(.balance)
 	}
 	ref.child("transactions/\(id!)").observe(.childAdded) { snapshot in
-		transactions.append(Transaction(id: snapshot.key, time: retrieveDataValue(snapshot: snapshot, field: "time") as! String, from: retrieveDataValue(snapshot: snapshot, field: "from") as! String, to: retrieveDataValue(snapshot: snapshot, field: "to") as! String, amount: Double(retrieveDataValue(snapshot: snapshot, field: "amount") as! String)!, balance: Double(retrieveDataValue(snapshot: snapshot, field: "balance") as! String)!))
+		transactions.insert(Transaction(id: snapshot.key, time: retrieveDataValue(snapshot: snapshot, field: "time") as! String, from: retrieveDataValue(snapshot: snapshot, field: "from") as! String, to: retrieveDataValue(snapshot: snapshot, field: "to") as! String, amount: Double(retrieveDataValue(snapshot: snapshot, field: "amount") as! String)!, balance: Double(retrieveDataValue(snapshot: snapshot, field: "balance") as! String)!), at: 0)
 		callChangeHandler(.transaction)
 	}
 }
