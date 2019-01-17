@@ -52,7 +52,7 @@ class AmountViewController: UIViewController, UITextFieldDelegate {
 	@IBAction func add() {
 		if let sendMoneyVC = parent as? SendMoneyViewController {
 			sendMoneyVC.amount = amount
-			sendMoneyVC.actions[1].label = String(amount)
+			sendMoneyVC.actions[sendMoneyVC.actions.count - 1].label = String(amount)
 			sendMoneyVC.sendMoneyTableView.reloadData()
 			sendMoneyVC.updateSendButton()
 		}

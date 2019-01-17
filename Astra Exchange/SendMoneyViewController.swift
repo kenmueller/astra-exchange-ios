@@ -5,15 +5,12 @@ class SendMoneyViewController: UIViewController, UITableViewDataSource, UITableV
 	@IBOutlet weak var sendButton: UIButton!
 	
 	struct Action {
-		let group: String
+		let group: String?
 		var label: String
 		let action: Selector
 	}
 	
-	var actions = [
-		Action(group: "RECIPIENT", label: "Select User", action: #selector(showUsers)),
-		Action(group: "AMOUNT", label: "0.0", action: #selector(showAmount))
-	]
+	var actions = [Action]()
 	var recipient: Int?
 	var amount = 0.0
 	
@@ -21,9 +18,23 @@ class SendMoneyViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
     }
 	
-//	@IBAction func payInvoices() {
-//		performSegue(withIdentifier: "payInvoices", sender: self)
-//	}
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		updateChangeHandler { change in
+			if change == .invoice {
+				self.loadActions()
+				self.sendMoneyTableView.reloadData()
+			} else if change == .balance {
+				self.updateSendButton()
+			}
+		}
+		loadActions()
+		sendMoneyTableView.reloadData()
+	}
+	
+	@objc func payInvoices() {
+		performSegue(withIdentifier: "payInvoices", sender: self)
+	}
 	
 	@objc func showUsers() {
 		if let recipientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "recipient") as? RecipientViewController {
@@ -79,6 +90,18 @@ class SendMoneyViewController: UIViewController, UITableViewDataSource, UITableV
 		}
 	}
 	
+	func loadActions() {
+		actions = [Action(group: "RECIPIENT", label: "Select User", action: #selector(showUsers)), Action(group: "AMOUNT", label: "0.0", action: #selector(showAmount))]
+		let unpaidInvoices = invoices.filter { $0.to == id! }
+		if !unpaidInvoices.isEmpty {
+			if unpaidInvoices.count == 1 {
+				actions.insert(Action(group: nil, label: "⚠️ 1 unpaid invoice", action: #selector(payInvoices)), at: 0)
+			} else {
+				actions.insert(Action(group: nil, label: "⚠️ \(unpaidInvoices.count) unpaid invoices", action: #selector(payInvoices)), at: 0)
+			}
+		}
+	}
+	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return actions.count
 	}
@@ -94,6 +117,13 @@ class SendMoneyViewController: UIViewController, UITableViewDataSource, UITableV
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 		cell.textLabel?.text = actions[indexPath.section].label
+		cell.detailTextLabel?.text = nil
+		if actions.count == 3 && indexPath.section == 0 {
+			cell.textLabel?.textColor = .red
+			cell.detailTextLabel?.text = "Pay now"
+			cell.detailTextLabel?.textColor = .red
+			cell.backgroundColor = UIColor(red: 249 / 255, green: 222 / 255, blue: 75 / 255, alpha: 1)
+		}
 		return cell
 	}
 	

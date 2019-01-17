@@ -52,7 +52,7 @@ struct Transaction {
 	let from: String
 	let to: String
 	let amount: Double
-	let remainingBalance: Double
+	let balance: Double
 }
 
 struct Invoice {
@@ -74,6 +74,10 @@ func loadData() {
 	ref.child("users/\(id!)/balance").observe(.value) { snapshot in
 		balance = Double(snapshot.value as! String)!
 		callChangeHandler(.balance)
+	}
+	ref.child("transactions/\(id!)").observe(.childAdded) { snapshot in
+		transactions.append(Transaction(id: snapshot.key, time: retrieveDataValue(snapshot: snapshot, field: "time") as! String, from: retrieveDataValue(snapshot: snapshot, field: "from") as! String, to: retrieveDataValue(snapshot: snapshot, field: "to") as! String, amount: Double(retrieveDataValue(snapshot: snapshot, field: "amount") as! String)!, balance: Double(retrieveDataValue(snapshot: snapshot, field: "balance") as! String)!))
+		callChangeHandler(.transaction)
 	}
 }
 
@@ -158,5 +162,13 @@ extension UIView {
 		let mask = CAShapeLayer()
 		mask.path = path.cgPath
 		layer.mask = mask
+	}
+}
+
+extension Date {
+	func format(_ format: String) -> String {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = format
+		return dateFormatter.string(from: self)
 	}
 }

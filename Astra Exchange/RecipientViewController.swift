@@ -40,7 +40,7 @@ class RecipientViewController: UIViewController, UIPickerViewDataSource, UIPicke
 		if let sendMoneyVC = parent as? SendMoneyViewController {
 			let recipient = User.id(selectedUserId!)
 			sendMoneyVC.recipient = recipient
-			sendMoneyVC.actions[0].label = users[recipient!].name
+			sendMoneyVC.actions[sendMoneyVC.actions.count - 2].label = users[recipient!].name
 			sendMoneyVC.sendMoneyTableView.reloadData()
 			sendMoneyVC.updateSendButton()
 		}

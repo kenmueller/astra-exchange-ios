@@ -1,4 +1,5 @@
 import UIKit
+import Firebase
 
 class ConfirmViewController: UIViewController {
 	@IBOutlet weak var confirmView: UIView!
@@ -52,10 +53,15 @@ class ConfirmViewController: UIViewController {
 		if let sendMoneyVC = parent as? SendMoneyViewController {
 			loadingView.isHidden = false
 			activityIndicator.startAnimating()
-			ref.child("users/\(users[sendMoneyVC.recipient!].id)/balance").observeSingleEvent(of: .value) { snapshot in
-				ref.child("users/\(users[sendMoneyVC.recipient!].id)/balance").setValue(String(Double(snapshot.value as! String)! + sendMoneyVC.amount))
+			let recipientId = users[sendMoneyVC.recipient!].id
+			ref.child("users/\(recipientId)/balance").observeSingleEvent(of: .value) { snapshot in
+				let recipientBalance = String(Double(snapshot.value as! String)! + sendMoneyVC.amount)
+				ref.child("users/\(recipientId)/balance").setValue(recipientBalance)
 				ref.child("users/\(id!)/balance").setValue(String(balance - sendMoneyVC.amount))
-				// transaction self and recipient
+				let autoId = ref.childByAutoId().key!
+				let time = Date().format("MMM d, yyyy @ h:mm a")
+				ref.child("transactions/\(id!)/\(autoId)").setValue(["time": time, "from": id!, "to": recipientId, "amount": String(sendMoneyVC.amount), "balance": String(balance)])
+				ref.child("transactions/\(recipientId)/\(autoId)").setValue(["time": time, "from": id!, "to": recipientId, "amount": String(sendMoneyVC.amount), "balance": recipientBalance])
 				self.activityIndicator.stopAnimating()
 				self.loadingView.isHidden = true
 				UIView.animate(withDuration: 0.2, animations: {
