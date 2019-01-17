@@ -38,6 +38,8 @@
 		4DD1911221ED910B003EE93A /* Nunito-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DD1910321ED910B003EE93A /* Nunito-Italic.ttf */; };
 		4DD1911321ED910B003EE93A /* Nunito-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DD1910421ED910B003EE93A /* Nunito-LightItalic.ttf */; };
 		4DF9481221EFD3300086A1FC /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9481121EFD3300086A1FC /* ConfirmViewController.swift */; };
+		4DF9481421F03E940086A1FC /* TransactionHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9481321F03E940086A1FC /* TransactionHistoryViewController.swift */; };
+		4DF9481621F04D650086A1FC /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9481521F04D650086A1FC /* TransactionViewController.swift */; };
 		8244812523AFF8A43090B916 /* Pods_Astra_Exchange.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DCC27FDC3647EBDF1337B3B /* Pods_Astra_Exchange.framework */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +100,8 @@
 		4DD1910321ED910B003EE93A /* Nunito-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Italic.ttf"; sourceTree = "<group>"; };
 		4DD1910421ED910B003EE93A /* Nunito-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-LightItalic.ttf"; sourceTree = "<group>"; };
 		4DF9481121EFD3300086A1FC /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
+		4DF9481321F03E940086A1FC /* TransactionHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryViewController.swift; sourceTree = "<group>"; };
+		4DF9481521F04D650086A1FC /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
 		B32D42D0C3E79E2DC3BD681E /* Pods-Astra Exchange.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Astra Exchange.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Astra Exchange/Pods-Astra Exchange.debug.xcconfig"; sourceTree = "<group>"; };
 		D8573BC66CA0EB1D31236285 /* Pods_Astra_ExchangeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Astra_ExchangeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F95C4C4661CAA17CF5C780CD /* Pods_Astra_ExchangeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Astra_ExchangeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,6 +178,8 @@
 				4DBAA59B21EE9E7000F26913 /* RecipientViewController.swift */,
 				4D47AADF21EF05C200FD40EC /* AmountViewController.swift */,
 				4DF9481121EFD3300086A1FC /* ConfirmViewController.swift */,
+				4DF9481321F03E940086A1FC /* TransactionHistoryViewController.swift */,
+				4DF9481521F04D650086A1FC /* TransactionViewController.swift */,
 				4D279DDE21ED5FBC00D09DDA /* Assets.xcassets */,
 				4D279DD421ED5FBC00D09DDA /* AppDelegate.swift */,
 				4D279DE021ED5FBC00D09DDA /* LaunchScreen.storyboard */,
@@ -438,12 +444,14 @@
 				4D47AAE021EF05C200FD40EC /* AmountViewController.swift in Sources */,
 				4DD190F121ED6B4E003EE93A /* SignInViewController.swift in Sources */,
 				4DBAA59A21EE733500F26913 /* SendMoneyViewController.swift in Sources */,
+				4DF9481421F03E940086A1FC /* TransactionHistoryViewController.swift in Sources */,
 				4D5A27A321EDA89A00232294 /* SignUpViewController.swift in Sources */,
 				4D279DDD21ED5FBC00D09DDA /* Astra_Exchange.xcdatamodeld in Sources */,
 				4DBAA59C21EE9E7000F26913 /* RecipientViewController.swift in Sources */,
 				4D279DD721ED5FBC00D09DDA /* UserViewController.swift in Sources */,
 				4DD190F321ED6C43003EE93A /* Global.swift in Sources */,
 				4D279DD521ED5FBC00D09DDA /* AppDelegate.swift in Sources */,
+				4DF9481621F04D650086A1FC /* TransactionViewController.swift in Sources */,
 				4D5A27A121ED9D5200232294 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
