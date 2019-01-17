@@ -37,6 +37,11 @@
 		4DD1911021ED910B003EE93A /* Nunito-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DD1910121ED910B003EE93A /* Nunito-BlackItalic.ttf */; };
 		4DD1911221ED910B003EE93A /* Nunito-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DD1910321ED910B003EE93A /* Nunito-Italic.ttf */; };
 		4DD1911321ED910B003EE93A /* Nunito-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DD1910421ED910B003EE93A /* Nunito-LightItalic.ttf */; };
+		4DDF183221F102F300A61BED /* InvoicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDF183121F102F300A61BED /* InvoicesViewController.swift */; };
+		4DDF183421F1081500A61BED /* CreateInvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDF183321F1081500A61BED /* CreateInvoiceViewController.swift */; };
+		4DDF183A21F124C600A61BED /* InvoiceRecipientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDF183921F124C600A61BED /* InvoiceRecipientViewController.swift */; };
+		4DDF183C21F124D100A61BED /* InvoiceAmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDF183B21F124D100A61BED /* InvoiceAmountViewController.swift */; };
+		4DDF183E21F124DC00A61BED /* InvoiceConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDF183D21F124DC00A61BED /* InvoiceConfirmViewController.swift */; };
 		4DF9481221EFD3300086A1FC /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9481121EFD3300086A1FC /* ConfirmViewController.swift */; };
 		4DF9481421F03E940086A1FC /* TransactionHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9481321F03E940086A1FC /* TransactionHistoryViewController.swift */; };
 		4DF9481621F04D650086A1FC /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9481521F04D650086A1FC /* TransactionViewController.swift */; };
@@ -99,6 +104,11 @@
 		4DD1910121ED910B003EE93A /* Nunito-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-BlackItalic.ttf"; sourceTree = "<group>"; };
 		4DD1910321ED910B003EE93A /* Nunito-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Italic.ttf"; sourceTree = "<group>"; };
 		4DD1910421ED910B003EE93A /* Nunito-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-LightItalic.ttf"; sourceTree = "<group>"; };
+		4DDF183121F102F300A61BED /* InvoicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesViewController.swift; sourceTree = "<group>"; };
+		4DDF183321F1081500A61BED /* CreateInvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInvoiceViewController.swift; sourceTree = "<group>"; };
+		4DDF183921F124C600A61BED /* InvoiceRecipientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceRecipientViewController.swift; sourceTree = "<group>"; };
+		4DDF183B21F124D100A61BED /* InvoiceAmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceAmountViewController.swift; sourceTree = "<group>"; };
+		4DDF183D21F124DC00A61BED /* InvoiceConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceConfirmViewController.swift; sourceTree = "<group>"; };
 		4DF9481121EFD3300086A1FC /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		4DF9481321F03E940086A1FC /* TransactionHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryViewController.swift; sourceTree = "<group>"; };
 		4DF9481521F04D650086A1FC /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
@@ -171,15 +181,11 @@
 				4DD190F221ED6C43003EE93A /* Global.swift */,
 				4D279DD821ED5FBC00D09DDA /* Main.storyboard */,
 				4D279DD621ED5FBC00D09DDA /* UserViewController.swift */,
-				4D5A27A021ED9D5200232294 /* HomeViewController.swift */,
-				4D5A27A221EDA89A00232294 /* SignUpViewController.swift */,
-				4DD190F021ED6B4E003EE93A /* SignInViewController.swift */,
-				4DBAA59921EE733500F26913 /* SendMoneyViewController.swift */,
-				4DBAA59B21EE9E7000F26913 /* RecipientViewController.swift */,
-				4D47AADF21EF05C200FD40EC /* AmountViewController.swift */,
-				4DF9481121EFD3300086A1FC /* ConfirmViewController.swift */,
-				4DF9481321F03E940086A1FC /* TransactionHistoryViewController.swift */,
-				4DF9481521F04D650086A1FC /* TransactionViewController.swift */,
+				4DDF183521F1240300A61BED /* Authentication */,
+				4DDF183621F1243200A61BED /* Send Money */,
+				4DDF183721F1245F00A61BED /* Create Invoice */,
+				4DDF183821F1247900A61BED /* Transaction History */,
+				4DDF183F21F1252600A61BED /* Invoices */,
 				4D279DDE21ED5FBC00D09DDA /* Assets.xcassets */,
 				4D279DD421ED5FBC00D09DDA /* AppDelegate.swift */,
 				4D279DE021ED5FBC00D09DDA /* LaunchScreen.storyboard */,
@@ -228,6 +234,55 @@
 				4DD1910421ED910B003EE93A /* Nunito-LightItalic.ttf */,
 			);
 			path = Nunito;
+			sourceTree = "<group>";
+		};
+		4DDF183521F1240300A61BED /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				4D5A27A021ED9D5200232294 /* HomeViewController.swift */,
+				4D5A27A221EDA89A00232294 /* SignUpViewController.swift */,
+				4DD190F021ED6B4E003EE93A /* SignInViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		4DDF183621F1243200A61BED /* Send Money */ = {
+			isa = PBXGroup;
+			children = (
+				4DBAA59921EE733500F26913 /* SendMoneyViewController.swift */,
+				4DBAA59B21EE9E7000F26913 /* RecipientViewController.swift */,
+				4D47AADF21EF05C200FD40EC /* AmountViewController.swift */,
+				4DF9481121EFD3300086A1FC /* ConfirmViewController.swift */,
+			);
+			path = "Send Money";
+			sourceTree = "<group>";
+		};
+		4DDF183721F1245F00A61BED /* Create Invoice */ = {
+			isa = PBXGroup;
+			children = (
+				4DDF183321F1081500A61BED /* CreateInvoiceViewController.swift */,
+				4DDF183921F124C600A61BED /* InvoiceRecipientViewController.swift */,
+				4DDF183B21F124D100A61BED /* InvoiceAmountViewController.swift */,
+				4DDF183D21F124DC00A61BED /* InvoiceConfirmViewController.swift */,
+			);
+			path = "Create Invoice";
+			sourceTree = "<group>";
+		};
+		4DDF183821F1247900A61BED /* Transaction History */ = {
+			isa = PBXGroup;
+			children = (
+				4DF9481321F03E940086A1FC /* TransactionHistoryViewController.swift */,
+				4DF9481521F04D650086A1FC /* TransactionViewController.swift */,
+			);
+			path = "Transaction History";
+			sourceTree = "<group>";
+		};
+		4DDF183F21F1252600A61BED /* Invoices */ = {
+			isa = PBXGroup;
+			children = (
+				4DDF183121F102F300A61BED /* InvoicesViewController.swift */,
+			);
+			path = Invoices;
 			sourceTree = "<group>";
 		};
 		A84D7432F5E5DE63E0361BFD /* Pods */ = {
@@ -440,18 +495,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DDF183221F102F300A61BED /* InvoicesViewController.swift in Sources */,
 				4DF9481221EFD3300086A1FC /* ConfirmViewController.swift in Sources */,
 				4D47AAE021EF05C200FD40EC /* AmountViewController.swift in Sources */,
 				4DD190F121ED6B4E003EE93A /* SignInViewController.swift in Sources */,
 				4DBAA59A21EE733500F26913 /* SendMoneyViewController.swift in Sources */,
 				4DF9481421F03E940086A1FC /* TransactionHistoryViewController.swift in Sources */,
 				4D5A27A321EDA89A00232294 /* SignUpViewController.swift in Sources */,
+				4DDF183E21F124DC00A61BED /* InvoiceConfirmViewController.swift in Sources */,
 				4D279DDD21ED5FBC00D09DDA /* Astra_Exchange.xcdatamodeld in Sources */,
 				4DBAA59C21EE9E7000F26913 /* RecipientViewController.swift in Sources */,
 				4D279DD721ED5FBC00D09DDA /* UserViewController.swift in Sources */,
+				4DDF183421F1081500A61BED /* CreateInvoiceViewController.swift in Sources */,
 				4DD190F321ED6C43003EE93A /* Global.swift in Sources */,
 				4D279DD521ED5FBC00D09DDA /* AppDelegate.swift in Sources */,
 				4DF9481621F04D650086A1FC /* TransactionViewController.swift in Sources */,
+				4DDF183A21F124C600A61BED /* InvoiceRecipientViewController.swift in Sources */,
+				4DDF183C21F124D100A61BED /* InvoiceAmountViewController.swift in Sources */,
 				4D5A27A121ED9D5200232294 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

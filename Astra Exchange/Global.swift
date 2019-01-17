@@ -17,6 +17,7 @@ struct User {
 	let id: String
 	let name: String
 	let email: String
+	var balance: Double
 	
 	static func id(_ t: String) -> Int? {
 		for i in 0..<users.count {
@@ -57,10 +58,20 @@ struct Transaction {
 
 struct Invoice {
 	let id: String
+	var status: String
 	let from: String
 	let to: String
 	let amount: Double
 	let message: String
+	
+	static func id(_ t: String) -> Int? {
+		for i in 0..<invoices.count {
+			if invoices[i].id == t {
+				return i
+			}
+		}
+		return nil
+	}
 }
 
 enum Change {
@@ -78,6 +89,14 @@ func loadData() {
 	ref.child("transactions/\(id!)").observe(.childAdded) { snapshot in
 		transactions.insert(Transaction(id: snapshot.key, time: retrieveDataValue(snapshot: snapshot, field: "time") as! String, from: retrieveDataValue(snapshot: snapshot, field: "from") as! String, to: retrieveDataValue(snapshot: snapshot, field: "to") as! String, amount: Double(retrieveDataValue(snapshot: snapshot, field: "amount") as! String)!, balance: Double(retrieveDataValue(snapshot: snapshot, field: "balance") as! String)!), at: 0)
 		callChangeHandler(.transaction)
+	}
+	ref.child("invoices/\(id!)").observe(.childAdded) { snapshot in
+		invoices.insert(Invoice(id: snapshot.key, status: retrieveDataValue(snapshot: snapshot, field: "status") as! String, from: retrieveDataValue(snapshot: snapshot, field: "from") as! String, to: retrieveDataValue(snapshot: snapshot, field: "to") as! String, amount: Double(retrieveDataValue(snapshot: snapshot, field: "amount") as! String)!, message: retrieveDataValue(snapshot: snapshot, field: "message") as! String), at: 0)
+		callChangeHandler(.invoice)
+		ref.child("invoices/\(id!)/\(snapshot.key)/status").observe(.value) { statusSnapshot in
+			invoices[Invoice.id(snapshot.key)!].status = statusSnapshot.value as! String
+			callChangeHandler(.invoice)
+		}
 	}
 }
 

@@ -15,7 +15,7 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	
 	let actions = [
 		[Action(name: "Send Money", action: #selector(sendMoney)), Action(name: "Create Invoice", action: #selector(createInvoice))],
-		[Action(name: "Transaction History", action: #selector(transactionHistory))]
+		[Action(name: "Transaction History", action: #selector(transactionHistory)), Action(name: "Invoices", action: #selector(showInvoices))]
 	]
 	
 	override func viewDidLoad() {
@@ -24,7 +24,12 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 			loadingView.isHidden = false
 			activityIndicator.startAnimating()
 			ref.child("users").observe(.childAdded) { snapshot in
-				users.append(User(id: snapshot.key, name: retrieveDataValue(snapshot: snapshot, field: "name") as! String, email: retrieveDataValue(snapshot: snapshot, field: "email") as! String))
+				users.append(User(id: snapshot.key, name: retrieveDataValue(snapshot: snapshot, field: "name") as! String, email: retrieveDataValue(snapshot: snapshot, field: "email") as! String, balance: Double(retrieveDataValue(snapshot: snapshot, field: "balance") as! String)!))
+				callChangeHandler(.user)
+				ref.child("users/\(snapshot.key)/balance").observe(.value) { balanceSnapshot in
+					users[User.id(snapshot.key)!].balance = Double(balanceSnapshot.value as! String)!
+					callChangeHandler(.user)
+				}
 			}
 			if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
 				let managedContext = appDelegate.persistentContainer.viewContext
@@ -84,6 +89,10 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	
 	@objc func transactionHistory() {
 		performSegue(withIdentifier: "transactionHistory", sender: self)
+	}
+	
+	@objc func showInvoices() {
+		performSegue(withIdentifier: "invoices", sender: self)
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
@@ -170,5 +179,6 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 }
 
 class BalanceTableViewCell: UITableViewCell {
+	@IBOutlet weak var rankingLabel: UILabel!
 	@IBOutlet weak var balanceLabel: UILabel!
 }
