@@ -446,7 +446,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAX" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qQ-Fr-wL5">
-                                        <rect key="frame" x="20" y="118.66666666666669" width="294" height="18"/>
+                                        <rect key="frame" x="20" y="118.66666666666669" width="29" height="18"/>
                                         <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="13"/>
                                         <color key="textColor" white="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -471,7 +471,6 @@
                                     <constraint firstItem="M4Z-BM-j9d" firstAttribute="leading" secondItem="hGz-vV-Tpf" secondAttribute="leading" constant="20" id="cwz-xr-uIB"/>
                                     <constraint firstItem="3S8-Iv-b53" firstAttribute="leading" secondItem="hGz-vV-Tpf" secondAttribute="leading" constant="20" id="gHE-Ov-h33"/>
                                     <constraint firstItem="cHa-Th-REx" firstAttribute="top" secondItem="hGz-vV-Tpf" secondAttribute="top" id="gyc-GA-En8"/>
-                                    <constraint firstAttribute="trailing" secondItem="3qQ-Fr-wL5" secondAttribute="trailing" constant="20" id="kHV-7h-0My"/>
                                     <constraint firstItem="3qQ-Fr-wL5" firstAttribute="top" secondItem="aW4-gR-b9m" secondAttribute="bottom" constant="4" id="lb2-bH-YcJ"/>
                                     <constraint firstItem="aW4-gR-b9m" firstAttribute="leading" secondItem="hGz-vV-Tpf" secondAttribute="leading" constant="20" id="qTw-Al-USB"/>
                                     <constraint firstItem="M4Z-BM-j9d" firstAttribute="top" secondItem="3qQ-Fr-wL5" secondAttribute="bottom" constant="13" id="tSK-TE-tt7"/>

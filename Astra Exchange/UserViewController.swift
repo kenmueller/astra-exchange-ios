@@ -61,6 +61,7 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 			}
 			startup = false
 		}
+		navigationItem.title = name
 		navigationItem.setHidesBackButton(true, animated: true)
 	}
 	
