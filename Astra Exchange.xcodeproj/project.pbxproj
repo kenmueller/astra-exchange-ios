@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D205F9421F16676006C2965 /* InvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D205F9321F16676006C2965 /* InvoiceViewController.swift */; };
 		4D279DD521ED5FBC00D09DDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D279DD421ED5FBC00D09DDA /* AppDelegate.swift */; };
 		4D279DD721ED5FBC00D09DDA /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D279DD621ED5FBC00D09DDA /* UserViewController.swift */; };
 		4D279DDA21ED5FBC00D09DDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D279DD821ED5FBC00D09DDA /* Main.storyboard */; };
@@ -68,6 +69,7 @@
 /* Begin PBXFileReference section */
 		06B2727D55133C5733F79845 /* Pods-Astra Exchange.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Astra Exchange.release.xcconfig"; path = "Pods/Target Support Files/Pods-Astra Exchange/Pods-Astra Exchange.release.xcconfig"; sourceTree = "<group>"; };
 		0DCC27FDC3647EBDF1337B3B /* Pods_Astra_Exchange.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Astra_Exchange.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D205F9321F16676006C2965 /* InvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceViewController.swift; sourceTree = "<group>"; };
 		4D279DD121ED5FBC00D09DDA /* Astra Exchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Astra Exchange.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D279DD421ED5FBC00D09DDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D279DD621ED5FBC00D09DDA /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				4DDF183121F102F300A61BED /* InvoicesViewController.swift */,
+				4D205F9321F16676006C2965 /* InvoiceViewController.swift */,
 			);
 			path = Invoices;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				4DDF183E21F124DC00A61BED /* InvoiceConfirmViewController.swift in Sources */,
 				4D279DDD21ED5FBC00D09DDA /* Astra_Exchange.xcdatamodeld in Sources */,
 				4DBAA59C21EE9E7000F26913 /* RecipientViewController.swift in Sources */,
+				4D205F9421F16676006C2965 /* InvoiceViewController.swift in Sources */,
 				4D279DD721ED5FBC00D09DDA /* UserViewController.swift in Sources */,
 				4DDF183421F1081500A61BED /* CreateInvoiceViewController.swift in Sources */,
 				4DD190F321ED6C43003EE93A /* Global.swift in Sources */,
