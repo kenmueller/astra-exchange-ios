@@ -92,33 +92,29 @@ class InvoiceViewController: UIViewController {
 		let invoiceId = invoices[invoice].id
 		ref.child("invoices/\(id!)/\(invoiceId)/status").setValue(status)
 		ref.child("invoices/\(invoices[invoice].from)/\(invoiceId)/status").setValue(status)
-		if !willAccept { return }
-		ref.child("users/\(id!)/balance").setValue(String(balance - invoices[invoice].amount)) { error, reference in
-			if error == nil {
-				let fromId = invoices[self.invoice].from
-				let fromBalance = String(users[User.id(fromId)!].balance + invoices[self.invoice].amount)
-				ref.child("users/\(fromId)/balance").setValue(fromBalance)
-				let autoId = ref.childByAutoId().key!
-				let time = Date().format("MMM d, yyyy @ h:mm a")
-				ref.child("transactions/\(id!)/\(autoId)").setValue(["time": time, "from": id!, "to": fromId, "amount": String(invoices[self.invoice].amount), "balance": String(balance)])
-				ref.child("transactions/\(fromId)/\(autoId)").setValue(["time": time, "from": id!, "to": fromId, "amount": String(invoices[self.invoice].amount), "balance": fromBalance])
-			} else if let error = error {
-				AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-				switch error.localizedDescription {
-				case "Network error (such as timeout, interrupted connection or unreachable host) has occurred.":
-					self.showAlert("No internet")
-				default:
-					self.showAlert("There was a problem accepting the invoice. Please try again.")
+		if willAccept {
+			ref.child("users/\(id!)/balance").setValue(String(balance - invoices[invoice].amount)) { error, reference in
+				if error == nil {
+					let fromId = invoices[self.invoice].from
+					let fromBalance = String(users[User.id(fromId)!].balance + invoices[self.invoice].amount)
+					ref.child("users/\(fromId)/balance").setValue(fromBalance)
+					let autoId = ref.childByAutoId().key!
+					let time = Date().format("MMM d, yyyy @ h:mm a")
+					ref.child("transactions/\(id!)/\(autoId)").setValue(["time": time, "from": id!, "to": fromId, "amount": String(invoices[self.invoice].amount), "balance": String(balance)])
+					ref.child("transactions/\(fromId)/\(autoId)").setValue(["time": time, "from": id!, "to": fromId, "amount": String(invoices[self.invoice].amount), "balance": fromBalance])
+				} else if let error = error {
+					AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+					switch error.localizedDescription {
+					case "Network error (such as timeout, interrupted connection or unreachable host) has occurred.":
+						self.showAlert("No internet")
+					default:
+						self.showAlert("There was a problem accepting the invoice. Please try again.")
+					}
 				}
+				self.showConfirmAnimation()
 			}
-			UIView.animate(withDuration: 0.2, animations: {
-				self.invoiceView.transform = CGAffineTransform(translationX: 0, y: -self.view.bounds.height)
-				self.view.backgroundColor = .clear
-			}) { finished in
-				if finished {
-					self.view.removeFromSuperview()
-				}
-			}
+		} else {
+			showConfirmAnimation()
 		}
 	}
 	
@@ -146,13 +142,13 @@ class InvoiceViewController: UIViewController {
 	func loadStatus() {
 		switch invoices[invoice].status {
 		case "accepted":
-			statusImageView.image = #imageLiteral(resourceName: "Exclamation")
+			statusImageView.image = #imageLiteral(resourceName: "Check")
 			statusLabel.text = "Accepted"
-			statusLabel.textColor = UIColor(red: 0 / 255, green: 255 / 255, blue: 0 / 255, alpha: 1)
+			statusLabel.textColor = UIColor(red: 72 / 255, green: 204 / 255, blue: 127 / 255, alpha: 1)
 		case "declined":
-			statusImageView.image = #imageLiteral(resourceName: "Exclamation")
+			statusImageView.image = #imageLiteral(resourceName: "Red X")
 			statusLabel.text = "Declined"
-			statusLabel.textColor = UIColor(red: 255 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1)
+			statusLabel.textColor = UIColor(red: 204 / 255, green: 51 / 255, blue: 51 / 255, alpha: 1)
 		default:
 			statusImageView.image = #imageLiteral(resourceName: "Exclamation")
 			statusLabel.text = "Pending"
@@ -160,5 +156,16 @@ class InvoiceViewController: UIViewController {
 		}
 		statusImageView.isHidden = false
 		statusLabel.isHidden = false
+	}
+	
+	func showConfirmAnimation() {
+		UIView.animate(withDuration: 0.2, animations: {
+			self.invoiceView.transform = CGAffineTransform(translationX: 0, y: -self.view.bounds.height)
+			self.view.backgroundColor = .clear
+		}) { finished in
+			if finished {
+				self.view.removeFromSuperview()
+			}
+		}
 	}
 }

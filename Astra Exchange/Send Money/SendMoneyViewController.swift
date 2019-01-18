@@ -92,7 +92,7 @@ class SendMoneyViewController: UIViewController, UITableViewDataSource, UITableV
 	
 	func loadActions() {
 		actions = [Action(group: "RECIPIENT", label: "Select User", action: #selector(showUsers)), Action(group: "AMOUNT", label: "0.0", action: #selector(showAmount))]
-		let unpaidInvoices = invoices.filter { $0.to == id! }
+		let unpaidInvoices = invoices.filter { $0.to == id && $0.status == "pending" }
 		if !unpaidInvoices.isEmpty {
 			if unpaidInvoices.count == 1 {
 				actions.insert(Action(group: nil, label: "⚠️ 1 unpaid invoice", action: #selector(payInvoices)), at: 0)

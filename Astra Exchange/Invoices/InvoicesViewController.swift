@@ -26,13 +26,13 @@ class InvoicesViewController: UIViewController, UITableViewDataSource, UITableVi
 		cell.detailTextLabel?.font = UIFont(name: "Nunito-ExtraBold", size: 18)
 		switch element.status {
 		case "accepted":
-			cell.imageView?.image = #imageLiteral(resourceName: "Exclamation")
+			cell.imageView?.image = #imageLiteral(resourceName: "Check")
 			cell.textLabel?.text = "Accepted"
-			cell.textLabel?.textColor = UIColor(red: 0 / 255, green: 255 / 255, blue: 0 / 255, alpha: 1)
+			cell.textLabel?.textColor = UIColor(red: 72 / 255, green: 204 / 255, blue: 127 / 255, alpha: 1)
 		case "declined":
-			cell.imageView?.image = #imageLiteral(resourceName: "Exclamation")
+			cell.imageView?.image = #imageLiteral(resourceName: "Red X")
 			cell.textLabel?.text = "Declined"
-			cell.textLabel?.textColor = UIColor(red: 255 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1)
+			cell.textLabel?.textColor = UIColor(red: 204 / 255, green: 51 / 255, blue: 51 / 255, alpha: 1)
 		default:
 			cell.imageView?.image = #imageLiteral(resourceName: "Exclamation")
 			cell.textLabel?.text = "Pending"
