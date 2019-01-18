@@ -80,7 +80,7 @@ class ConfirmViewController: UIViewController {
 					}
 				}
 				UIView.animate(withDuration: 0.2, animations: {
-					self.confirmView.transform = CGAffineTransform(translationX: 0, y: self.view.bounds.height)
+					self.confirmView.transform = CGAffineTransform(translationX: 0, y: -self.view.bounds.height)
 					self.view.backgroundColor = .clear
 				}) { finished in
 					if finished {
