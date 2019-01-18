@@ -28,7 +28,11 @@ class InvoiceAmountViewController: UIViewController, UITextFieldDelegate {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		updateChangeHandler(nil)
+		updateChangeHandler { change in
+			if change == .balance {
+				self.amountChanged()
+			}
+		}
 	}
 	
 	@IBAction func add() {

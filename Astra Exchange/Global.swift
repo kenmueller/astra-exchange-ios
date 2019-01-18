@@ -80,6 +80,7 @@ enum Change {
 	case user
 	case transaction
 	case invoice
+	case invoiceStatus
 }
 
 func loadData() {
@@ -96,7 +97,7 @@ func loadData() {
 		callChangeHandler(.invoice)
 		ref.child("invoices/\(id!)/\(snapshot.key)/status").observe(.value) { statusSnapshot in
 			invoices[Invoice.id(snapshot.key)!].status = statusSnapshot.value as! String
-			callChangeHandler(.invoice)
+			callChangeHandler(.invoiceStatus)
 		}
 	}
 }

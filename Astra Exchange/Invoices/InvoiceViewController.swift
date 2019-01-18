@@ -20,6 +20,7 @@ class InvoiceViewController: UIViewController {
 	@IBOutlet weak var statusLabel: UILabel!
 	
 	var invoice = 0
+	var initialStatus = ""
 	var willAccept = false
 	
 	override func viewDidLoad() {
@@ -50,6 +51,29 @@ class InvoiceViewController: UIViewController {
 			self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
 			self.invoiceView.transform = CGAffineTransform.identity
 		}, completion: nil)
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		updateChangeHandler { change in
+			if change == .invoiceStatus {
+				if invoices[self.invoice].status != self.initialStatus {
+					UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveLinear, animations: {
+						self.declineButton.transform = CGAffineTransform(translationX: 0, y: 60)
+						self.acceptButton.transform = CGAffineTransform(translationX: 0, y: 60)
+						self.backButton.transform = CGAffineTransform(translationX: 0, y: 60)
+						self.confirmButton.transform = CGAffineTransform(translationX: 0, y: 60)
+					}) { finished in
+						if finished {
+							if let invoicesVC = self.parent as? InvoicesViewController {
+								self.loadStatus()
+								invoicesVC.invoicesTableView.reloadData()
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 	
 	@IBAction func hideAnimation() {

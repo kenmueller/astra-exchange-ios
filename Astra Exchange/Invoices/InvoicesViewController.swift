@@ -2,10 +2,21 @@ import UIKit
 
 class InvoicesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 	@IBOutlet weak var invoicesTableView: UITableView!
+	@IBOutlet weak var noInvoicesLabel: UILabel!
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
+		noInvoicesLabel.isHidden = !invoices.isEmpty
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		updateChangeHandler { change in
+			if change == .invoice {
+				self.invoicesTableView.reloadData()
+			}
+		}
+	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return invoices.count
@@ -45,6 +56,7 @@ class InvoicesViewController: UIViewController, UITableViewDataSource, UITableVi
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		if let invoiceVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "invoice") as? InvoiceViewController {
 			invoiceVC.invoice = indexPath.section
+			invoiceVC.initialStatus = invoices[indexPath.section].status
 			addChild(invoiceVC)
 			invoiceVC.view.frame = view.frame
 			view.addSubview(invoiceVC.view)

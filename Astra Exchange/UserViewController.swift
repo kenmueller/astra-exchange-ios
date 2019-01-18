@@ -179,6 +179,5 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 }
 
 class BalanceTableViewCell: UITableViewCell {
-	@IBOutlet weak var rankingLabel: UILabel!
 	@IBOutlet weak var balanceLabel: UILabel!
 }

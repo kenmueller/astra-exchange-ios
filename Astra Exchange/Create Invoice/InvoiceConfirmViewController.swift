@@ -30,7 +30,13 @@ class InvoiceConfirmViewController: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		updateChangeHandler(nil)
+		updateChangeHandler { change in
+			if change == .balance {
+				if let createInvoiceVC = self.parent as? CreateInvoiceViewController {
+					self.newBalanceText.text = String(balance + createInvoiceVC.amount)
+				}
+			}
+		}
 	}
 	
 	@IBAction func send() {

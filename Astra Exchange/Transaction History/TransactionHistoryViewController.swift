@@ -2,9 +2,11 @@ import UIKit
 
 class TransactionHistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 	@IBOutlet weak var transactionsTableView: UITableView!
+	@IBOutlet weak var noTransactionsLabel: UILabel!
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
+		noTransactionsLabel.isHidden = !transactions.isEmpty
     }
 	
 	override func viewWillAppear(_ animated: Bool) {

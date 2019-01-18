@@ -18,6 +18,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 		disable()
     }
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		updateChangeHandler { change in
+			if change == .user {
+				self.nameTextFieldChanged()
+				self.emailTextFieldChanged()
+			}
+		}
+	}
+	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		navigationController?.isNavigationBarHidden = false
