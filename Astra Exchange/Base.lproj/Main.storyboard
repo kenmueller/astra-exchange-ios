@@ -1307,9 +1307,9 @@
                                 <constraints>
                                     <constraint firstItem="m4M-Fs-gB2" firstAttribute="leading" secondItem="vj1-bF-URk" secondAttribute="leading" constant="20" id="8v2-3e-Gwj"/>
                                     <constraint firstItem="m4M-Fs-gB2" firstAttribute="top" secondItem="vj1-bF-URk" secondAttribute="top" constant="8" id="b7D-GU-xXR"/>
-                                    <constraint firstItem="FzI-BN-OMd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vj1-bF-URk" secondAttribute="top" id="bwM-Jw-Cae"/>
+                                    <constraint firstItem="FzI-BN-OMd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vj1-bF-URk" secondAttribute="top" constant="20" id="bwM-Jw-Cae"/>
                                     <constraint firstItem="FzI-BN-OMd" firstAttribute="centerX" secondItem="vj1-bF-URk" secondAttribute="centerX" id="gWV-V3-6sU"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="FzI-BN-OMd" secondAttribute="bottom" id="rgd-gc-KRQ"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="FzI-BN-OMd" secondAttribute="bottom" constant="20" id="rgd-gc-KRQ"/>
                                     <constraint firstItem="FzI-BN-OMd" firstAttribute="centerY" secondItem="vj1-bF-URk" secondAttribute="centerY" id="uqS-LS-dMe"/>
                                 </constraints>
                             </view>
@@ -1434,6 +1434,7 @@
                         <outlet property="passwordTextField" destination="E2N-tg-8ce" id="8uP-Qa-GsD"/>
                         <outlet property="signUpActivityIndicator" destination="Thk-9F-aYB" id="Ci9-vk-5z7"/>
                         <outlet property="signUpButton" destination="Vgj-eC-Spy" id="Zdg-Zr-LUJ"/>
+                        <outlet property="signUpButtonBottomConstraint" destination="ELp-19-WvY" id="0xs-6P-PVM"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="signUp" id="u3r-jS-xBc"/>
                     </connections>
                 </viewController>
@@ -1597,6 +1598,7 @@
                         <outlet property="passwordTextField" destination="VlV-95-zaJ" id="wf5-Ig-Iod"/>
                         <outlet property="signInActivityIndicator" destination="A2j-0X-sNh" id="Rwy-dw-R9A"/>
                         <outlet property="signInButton" destination="PHa-uC-gaU" id="pet-1d-zkt"/>
+                        <outlet property="signInButtonBottomConstraint" destination="kRf-Yw-zfV" id="Jsi-vg-Bfp"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="signIn" id="cdk-E1-kU9"/>
                     </connections>
                 </viewController>

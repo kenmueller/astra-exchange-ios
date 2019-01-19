@@ -10,6 +10,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var passwordTextField: UITextField!
 	@IBOutlet weak var passwordErrorLabel: UILabel!
 	@IBOutlet weak var signUpButton: UIButton!
+	@IBOutlet weak var signUpButtonBottomConstraint: NSLayoutConstraint!
 	@IBOutlet weak var signUpActivityIndicator: UIActivityIndicatorView!
 	
 	override func viewDidLoad() {
@@ -26,6 +27,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 				self.emailTextFieldChanged()
 			}
 		}
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
@@ -35,6 +38,22 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 	
 	@IBAction func back() {
 		navigationController?.popViewController(animated: true)
+	}
+	
+	@objc func keyboardWillShow(notification: NSNotification) {
+		if let height = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height {
+			signUpButtonBottomConstraint.constant = height
+			UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
+				self.view.layoutIfNeeded()
+			}, completion: nil)
+		}
+	}
+	
+	@objc func keyboardWillHide(notification: NSNotification) {
+		signUpButtonBottomConstraint.constant = 145
+		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveLinear, animations: {
+			self.view.layoutIfNeeded()
+		}, completion: nil)
 	}
 	
 	@IBAction func nameTextFieldChanged() {
