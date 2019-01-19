@@ -15,7 +15,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
-		hideKeyboard()
 		disable()
     }
 	
@@ -85,6 +84,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 	@IBAction func signUp() {
 		guard let nameText = nameTextField.text?.trim(), let emailText = emailTextField.text?.trim(), let passwordText = passwordTextField.text?.trim() else { return }
 		showActivityIndicator()
+		dismissKeyboard()
 		Auth.auth().createUser(withEmail: emailText, password: passwordText) { authResult, error in
 			if error == nil {
 				let userId = authResult!.user.uid

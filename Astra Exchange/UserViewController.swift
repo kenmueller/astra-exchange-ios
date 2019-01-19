@@ -65,6 +65,8 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 				} catch {}
 			}
 		}
+		let signOutBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOut))
+		navigationItem.setLeftBarButton(signOutBarButtonItem, animated: true)
 		navigationController?.navigationBar.tintColor = .white
 		navigationItem.title = name
 		navigationItem.setHidesBackButton(true, animated: true)
@@ -77,6 +79,31 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	
 	func showHomeVC() {
 		performSegue(withIdentifier: "home", sender: self)
+	}
+	
+	@objc func signOut() {
+		let alertController = UIAlertController(title: "Sign Out", message: "Are you sure?", preferredStyle: .alert)
+		let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		let signOut = UIAlertAction(title: "Sign Out", style: .default) { action in
+			do {
+				try Auth.auth().signOut()
+				ref.child("users/\(id!)/balance").removeAllObservers()
+				ref.child("transactions/\(id!)").removeAllObservers()
+				ref.child("invoices/\(id!)").removeAllObservers()
+				for invoice in invoices {
+					ref.child("invoices/\(id!)/\(invoice.id)/status").removeAllObservers()
+				}
+				transactions.removeAll()
+				invoices.removeAll()
+				deleteLogin()
+				self.performSegue(withIdentifier: "signOut", sender: self)
+			} catch let error {
+				self.showAlert(error.localizedDescription)
+			}
+		}
+		alertController.addAction(cancel)
+		alertController.addAction(signOut)
+		present(alertController, animated: true, completion: nil)
 	}
 	
 	@objc func sendMoney() {

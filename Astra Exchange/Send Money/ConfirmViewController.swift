@@ -67,6 +67,15 @@ class ConfirmViewController: UIViewController {
 						ref.child("transactions/\(recipientId)/\(autoId)").setValue(["time": time, "from": id!, "to": recipientId, "amount": String(sendMoneyVC.amount), "balance": recipientBalance])
 						self.activityIndicator.stopAnimating()
 						self.loadingView.isHidden = true
+						UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
+							self.confirmView.transform = CGAffineTransform(translationX: 0, y: -self.view.bounds.height)
+							self.view.backgroundColor = .clear
+						}) { finished in
+							if finished {
+								self.view.removeFromSuperview()
+								sendMoneyVC.navigationController?.popViewController(animated: true)
+							}
+						}
 					} else if let error = error {
 						self.activityIndicator.stopAnimating()
 						self.loadingView.isHidden = true
@@ -77,14 +86,6 @@ class ConfirmViewController: UIViewController {
 						default:
 							self.showAlert("There was a problem sending money. Please try again.")
 						}
-					}
-				}
-				UIView.animate(withDuration: 0.2, animations: {
-					self.confirmView.transform = CGAffineTransform(translationX: 0, y: -self.view.bounds.height)
-					self.view.backgroundColor = .clear
-				}) { finished in
-					if finished {
-						self.view.removeFromSuperview()
 					}
 				}
 			}

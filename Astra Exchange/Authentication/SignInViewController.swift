@@ -11,7 +11,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
-		hideKeyboard()
 		disable()
     }
 	
@@ -55,6 +54,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 	@IBAction func signIn() {
 		guard let emailText = emailTextField.text?.trim(), let passwordText = passwordTextField.text?.trim() else { return }
 		showActivityIndicator()
+		dismissKeyboard()
 		Auth.auth().signIn(withEmail: emailText, password: passwordText) { user, error in
 			if error == nil {
 				id = user?.user.uid

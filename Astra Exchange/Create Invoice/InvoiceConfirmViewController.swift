@@ -51,6 +51,15 @@ class InvoiceConfirmViewController: UIViewController {
 				ref.child("invoices/\(recipientId)/\(autoId)").setValue(newInvoice)
 				self.activityIndicator.stopAnimating()
 				self.loadingView.isHidden = true
+				UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
+					self.confirmView.transform = CGAffineTransform(translationX: 0, y: -self.view.bounds.height)
+					self.view.backgroundColor = .clear
+				}) { finished in
+					if finished {
+						self.view.removeFromSuperview()
+						createInvoiceVC.navigationController?.popViewController(animated: true)
+					}
+				}
 			} else if let error = error {
 				self.activityIndicator.stopAnimating()
 				self.loadingView.isHidden = true
@@ -60,14 +69,6 @@ class InvoiceConfirmViewController: UIViewController {
 					self.showAlert("No internet")
 				default:
 					self.showAlert("There was a problem creating an invoice. Please try again.")
-				}
-			}
-			UIView.animate(withDuration: 0.2, animations: {
-				self.confirmView.transform = CGAffineTransform(translationX: 0, y: -self.view.bounds.height)
-				self.view.backgroundColor = .clear
-			}) { finished in
-				if finished {
-					self.view.removeFromSuperview()
 				}
 			}
 		}

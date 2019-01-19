@@ -185,6 +185,7 @@
                         <segue destination="SYE-dl-Wcp" kind="show" identifier="createInvoice" id="yO1-Hl-oFy"/>
                         <segue destination="yaM-b6-CXP" kind="show" identifier="transactionHistory" id="q1D-jB-nVN"/>
                         <segue destination="Fgu-Yq-s6I" kind="show" identifier="invoices" id="3Xk-YQ-pLf"/>
+                        <segue destination="v1q-8J-zEu" kind="show" identifier="signOut" id="nAF-T6-eZw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -2235,7 +2236,7 @@
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="6bD-uj-tMC"/>
-                                            <constraint firstAttribute="width" constant="40" id="hpG-xh-n2r"/>
+                                            <constraint firstAttribute="width" secondItem="nXw-Gq-7Gq" secondAttribute="height" multiplier="1:1" id="iZX-aF-D3A"/>
                                         </constraints>
                                         <state key="normal" title="Decline" image="Left Arrow White">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2384,6 +2385,7 @@
         <image name="X" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="nAF-T6-eZw"/>
         <segue reference="R87-If-3sy"/>
     </inferredMetricsTieBreakers>
 </document>
