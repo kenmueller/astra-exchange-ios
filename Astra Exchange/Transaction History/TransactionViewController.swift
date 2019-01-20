@@ -10,6 +10,7 @@ class TransactionViewController: UIViewController {
 	@IBOutlet weak var amountText: UILabel!
 	@IBOutlet weak var remainingBalanceNewBalanceLabel: UILabel!
 	@IBOutlet weak var remainingBalanceNewBalanceText: UILabel!
+	@IBOutlet weak var messageText: UILabel!
 	
 	var transaction = 0
 	
@@ -25,6 +26,7 @@ class TransactionViewController: UIViewController {
 		amountText.text = String(element.amount)
 		remainingBalanceNewBalanceLabel.text = (isOutgoing ? "REMAINING" : "NEW") + " BALANCE"
 		remainingBalanceNewBalanceText.text = String(element.balance)
+		messageText.text = element.message
 		transactionView.transform = CGAffineTransform(scaleX: 0, y: 0)
 		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
 			self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)

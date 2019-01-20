@@ -2,6 +2,7 @@ import UIKit
 
 class InvoiceAmountViewController: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var amountView: UIView!
+	@IBOutlet weak var amountViewVerticalConstraint: NSLayoutConstraint!
 	@IBOutlet weak var titleBar: UIView!
 	@IBOutlet weak var addButton: UIButton!
 	@IBOutlet weak var amountLabel: UILabel!
@@ -18,7 +19,6 @@ class InvoiceAmountViewController: UIViewController, UITextFieldDelegate {
 		super.viewDidLoad()
 		titleBar.roundCorners(corners: [.topLeft, .topRight], radius: 10)
 		disable()
-		hideKeyboard()
 		amountView.transform = CGAffineTransform(scaleX: 0, y: 0)
 		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
 			self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
@@ -33,6 +33,8 @@ class InvoiceAmountViewController: UIViewController, UITextFieldDelegate {
 				self.amountChanged()
 			}
 		}
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 	}
 	
 	@IBAction func add() {
@@ -54,6 +56,22 @@ class InvoiceAmountViewController: UIViewController, UITextFieldDelegate {
 				self.view.removeFromSuperview()
 			}
 		}
+	}
+	
+	@objc func keyboardWillShow(notification: NSNotification) {
+		if let height = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height {
+			amountViewVerticalConstraint.constant = amountView.frame.height / 2 - height
+			UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
+				self.view.layoutIfNeeded()
+			}, completion: nil)
+		}
+	}
+	
+	@objc func keyboardWillHide(notification: NSNotification) {
+		amountViewVerticalConstraint.constant = 0
+		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveLinear, animations: {
+			self.view.layoutIfNeeded()
+		}, completion: nil)
 	}
 	
 	func textFieldDidBeginEditing(_ textField: UITextField) {

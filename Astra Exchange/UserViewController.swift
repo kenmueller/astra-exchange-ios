@@ -48,6 +48,7 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 									loadData()
 									self.activityIndicator.stopAnimating()
 									self.loadingView.isHidden = true
+									self.createSignOutBarButtonItem()
 								}
 							} else if let error = error {
 								switch error.localizedDescription {
@@ -64,9 +65,9 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 					}
 				} catch {}
 			}
+		} else {
+			createSignOutBarButtonItem()
 		}
-		let signOutBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOut))
-		navigationItem.setLeftBarButton(signOutBarButtonItem, animated: true)
 		navigationController?.navigationBar.tintColor = .white
 		navigationItem.title = name
 		navigationItem.setHidesBackButton(true, animated: true)
@@ -79,6 +80,11 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	
 	func showHomeVC() {
 		performSegue(withIdentifier: "home", sender: self)
+	}
+	
+	func createSignOutBarButtonItem() {
+		let signOutBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOut))
+		navigationItem.setLeftBarButton(signOutBarButtonItem, animated: false)
 	}
 	
 	@objc func signOut() {

@@ -2,8 +2,9 @@ import UIKit
 import Firebase
 import AudioToolbox
 
-class ConfirmViewController: UIViewController {
+class ConfirmViewController: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var confirmView: UIView!
+	@IBOutlet weak var confirmViewVerticalConstraint: NSLayoutConstraint!
 	@IBOutlet weak var titleBar: UIView!
 	@IBOutlet weak var sendButton: UIButton!
 	@IBOutlet weak var recipientText: UILabel!
@@ -11,6 +12,7 @@ class ConfirmViewController: UIViewController {
 	@IBOutlet weak var amountText: UILabel!
 	@IBOutlet weak var remainingBalanceLabel: UILabel!
 	@IBOutlet weak var remainingBalanceText: UILabel!
+	@IBOutlet weak var messageTextField: UITextField!
 	@IBOutlet weak var loadingView: UIView!
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	
@@ -49,10 +51,28 @@ class ConfirmViewController: UIViewController {
 				}
 			}
 		}
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+	}
+	
+	@objc func keyboardWillShow(notification: NSNotification) {
+		if let height = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height {
+			confirmViewVerticalConstraint.constant = confirmView.frame.height / 2 - height
+			UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
+				self.view.layoutIfNeeded()
+			}, completion: nil)
+		}
+	}
+	
+	@objc func keyboardWillHide(notification: NSNotification) {
+		confirmViewVerticalConstraint.constant = 0
+		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveLinear, animations: {
+			self.view.layoutIfNeeded()
+		}, completion: nil)
 	}
 	
 	@IBAction func send() {
-		if let sendMoneyVC = parent as? SendMoneyViewController {
+		if let sendMoneyVC = parent as? SendMoneyViewController, let message = messageTextField.text?.trim() {
 			loadingView.isHidden = false
 			activityIndicator.startAnimating()
 			let recipientId = users[sendMoneyVC.recipient!].id
@@ -63,8 +83,8 @@ class ConfirmViewController: UIViewController {
 						ref.child("users/\(recipientId)/balance").setValue(recipientBalance)
 						let autoId = ref.childByAutoId().key!
 						let time = Date().format("MMM d, yyyy @ h:mm a")
-						ref.child("transactions/\(id!)/\(autoId)").setValue(["time": time, "from": id!, "to": recipientId, "amount": String(sendMoneyVC.amount), "balance": String(balance)])
-						ref.child("transactions/\(recipientId)/\(autoId)").setValue(["time": time, "from": id!, "to": recipientId, "amount": String(sendMoneyVC.amount), "balance": recipientBalance])
+						ref.child("transactions/\(id!)/\(autoId)").setValue(["time": time, "from": id!, "to": recipientId, "amount": String(sendMoneyVC.amount), "balance": String(balance), "message": message])
+						ref.child("transactions/\(recipientId)/\(autoId)").setValue(["time": time, "from": id!, "to": recipientId, "amount": String(sendMoneyVC.amount), "balance": recipientBalance, "message": message])
 						self.activityIndicator.stopAnimating()
 						self.loadingView.isHidden = true
 						UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
@@ -114,5 +134,10 @@ class ConfirmViewController: UIViewController {
 	func disable() {
 		sendButton.isEnabled = false
 		sendButton.setTitleColor(UIColor(red: 229 / 255, green: 229 / 255, blue: 229 / 255, alpha: 1), for: .normal)
+	}
+	
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		dismissKeyboard()
+		return false
 	}
 }

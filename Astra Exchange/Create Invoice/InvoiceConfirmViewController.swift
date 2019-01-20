@@ -1,8 +1,9 @@
 import UIKit
 import AudioToolbox
 
-class InvoiceConfirmViewController: UIViewController {
+class InvoiceConfirmViewController: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var confirmView: UIView!
+	@IBOutlet weak var confirmViewVerticalConstraint: NSLayoutConstraint!
 	@IBOutlet weak var titleBar: UIView!
 	@IBOutlet weak var sendButton: UIButton!
 	@IBOutlet weak var recipientText: UILabel!
@@ -37,6 +38,24 @@ class InvoiceConfirmViewController: UIViewController {
 				}
 			}
 		}
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+	}
+	
+	@objc func keyboardWillShow(notification: NSNotification) {
+		if let height = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height {
+			confirmViewVerticalConstraint.constant = confirmView.frame.height / 2 - height
+			UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
+				self.view.layoutIfNeeded()
+			}, completion: nil)
+		}
+	}
+	
+	@objc func keyboardWillHide(notification: NSNotification) {
+		confirmViewVerticalConstraint.constant = 0
+		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveLinear, animations: {
+			self.view.layoutIfNeeded()
+		}, completion: nil)
 	}
 	
 	@IBAction func send() {
@@ -96,5 +115,10 @@ class InvoiceConfirmViewController: UIViewController {
 	func disable() {
 		sendButton.isEnabled = false
 		sendButton.setTitleColor(UIColor(red: 229 / 255, green: 229 / 255, blue: 229 / 255, alpha: 1), for: .normal)
+	}
+	
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		dismissKeyboard()
+		return false
 	}
 }
