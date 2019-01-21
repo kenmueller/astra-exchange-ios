@@ -30,7 +30,7 @@ class TransactionViewController: UIViewController {
 		transactionView.transform = CGAffineTransform(scaleX: 0, y: 0)
 		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
 			self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-			self.transactionView.transform = CGAffineTransform.identity
+			self.transactionView.transform = .identity
 		}, completion: nil)
     }
 	

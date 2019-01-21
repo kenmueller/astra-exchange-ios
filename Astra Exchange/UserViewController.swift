@@ -160,7 +160,7 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 				}) { finished in
 					if finished {
 						UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
-							cell.balanceLabel.transform = CGAffineTransform.identity
+							cell.balanceLabel.transform = .identity
 							cell.balanceLabel.alpha = 1
 						}, completion: nil)
 					}

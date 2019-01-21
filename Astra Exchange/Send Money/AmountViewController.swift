@@ -24,7 +24,7 @@ class AmountViewController: UIViewController, UITextFieldDelegate {
 		amountView.transform = CGAffineTransform(scaleX: 0, y: 0)
 		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
 			self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-			self.amountView.transform = CGAffineTransform.identity
+			self.amountView.transform = .identity
 		}, completion: nil)
     }
 	
@@ -40,7 +40,7 @@ class AmountViewController: UIViewController, UITextFieldDelegate {
 				}) { finished in
 					if finished {
 						UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
-							self.maxLabel.transform = CGAffineTransform.identity
+							self.maxLabel.transform = .identity
 							self.maxLabel.alpha = 1
 						}, completion: nil)
 					}

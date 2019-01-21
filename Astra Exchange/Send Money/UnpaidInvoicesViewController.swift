@@ -1,16 +1,16 @@
 import UIKit
 import AudioToolbox
 
-class InvoiceViewController: UIViewController {
+class UnpaidInvoicesViewController: UIViewController {
 	@IBOutlet weak var invoiceView: UIView!
 	@IBOutlet weak var titleBar: UIView!
+	@IBOutlet weak var leftButton: UIButton!
 	@IBOutlet weak var titleLabel: UILabel!
+	@IBOutlet weak var rightButton: UIButton!
 	@IBOutlet weak var timeText: UILabel!
-	@IBOutlet weak var fromToLabel: UILabel!
-	@IBOutlet weak var fromToText: UILabel!
+	@IBOutlet weak var fromText: UILabel!
 	@IBOutlet weak var amountText: UILabel!
-	@IBOutlet weak var remainingBalanceNewBalanceLabel: UILabel!
-	@IBOutlet weak var remainingBalanceNewBalanceText: UILabel!
+	@IBOutlet weak var remainingBalanceText: UILabel!
 	@IBOutlet weak var messageText: UILabel!
 	@IBOutlet weak var declineButton: UIButton!
 	@IBOutlet weak var acceptButton: UIButton!
@@ -19,33 +19,15 @@ class InvoiceViewController: UIViewController {
 	@IBOutlet weak var statusImageView: UIImageView!
 	@IBOutlet weak var statusLabel: UILabel!
 	
+	var unpaidInvoices = [Invoice]()
 	var invoice = 0
-	var initialStatus = ""
 	var willAccept = false
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		titleBar.roundCorners(corners: [.topLeft, .topRight], radius: 10)
-		let element = invoices[invoice]
-		let isOutgoing = element.from == id
-		titleLabel.text = (isOutgoing ? "Outgoing" : "Incoming") + " Invoice"
-		timeText.text = element.time
-		fromToLabel.text = isOutgoing ? "TO" : "FROM"
-		fromToText.text = isOutgoing ? users[User.id(element.to)!].name : users[User.id(element.from)!].name
-		amountText.text = String(element.amount)
-		remainingBalanceNewBalanceLabel.text = (isOutgoing ? "REMAINING" : "NEW") + " BALANCE"
-		remainingBalanceNewBalanceText.text = String(isOutgoing ? balance + element.amount : balance - element.amount)
-		messageText.text = element.message
-		if isOutgoing {
-			loadStatus()
-		} else {
-			if element.status == "pending" {
-				declineButton.isHidden = false
-				acceptButton.isHidden = false
-			} else {
-				loadStatus()
-			}
-		}
+		loadUnpaidInvoices()
+		loadInvoice()
 		invoiceView.transform = CGAffineTransform(scaleX: 0, y: 0)
 		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
 			self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
@@ -55,25 +37,25 @@ class InvoiceViewController: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		updateChangeHandler { change in
-			if change == .invoiceStatus {
-				if invoices[self.invoice].status != self.initialStatus {
-					UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveLinear, animations: {
-						self.declineButton.transform = CGAffineTransform(translationX: 0, y: 60)
-						self.acceptButton.transform = CGAffineTransform(translationX: 0, y: 60)
-						self.backButton.transform = CGAffineTransform(translationX: 0, y: 60)
-						self.confirmButton.transform = CGAffineTransform(translationX: 0, y: 60)
-					}) { finished in
-						if finished {
-							if let invoicesVC = self.parent as? InvoicesViewController {
-								self.loadStatus()
-								invoicesVC.invoicesTableView.reloadData()
-							}
-						}
-					}
-				}
-			}
-		}
+//		updateChangeHandler { change in
+//			if change == .invoice {
+//				if invoices[self.invoice].status != self.initialStatus {
+//					UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveLinear, animations: {
+//						self.declineButton.transform = CGAffineTransform(translationX: 0, y: 60)
+//						self.acceptButton.transform = CGAffineTransform(translationX: 0, y: 60)
+//						self.backButton.transform = CGAffineTransform(translationX: 0, y: 60)
+//						self.confirmButton.transform = CGAffineTransform(translationX: 0, y: 60)
+//					}) { finished in
+//						if finished {
+//							if let invoicesVC = self.parent as? InvoicesViewController {
+//								self.loadStatus()
+//								invoicesVC.invoicesTableView.reloadData()
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
 	}
 	
 	@IBAction func hideAnimation() {
@@ -84,6 +66,62 @@ class InvoiceViewController: UIViewController {
 			if finished {
 				self.view.removeFromSuperview()
 			}
+		}
+	}
+	
+	@IBAction func left() {
+		UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
+			self.invoiceView.transform = CGAffineTransform(translationX: self.view.bounds.width, y: 0)
+		}) { finished in
+			if finished {
+				self.invoice -= 1
+				self.loadInvoice()
+				self.invoiceView.transform = CGAffineTransform(translationX: -self.view.bounds.width, y: 0)
+				UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+					self.invoiceView.transform = .identity
+				}, completion: nil)
+			}
+		}
+	}
+	
+	@IBAction func right() {
+		UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
+			self.invoiceView.transform = CGAffineTransform(translationX: -self.view.bounds.width, y: 0)
+		}) { finished in
+			if finished {
+				self.invoice += 1
+				self.loadInvoice()
+				self.invoiceView.transform = CGAffineTransform(translationX: self.view.bounds.width, y: 0)
+				UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+					self.invoiceView.transform = .identity
+				}, completion: nil)
+			}
+		}
+	}
+	
+	func loadUnpaidInvoices() {
+		unpaidInvoices = invoices.filter { $0.to == id && $0.status == "pending" }
+	}
+	
+	func loadInvoice() {
+		leftButton.isHidden = invoice == 0
+		rightButton.isHidden = invoice == unpaidInvoices.count - 1
+		let element = unpaidInvoices[invoice]
+		titleLabel.text = (element.status == "pending" ? "Unpaid" : "Paid") + " Invoice"
+		timeText.text = element.time
+		fromText.text = users[User.id(element.from)!].name
+		amountText.text = String(element.amount)
+		remainingBalanceText.text = String(balance - element.amount)
+		messageText.text = element.message
+		if element.status == "pending" {
+			declineButton.isHidden = false
+			declineButton.transform = .identity
+			acceptButton.isHidden = false
+			acceptButton.transform = .identity
+			backButton.isHidden = true
+			confirmButton.isHidden = true
+		} else {
+			loadStatus()
 		}
 	}
 	

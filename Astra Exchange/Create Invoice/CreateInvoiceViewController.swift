@@ -64,7 +64,7 @@ class CreateInvoiceViewController: UIViewController, UITableViewDataSource, UITa
 				sendButton.transform = CGAffineTransform(translationX: 0, y: 150)
 				sendButton.isHidden = false
 				UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveLinear, animations: {
-					self.sendButton.transform = CGAffineTransform.identity
+					self.sendButton.transform = .identity
 				}, completion: nil)
 			}
 		} else if recipient == nil || amount == 0 {

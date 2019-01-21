@@ -22,6 +22,7 @@
 		4D5A27A321EDA89A00232294 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5A27A221EDA89A00232294 /* SignUpViewController.swift */; };
 		4DBAA59A21EE733500F26913 /* SendMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBAA59921EE733500F26913 /* SendMoneyViewController.swift */; };
 		4DBAA59C21EE9E7000F26913 /* RecipientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBAA59B21EE9E7000F26913 /* RecipientViewController.swift */; };
+		4DCAA3BE21F5A68300047426 /* UnpaidInvoicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA3BD21F5A68300047426 /* UnpaidInvoicesViewController.swift */; };
 		4DD190F121ED6B4E003EE93A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD190F021ED6B4E003EE93A /* SignInViewController.swift */; };
 		4DD190F321ED6C43003EE93A /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD190F221ED6C43003EE93A /* Global.swift */; };
 		4DD1910521ED910B003EE93A /* Nunito-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DD190F621ED910B003EE93A /* Nunito-ExtraBoldItalic.ttf */; };
@@ -90,6 +91,7 @@
 		4D5A27A221EDA89A00232294 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4DBAA59921EE733500F26913 /* SendMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyViewController.swift; sourceTree = "<group>"; };
 		4DBAA59B21EE9E7000F26913 /* RecipientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipientViewController.swift; sourceTree = "<group>"; };
+		4DCAA3BD21F5A68300047426 /* UnpaidInvoicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnpaidInvoicesViewController.swift; sourceTree = "<group>"; };
 		4DD190F021ED6B4E003EE93A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		4DD190F221ED6C43003EE93A /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		4DD190F621ED910B003EE93A /* Nunito-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				4DBAA59921EE733500F26913 /* SendMoneyViewController.swift */,
+				4DCAA3BD21F5A68300047426 /* UnpaidInvoicesViewController.swift */,
 				4DBAA59B21EE9E7000F26913 /* RecipientViewController.swift */,
 				4D47AADF21EF05C200FD40EC /* AmountViewController.swift */,
 				4DF9481121EFD3300086A1FC /* ConfirmViewController.swift */,
@@ -515,6 +518,7 @@
 				4D279DD521ED5FBC00D09DDA /* AppDelegate.swift in Sources */,
 				4DF9481621F04D650086A1FC /* TransactionViewController.swift in Sources */,
 				4DDF183A21F124C600A61BED /* InvoiceRecipientViewController.swift in Sources */,
+				4DCAA3BE21F5A68300047426 /* UnpaidInvoicesViewController.swift in Sources */,
 				4DDF183C21F124D100A61BED /* InvoiceAmountViewController.swift in Sources */,
 				4D5A27A121ED9D5200232294 /* HomeViewController.swift in Sources */,
 			);

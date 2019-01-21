@@ -33,7 +33,12 @@ class SendMoneyViewController: UIViewController, UITableViewDataSource, UITableV
 	}
 	
 	@objc func payInvoices() {
-		performSegue(withIdentifier: "payInvoices", sender: self)
+		if let unpaidInvoicesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "unpaidInvoices") as? UnpaidInvoicesViewController {
+			addChild(unpaidInvoicesVC)
+			unpaidInvoicesVC.view.frame = view.frame
+			view.addSubview(unpaidInvoicesVC.view)
+			unpaidInvoicesVC.didMove(toParent: self)
+		}
 	}
 	
 	@objc func showUsers() {
@@ -76,7 +81,7 @@ class SendMoneyViewController: UIViewController, UITableViewDataSource, UITableV
 				sendButton.transform = CGAffineTransform(translationX: 0, y: 150)
 				sendButton.isHidden = false
 				UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveLinear, animations: {
-					self.sendButton.transform = CGAffineTransform.identity
+					self.sendButton.transform = .identity
 				}, completion: nil)
 			}
 		} else if recipient == nil || amount == 0 {
