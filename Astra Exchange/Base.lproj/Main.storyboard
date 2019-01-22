@@ -2458,6 +2458,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iFj-Gt-Gk0">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <connections>
+                                    <action selector="hideAnimation" destination="wja-TX-gTj" eventType="touchUpInside" id="hXe-3t-mLM"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Be1-MJ-dQf">
                                 <rect key="frame" x="40" y="143" width="334" height="450"/>
                                 <subviews>
@@ -2732,9 +2738,13 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Be1-MJ-dQf" firstAttribute="leading" secondItem="QKs-ba-812" secondAttribute="leading" constant="40" id="7wL-iH-QFs"/>
+                            <constraint firstItem="iFj-Gt-Gk0" firstAttribute="leading" secondItem="jUb-wj-hfj" secondAttribute="leading" id="OQG-6t-4hd"/>
                             <constraint firstItem="Be1-MJ-dQf" firstAttribute="centerY" secondItem="jUb-wj-hfj" secondAttribute="centerY" id="PiN-lg-02c"/>
+                            <constraint firstItem="iFj-Gt-Gk0" firstAttribute="bottom" secondItem="jUb-wj-hfj" secondAttribute="bottom" id="cVp-jd-fQy"/>
                             <constraint firstItem="Be1-MJ-dQf" firstAttribute="centerX" secondItem="jUb-wj-hfj" secondAttribute="centerX" id="fzs-YZ-TzU"/>
                             <constraint firstItem="QKs-ba-812" firstAttribute="trailing" secondItem="Be1-MJ-dQf" secondAttribute="trailing" constant="40" id="iEi-1m-d03"/>
+                            <constraint firstItem="iFj-Gt-Gk0" firstAttribute="top" secondItem="jUb-wj-hfj" secondAttribute="top" id="pJL-D8-2iz"/>
+                            <constraint firstItem="iFj-Gt-Gk0" firstAttribute="trailing" secondItem="jUb-wj-hfj" secondAttribute="trailing" id="t26-OS-lwQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QKs-ba-812"/>
                     </view>
@@ -2759,7 +2769,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qSY-wU-wG2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1500" y="133"/>
+            <point key="canvasLocation" x="1500.0000000000002" y="132.88043478260872"/>
         </scene>
     </scenes>
     <resources>
