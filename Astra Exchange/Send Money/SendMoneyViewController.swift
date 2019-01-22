@@ -21,7 +21,7 @@ class SendMoneyViewController: UIViewController, UITableViewDataSource, UITableV
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		updateChangeHandler { change in
-			if change == .invoice {
+			if change == .invoice || change == .invoiceStatus {
 				self.loadActions()
 				self.sendMoneyTableView.reloadData()
 			} else if change == .balance {

@@ -172,6 +172,8 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 						updateChangeHandler { change in
 							if change == .balance {
 								updateFunction()
+							} else if change == .invoice || change == .invoiceStatus {
+								self.actionsTableView.reloadData()
 							}
 						}
 						cell.balanceLabel.text = String(balance)
@@ -182,6 +184,8 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 				updateChangeHandler { change in
 					if change == .balance {
 						updateFunction()
+					} else if change == .invoice || change == .invoiceStatus {
+						self.actionsTableView.reloadData()
 					}
 				}
 			}
@@ -193,8 +197,8 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 			cell.detailTextLabel?.textColor = .red
 			cell.textLabel?.text = actions[indexPath.section - 1][indexPath.row].name
 			cell.detailTextLabel?.text = nil
-			if indexPath.section == 0, indexPath.row == 0 {
-				let unpaidInvoices = invoices.filter { $0.to == id! }
+			if indexPath.section == 1, indexPath.row == 0 {
+				let unpaidInvoices = invoices.filter { $0.to == id && $0.status == "pending" }
 				if unpaidInvoices.count == 1 {
 					cell.detailTextLabel?.text = "⚠️ 1 unpaid invoice"
 				} else if unpaidInvoices.count > 1 {

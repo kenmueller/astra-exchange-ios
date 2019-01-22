@@ -12,7 +12,7 @@ class InvoicesViewController: UIViewController, UITableViewDataSource, UITableVi
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		updateChangeHandler { change in
-			if change == .invoice {
+			if change == .invoice || change == .invoiceStatus {
 				self.invoicesTableView.reloadData()
 			}
 		}
@@ -34,7 +34,7 @@ class InvoicesViewController: UIViewController, UITableViewDataSource, UITableVi
 		let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 		let element = invoices[indexPath.section]
 		cell.textLabel?.font = UIFont(name: "Nunito-ExtraBold", size: 18)
-		cell.detailTextLabel?.font = UIFont(name: "Nunito-ExtraBold", size: 18)
+		cell.detailTextLabel?.font = UIFont(name: "Nunito-SemiBold", size: 18)
 		switch element.status {
 		case "accepted":
 			cell.imageView?.image = #imageLiteral(resourceName: "Check")
@@ -49,7 +49,7 @@ class InvoicesViewController: UIViewController, UITableViewDataSource, UITableVi
 			cell.textLabel?.text = "Pending"
 			cell.textLabel?.textColor = UIColor(red: 190 / 255, green: 190 / 255, blue: 190 / 255, alpha: 1)
 		}
-		cell.detailTextLabel?.text = element.from == id ? "+\(element.amount)" : "-\(element.amount)"
+		cell.detailTextLabel?.text = element.from == id ? users[User.id(element.to)!].name : users[User.id(element.from)!].name
 		return cell
 	}
 	
