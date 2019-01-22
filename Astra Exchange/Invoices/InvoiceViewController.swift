@@ -88,6 +88,10 @@ class InvoiceViewController: UIViewController {
 						}
 					}
 				}
+			} else if change == .invoice {
+				if let invoicesVC = self.parent as? InvoicesViewController {
+					invoicesVC.invoicesTableView.reloadData()
+				}
 			}
 		}
 	}
