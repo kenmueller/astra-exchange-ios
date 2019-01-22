@@ -162,8 +162,8 @@ class UnpaidInvoicesViewController: UIViewController {
 					ref.child("users/\(fromId)/balance").setValue(fromBalance)
 					let autoId = ref.childByAutoId().key!
 					let time = Date().format("MMM d, yyyy @ h:mm a")
-					ref.child("transactions/\(id!)/\(autoId)").setValue(["time": time, "from": id!, "to": fromId, "amount": String(invoices[self.invoice].amount), "balance": String(balance)])
-					ref.child("transactions/\(fromId)/\(autoId)").setValue(["time": time, "from": id!, "to": fromId, "amount": String(invoices[self.invoice].amount), "balance": fromBalance])
+					ref.child("transactions/\(id!)/\(autoId)").setValue(["time": time, "from": id!, "to": fromId, "amount": String(invoices[self.invoice].amount), "balance": String(balance), "message": invoices[self.invoice].message])
+					ref.child("transactions/\(fromId)/\(autoId)").setValue(["time": time, "from": id!, "to": fromId, "amount": String(invoices[self.invoice].amount), "balance": fromBalance, "message": invoices[self.invoice].message])
 				} else if let error = error {
 					AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
 					switch error.localizedDescription {
