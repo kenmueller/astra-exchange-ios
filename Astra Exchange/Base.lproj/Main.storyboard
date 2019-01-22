@@ -2312,7 +2312,7 @@
                                             <constraint firstAttribute="height" constant="40" id="6bD-uj-tMC"/>
                                             <constraint firstAttribute="width" secondItem="nXw-Gq-7Gq" secondAttribute="height" multiplier="1:1" id="iZX-aF-D3A"/>
                                         </constraints>
-                                        <state key="normal" title="Decline" image="Left Arrow White">
+                                        <state key="normal" image="Left Arrow White">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -2766,7 +2766,7 @@
         <image name="Astra" width="800" height="600"/>
         <image name="Left Arrow" width="626" height="626"/>
         <image name="Left Arrow Head" width="315.83999633789062" height="316.79998779296875"/>
-        <image name="Left Arrow White" width="626" height="626"/>
+        <image name="Left Arrow White" width="939" height="939"/>
         <image name="Offline" width="288" height="288"/>
         <image name="Right Arrow Head" width="315.83999633789062" height="316.79998779296875"/>
         <image name="X" width="512" height="512"/>
