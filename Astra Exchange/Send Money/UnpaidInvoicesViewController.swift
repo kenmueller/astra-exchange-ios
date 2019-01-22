@@ -74,16 +74,20 @@ class UnpaidInvoicesViewController: UIViewController {
 	}
 	
 	@IBAction func right() {
-		UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
-			self.invoiceView.transform = CGAffineTransform(translationX: -self.view.bounds.width, y: 0)
-		}) { finished in
-			if finished {
-				self.invoice += 1
-				self.loadInvoice()
-				self.invoiceView.transform = CGAffineTransform(translationX: self.view.bounds.width, y: 0)
-				UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-					self.invoiceView.transform = .identity
-				}, completion: nil)
+		if rightButton.currentImage == #imageLiteral(resourceName: "X") {
+			hideAnimation()
+		} else {
+			UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
+				self.invoiceView.transform = CGAffineTransform(translationX: -self.view.bounds.width, y: 0)
+			}) { finished in
+				if finished {
+					self.invoice += 1
+					self.loadInvoice()
+					self.invoiceView.transform = CGAffineTransform(translationX: self.view.bounds.width, y: 0)
+					UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+						self.invoiceView.transform = .identity
+					}, completion: nil)
+				}
 			}
 		}
 	}
@@ -94,7 +98,13 @@ class UnpaidInvoicesViewController: UIViewController {
 	
 	func loadInvoice() {
 		leftButton.isHidden = invoice == 0
-		rightButton.isHidden = invoice == unpaidInvoices.count - 1
+		if unpaidInvoices.count == 1 {
+			rightButton.setImage(#imageLiteral(resourceName: "X"), for: .normal)
+			rightButton.isHidden = false
+		} else {
+			rightButton.setImage(#imageLiteral(resourceName: "Right Arrow Head"), for: .normal)
+			rightButton.isHidden = invoice == unpaidInvoices.count - 1
+		}
 		let element = unpaidInvoices[invoice]
 		titleLabel.text = (element.status == "pending" ? "Unpaid" : "Paid") + " Invoice"
 		timeText.text = element.time
@@ -103,10 +113,22 @@ class UnpaidInvoicesViewController: UIViewController {
 		remainingBalanceText.text = String(balance - element.amount)
 		messageText.text = element.message
 		if element.status == "pending" {
-			declineButton.isHidden = false
-			declineButton.transform = .identity
-			acceptButton.isHidden = false
-			acceptButton.transform = .identity
+			if element.amount > balance {
+				statusImageView.image = #imageLiteral(resourceName: "Red Warning")
+				statusLabel.text = "Unable to pay"
+				statusLabel.textColor = UIColor(red: 204 / 255, green: 51 / 255, blue: 51 / 255, alpha: 1)
+				statusImageView.isHidden = false
+				statusLabel.isHidden = false
+				declineButton.isHidden = true
+				acceptButton.isHidden = true
+			} else {
+				statusImageView.isHidden = true
+				statusLabel.isHidden = true
+				declineButton.isHidden = false
+				declineButton.transform = .identity
+				acceptButton.isHidden = false
+				acceptButton.transform = .identity
+			}
 			backButton.isHidden = true
 			confirmButton.isHidden = true
 		} else {
@@ -140,19 +162,19 @@ class UnpaidInvoicesViewController: UIViewController {
 	
 	@IBAction func confirm() {
 		let status = willAccept ? "accepted" : "declined"
-		let invoiceId = invoices[invoice].id
+		let invoiceId = unpaidInvoices[invoice].id
 		ref.child("invoices/\(id!)/\(invoiceId)/status").setValue(status)
-		ref.child("invoices/\(invoices[invoice].from)/\(invoiceId)/status").setValue(status)
+		ref.child("invoices/\(unpaidInvoices[invoice].from)/\(invoiceId)/status").setValue(status)
 		if willAccept {
-			ref.child("users/\(id!)/balance").setValue(String(balance - invoices[invoice].amount)) { error, reference in
+			ref.child("users/\(id!)/balance").setValue(String(balance - unpaidInvoices[invoice].amount)) { error, reference in
 				if error == nil {
-					let fromId = invoices[self.invoice].from
-					let fromBalance = String(users[User.id(fromId)!].balance + invoices[self.invoice].amount)
+					let fromId = self.unpaidInvoices[self.invoice].from
+					let fromBalance = String(users[User.id(fromId)!].balance + self.unpaidInvoices[self.invoice].amount)
 					ref.child("users/\(fromId)/balance").setValue(fromBalance)
 					let autoId = ref.childByAutoId().key!
 					let time = Date().format("MMM d, yyyy @ h:mm a")
-					ref.child("transactions/\(id!)/\(autoId)").setValue(["time": time, "from": id!, "to": fromId, "amount": String(invoices[self.invoice].amount), "balance": String(balance), "message": invoices[self.invoice].message])
-					ref.child("transactions/\(fromId)/\(autoId)").setValue(["time": time, "from": id!, "to": fromId, "amount": String(invoices[self.invoice].amount), "balance": fromBalance, "message": invoices[self.invoice].message])
+					ref.child("transactions/\(id!)/\(autoId)").setValue(["time": time, "from": id!, "to": fromId, "amount": String(self.unpaidInvoices[self.invoice].amount), "balance": String(balance), "message": self.unpaidInvoices[self.invoice].message])
+					ref.child("transactions/\(fromId)/\(autoId)").setValue(["time": time, "from": id!, "to": fromId, "amount": String(self.unpaidInvoices[self.invoice].amount), "balance": fromBalance, "message": self.unpaidInvoices[self.invoice].message])
 				} else if let error = error {
 					AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
 					switch error.localizedDescription {
@@ -162,6 +184,7 @@ class UnpaidInvoicesViewController: UIViewController {
 						self.showAlert("There was a problem accepting the invoice. Please try again.")
 					}
 				}
+				self.loadInvoice()
 				self.showConfirmAnimation()
 			}
 		} else {
@@ -191,7 +214,7 @@ class UnpaidInvoicesViewController: UIViewController {
 	}
 	
 	func loadStatus() {
-		switch invoices[invoice].status {
+		switch unpaidInvoices[invoice].status {
 		case "accepted":
 			statusImageView.image = #imageLiteral(resourceName: "Check")
 			statusLabel.text = "Accepted"
@@ -210,12 +233,14 @@ class UnpaidInvoicesViewController: UIViewController {
 	}
 	
 	func showConfirmAnimation() {
-		UIView.animate(withDuration: 0.2, animations: {
-			self.invoiceView.transform = CGAffineTransform(translationX: 0, y: -self.view.bounds.height)
-			self.view.backgroundColor = .clear
-		}) { finished in
-			if finished {
-				self.view.removeFromSuperview()
+		if (unpaidInvoices.filter { $0.status == "pending" }).isEmpty {
+			UIView.animate(withDuration: 0.2, animations: {
+				self.invoiceView.transform = CGAffineTransform(translationX: 0, y: -self.view.bounds.height)
+				self.view.backgroundColor = .clear
+			}) { finished in
+				if finished {
+					self.view.removeFromSuperview()
+				}
 			}
 		}
 	}

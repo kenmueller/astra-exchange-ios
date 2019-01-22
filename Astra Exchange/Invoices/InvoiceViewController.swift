@@ -40,8 +40,24 @@ class InvoiceViewController: UIViewController {
 			loadStatus()
 		} else {
 			if element.status == "pending" {
-				declineButton.isHidden = false
-				acceptButton.isHidden = false
+				if element.amount > balance {
+					statusImageView.image = #imageLiteral(resourceName: "Red Warning")
+					statusLabel.text = "Unable to pay"
+					statusLabel.textColor = UIColor(red: 204 / 255, green: 51 / 255, blue: 51 / 255, alpha: 1)
+					statusImageView.isHidden = false
+					statusLabel.isHidden = false
+					declineButton.isHidden = true
+					acceptButton.isHidden = true
+				} else {
+					statusImageView.isHidden = true
+					statusLabel.isHidden = true
+					declineButton.isHidden = false
+					declineButton.transform = .identity
+					acceptButton.isHidden = false
+					acceptButton.transform = .identity
+					declineButton.isHidden = false
+					acceptButton.isHidden = false
+				}
 			} else {
 				loadStatus()
 			}
