@@ -55,6 +55,7 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 								case "Network error (such as timeout, interrupted connection or unreachable host) has occurred.":
 									self.activityIndicator.stopAnimating()
 									self.offlineView.isHidden = false
+									self.navigationController?.isNavigationBarHidden = true
 								default:
 									self.showHomeVC()
 								}
@@ -188,6 +189,7 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 						self.actionsTableView.reloadData()
 					}
 				}
+				cell.balanceLabel.text = String(balance)
 			}
 			return cell
 		} else {
