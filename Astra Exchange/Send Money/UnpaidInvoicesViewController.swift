@@ -179,7 +179,7 @@ class UnpaidInvoicesViewController: UIViewController {
 					guard let userIndex = User.id(fromId) else { return }
 					let fromBalance = String(users[userIndex].balance + self.unpaidInvoices[self.invoice].amount)
 					ref.child("users/\(fromId)/balance").setValue(fromBalance)
-					let autoId = ref.childByAutoId().key!
+					guard let autoId = ref.childByAutoId().key else { return }
 					let time = Date().format("MMM d, yyyy @ h:mm a")
 					ref.child("transactions/\(id!)/\(autoId)").setValue(["time": time, "from": id!, "to": fromId, "amount": String(self.unpaidInvoices[self.invoice].amount), "balance": String(balance), "message": self.unpaidInvoices[self.invoice].message])
 					ref.child("transactions/\(fromId)/\(autoId)").setValue(["time": time, "from": id!, "to": fromId, "amount": String(self.unpaidInvoices[self.invoice].amount), "balance": fromBalance, "message": self.unpaidInvoices[self.invoice].message])
