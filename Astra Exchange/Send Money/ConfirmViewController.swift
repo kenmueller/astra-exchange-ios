@@ -79,7 +79,7 @@ class ConfirmViewController: UIViewController, UITextFieldDelegate {
 			ref.child("users/\(recipientId)/balance").observeSingleEvent(of: .value) { snapshot in
 				ref.child("users/\(id!)/balance").setValue(String(balance - sendMoneyVC.amount)) { error, reference in
 					if error == nil {
-						let recipientBalance = String(Double(snapshot.value as! String)! + sendMoneyVC.amount)
+						let recipientBalance = String(Double(snapshot.value as? String ?? "0.0") ?? 0.0 + sendMoneyVC.amount)
 						ref.child("users/\(recipientId)/balance").setValue(recipientBalance)
 						let autoId = ref.childByAutoId().key!
 						let time = Date().format("MMM d, yyyy @ h:mm a")

@@ -31,7 +31,8 @@ class InvoiceViewController: UIViewController {
 		titleLabel.text = (isOutgoing ? "Outgoing" : "Incoming") + " Invoice"
 		timeText.text = element.time
 		fromToLabel.text = isOutgoing ? "TO" : "FROM"
-		fromToText.text = isOutgoing ? users[User.id(element.to)!].name : users[User.id(element.from)!].name
+		guard let toIndex = User.id(element.to), let fromIndex = User.id(element.from) else { return }
+		fromToText.text = isOutgoing ? users[toIndex].name : users[fromIndex].name
 		amountText.text = String(element.amount)
 		remainingBalanceNewBalanceLabel.text = (isOutgoing ? "REMAINING" : "NEW") + " BALANCE"
 		remainingBalanceNewBalanceText.text = String(isOutgoing ? balance + element.amount : balance - element.amount)
@@ -140,7 +141,8 @@ class InvoiceViewController: UIViewController {
 			ref.child("users/\(id!)/balance").setValue(String(balance - invoices[invoice].amount)) { error, reference in
 				if error == nil {
 					let fromId = invoices[self.invoice].from
-					let fromBalance = String(users[User.id(fromId)!].balance + invoices[self.invoice].amount)
+					guard let userIndex = User.id(fromId) else { return }
+					let fromBalance = String(users[userIndex].balance + invoices[self.invoice].amount)
 					ref.child("users/\(fromId)/balance").setValue(fromBalance)
 					let autoId = ref.childByAutoId().key!
 					let time = Date().format("MMM d, yyyy @ h:mm a")

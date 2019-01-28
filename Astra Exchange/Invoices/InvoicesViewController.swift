@@ -49,7 +49,8 @@ class InvoicesViewController: UIViewController, UITableViewDataSource, UITableVi
 			cell.textLabel?.text = "Pending"
 			cell.textLabel?.textColor = UIColor(red: 190 / 255, green: 190 / 255, blue: 190 / 255, alpha: 1)
 		}
-		cell.detailTextLabel?.text = element.from == id ? users[User.id(element.to)!].name : users[User.id(element.from)!].name
+		guard let toIndex = User.id(element.to), let fromIndex = User.id(element.from) else { return cell }
+		cell.detailTextLabel?.text = element.from == id ? users[toIndex].name : users[fromIndex].name
 		return cell
 	}
 	

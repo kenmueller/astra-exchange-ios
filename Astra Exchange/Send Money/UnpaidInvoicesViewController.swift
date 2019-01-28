@@ -114,7 +114,8 @@ class UnpaidInvoicesViewController: UIViewController {
 		let element = unpaidInvoices[invoice]
 		titleLabel.text = (element.status == "pending" ? "Unpaid" : "Paid") + " Invoice"
 		timeText.text = element.time
-		fromText.text = users[User.id(element.from)!].name
+		guard let userIndex = User.id(element.from) else { return }
+		fromText.text = users[userIndex].name
 		amountText.text = String(element.amount)
 		remainingBalanceText.text = String(balance - element.amount)
 		messageText.text = element.message
@@ -175,7 +176,8 @@ class UnpaidInvoicesViewController: UIViewController {
 			ref.child("users/\(id!)/balance").setValue(String(balance - unpaidInvoices[invoice].amount)) { error, reference in
 				if error == nil {
 					let fromId = self.unpaidInvoices[self.invoice].from
-					let fromBalance = String(users[User.id(fromId)!].balance + self.unpaidInvoices[self.invoice].amount)
+					guard let userIndex = User.id(fromId) else { return }
+					let fromBalance = String(users[userIndex].balance + self.unpaidInvoices[self.invoice].amount)
 					ref.child("users/\(fromId)/balance").setValue(fromBalance)
 					let autoId = ref.childByAutoId().key!
 					let time = Date().format("MMM d, yyyy @ h:mm a")

@@ -24,10 +24,11 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 			loadingView.isHidden = false
 			activityIndicator.startAnimating()
 			ref.child("users").observe(.childAdded) { snapshot in
-				users.append(User(id: snapshot.key, name: retrieveDataValue(snapshot: snapshot, field: "name") as! String, email: retrieveDataValue(snapshot: snapshot, field: "email") as! String, balance: Double(retrieveDataValue(snapshot: snapshot, field: "balance") as! String)!))
+				users.append(User(id: snapshot.key, name: retrieveDataValue(snapshot: snapshot, field: "name") as? String ?? "Undefined", email: retrieveDataValue(snapshot: snapshot, field: "email") as? String ?? "Undefined", balance: Double(retrieveDataValue(snapshot: snapshot, field: "balance") as? String ?? "0.0") ?? 0.0))
 				callChangeHandler(.user)
 				ref.child("users/\(snapshot.key)/balance").observe(.value) { balanceSnapshot in
-					users[User.id(snapshot.key)!].balance = Double(balanceSnapshot.value as! String)!
+					guard let userIndex = User.id(snapshot.key) else { return }
+					users[userIndex].balance = Double(balanceSnapshot.value as? String ?? "0.0") ?? 0.0
 					callChangeHandler(.user)
 				}
 			}
@@ -38,7 +39,7 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 					let login = try managedContext.fetch(fetchRequest)
 					if login.count == 1 {
 						let localEmail = login[0].value(forKey: "email") as? String
-						Auth.auth().signIn(withEmail: localEmail!, password: login[0].value(forKey: "password") as! String) { user, error in
+						Auth.auth().signIn(withEmail: localEmail!, password: login[0].value(forKey: "password") as? String ?? "") { user, error in
 							if error == nil {
 								id = user?.user.uid
 								ref.child("users/\(id!)/name").observeSingleEvent(of: .value) { snapshot in

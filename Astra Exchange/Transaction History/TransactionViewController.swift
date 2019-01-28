@@ -22,7 +22,8 @@ class TransactionViewController: UIViewController {
 		titleLabel.text = (isOutgoing ? "Outgoing" : "Incoming") + " Transaction"
 		timeText.text = element.time
 		fromToLabel.text = isOutgoing ? "TO" : "FROM"
-		fromToText.text = isOutgoing ? users[User.id(element.to)!].name : users[User.id(element.from)!].name
+		guard let toIndex = User.id(element.to), let fromIndex = User.id(element.from) else { return }
+		fromToText.text = isOutgoing ? users[toIndex].name : users[fromIndex].name
 		amountText.text = String(element.amount)
 		remainingBalanceNewBalanceLabel.text = (isOutgoing ? "REMAINING" : "NEW") + " BALANCE"
 		remainingBalanceNewBalanceText.text = String(element.balance)
