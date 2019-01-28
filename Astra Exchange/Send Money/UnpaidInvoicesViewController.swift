@@ -156,12 +156,16 @@ class UnpaidInvoicesViewController: UIViewController {
 	@IBAction func back() {
 		UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveLinear, animations: {
 			self.backButton.transform = CGAffineTransform(translationX: 0, y: 60)
+			self.backButton.alpha = 0
 			self.confirmButton.transform = CGAffineTransform(translationX: 0, y: 60)
+			self.confirmButton.alpha = 0
 		}) { finished in
 			if finished {
 				UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveLinear, animations: {
 					self.declineButton.transform = .identity
+					self.declineButton.alpha = 1
 					self.acceptButton.transform = .identity
+					self.acceptButton.alpha = 1
 				}, completion: nil)
 			}
 		}
@@ -206,7 +210,9 @@ class UnpaidInvoicesViewController: UIViewController {
 		confirmButton.backgroundColor = color
 		UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveLinear, animations: {
 			self.declineButton.transform = CGAffineTransform(translationX: 0, y: 60)
+			self.declineButton.alpha = 0
 			self.acceptButton.transform = CGAffineTransform(translationX: 0, y: 60)
+			self.acceptButton.alpha = 0
 		}) { finished in
 			if finished {
 				self.backButton.transform = CGAffineTransform(translationX: 0, y: 60)
@@ -215,7 +221,9 @@ class UnpaidInvoicesViewController: UIViewController {
 				self.confirmButton.isHidden = false
 				UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveLinear, animations: {
 					self.backButton.transform = .identity
+					self.backButton.alpha = 1
 					self.confirmButton.transform = .identity
+					self.confirmButton.alpha = 1
 				}, completion: nil)
 			}
 		}
@@ -241,6 +249,9 @@ class UnpaidInvoicesViewController: UIViewController {
 	}
 	
 	func showConfirmAnimation() {
+		loadUnpaidInvoices()
+		guard let sendMoneyVC = self.parent as? SendMoneyViewController else { return }
+		sendMoneyVC.sendMoneyTableView.reloadData()
 		if (unpaidInvoices.filter { $0.status == "pending" }).isEmpty {
 			UIView.animate(withDuration: 0.2, animations: {
 				self.invoiceView.transform = CGAffineTransform(translationX: 0, y: -self.view.bounds.height)
