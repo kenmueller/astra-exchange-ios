@@ -86,15 +86,15 @@ enum Change {
 
 func loadData() {
 	ref.child("users/\(id!)/balance").observe(.value) { snapshot in
-		balance = Double(snapshot.value as? String ?? "0.0") ?? 0.0
+		balance = snapshot.value as? Double ?? 0.0
 		callChangeHandler(.balance)
 	}
 	ref.child("transactions/\(id!)").observe(.childAdded) { snapshot in
-		transactions.insert(Transaction(id: snapshot.key, time: retrieveDataValue(snapshot: snapshot, field: "time") as? String ?? "Undefined", from: retrieveDataValue(snapshot: snapshot, field: "from") as? String ?? "Undefined", to: retrieveDataValue(snapshot: snapshot, field: "to") as? String ?? "Undefined", amount: Double(retrieveDataValue(snapshot: snapshot, field: "amount") as? String ?? "0.0") ?? 0.0, balance: Double(retrieveDataValue(snapshot: snapshot, field: "balance") as? String ?? "0.0") ?? 0.0, message: retrieveDataValue(snapshot: snapshot, field: "message") as? String ?? "Undefined"), at: 0)
+		transactions.insert(Transaction(id: snapshot.key, time: retrieveDataValue(snapshot: snapshot, field: "time") as? String ?? "Undefined", from: retrieveDataValue(snapshot: snapshot, field: "from") as? String ?? "Undefined", to: retrieveDataValue(snapshot: snapshot, field: "to") as? String ?? "Undefined", amount: retrieveDataValue(snapshot: snapshot, field: "amount") as? Double ?? 0.0, balance: retrieveDataValue(snapshot: snapshot, field: "balance") as? Double ?? 0.0, message: retrieveDataValue(snapshot: snapshot, field: "message") as? String ?? "Undefined"), at: 0)
 		callChangeHandler(.transaction)
 	}
 	ref.child("invoices/\(id!)").observe(.childAdded) { snapshot in
-		invoices.insert(Invoice(id: snapshot.key, time: retrieveDataValue(snapshot: snapshot, field: "time") as? String ?? "Undefined", status: retrieveDataValue(snapshot: snapshot, field: "status") as? String ?? "Undefined", from: retrieveDataValue(snapshot: snapshot, field: "from") as? String ?? "Undefined", to: retrieveDataValue(snapshot: snapshot, field: "to") as? String ?? "Undefined", amount: Double(retrieveDataValue(snapshot: snapshot, field: "amount") as? String ?? "0.0") ?? 0.0, message: retrieveDataValue(snapshot: snapshot, field: "message") as? String ?? "Undefined"), at: 0)
+		invoices.insert(Invoice(id: snapshot.key, time: retrieveDataValue(snapshot: snapshot, field: "time") as? String ?? "Undefined", status: retrieveDataValue(snapshot: snapshot, field: "status") as? String ?? "Undefined", from: retrieveDataValue(snapshot: snapshot, field: "from") as? String ?? "Undefined", to: retrieveDataValue(snapshot: snapshot, field: "to") as? String ?? "Undefined", amount: retrieveDataValue(snapshot: snapshot, field: "amount") as? Double ?? 0.0, message: retrieveDataValue(snapshot: snapshot, field: "message") as? String ?? "Undefined"), at: 0)
 		callChangeHandler(.invoice)
 		ref.child("invoices/\(id!)/\(snapshot.key)/status").observe(.value) { statusSnapshot in
 			guard let invoiceIndex = Invoice.id(snapshot.key) else { return }

@@ -148,7 +148,7 @@ class InvoiceViewController: UIViewController {
 					guard let userIndex = User.id(fromId) else { return }
 					let fromBalance = String(users[userIndex].balance + invoices[self.invoice].amount)
 					ref.child("users/\(fromId)/balance").setValue(fromBalance)
-					let autoId = ref.childByAutoId().key!
+					guard let autoId = ref.childByAutoId().key else { return }
 					let time = Date().format("MMM d, yyyy @ h:mm a")
 					ref.child("transactions/\(id!)/\(autoId)").setValue(["time": time, "from": id!, "to": fromId, "amount": String(invoices[self.invoice].amount), "balance": String(balance), "message": invoices[self.invoice].message])
 					ref.child("transactions/\(fromId)/\(autoId)").setValue(["time": time, "from": id!, "to": fromId, "amount": String(invoices[self.invoice].amount), "balance": fromBalance, "message": invoices[self.invoice].message])

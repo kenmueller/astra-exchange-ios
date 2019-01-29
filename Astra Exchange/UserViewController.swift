@@ -24,11 +24,11 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 			loadingView.isHidden = false
 			activityIndicator.startAnimating()
 			ref.child("users").observe(.childAdded) { snapshot in
-				users.append(User(id: snapshot.key, name: retrieveDataValue(snapshot: snapshot, field: "name") as? String ?? "Undefined", email: retrieveDataValue(snapshot: snapshot, field: "email") as? String ?? "Undefined", balance: Double(retrieveDataValue(snapshot: snapshot, field: "balance") as? String ?? "0.0") ?? 0.0))
+				users.append(User(id: snapshot.key, name: retrieveDataValue(snapshot: snapshot, field: "name") as? String ?? "Undefined", email: retrieveDataValue(snapshot: snapshot, field: "email") as? String ?? "Undefined", balance: retrieveDataValue(snapshot: snapshot, field: "balance") as? Double ?? 0.0))
 				callChangeHandler(.user)
 				ref.child("users/\(snapshot.key)/balance").observe(.value) { balanceSnapshot in
 					guard let userIndex = User.id(snapshot.key) else { return }
-					users[userIndex].balance = Double(balanceSnapshot.value as? String ?? "0.0") ?? 0.0
+					users[userIndex].balance = balanceSnapshot.value as? Double ?? 0.0
 					callChangeHandler(.user)
 				}
 			}
