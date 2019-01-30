@@ -75,37 +75,29 @@ class ConfirmViewController: UIViewController, UITextFieldDelegate {
 		if let sendMoneyVC = parent as? SendMoneyViewController, let message = messageTextField.text?.trim() {
 			loadingView.isHidden = false
 			activityIndicator.startAnimating()
-			let recipientId = users[sendMoneyVC.recipient!].id
-			ref.child("users/\(recipientId)/balance").observeSingleEvent(of: .value) { snapshot in
-				ref.child("users/\(id!)/balance").setValue(String(balance - sendMoneyVC.amount)) { error, reference in
-					if error == nil {
-						let recipientBalance = String(snapshot.value as? Double ?? 0.0 + sendMoneyVC.amount)
-						ref.child("users/\(recipientId)/balance").setValue(recipientBalance)
-						let autoId = ref.childByAutoId().key!
-						let time = Date().format("MMM d, yyyy @ h:mm a")
-						ref.child("transactions/\(id!)/\(autoId)").setValue(["time": time, "from": id!, "to": recipientId, "amount": String(sendMoneyVC.amount), "balance": String(balance), "message": message])
-						ref.child("transactions/\(recipientId)/\(autoId)").setValue(["time": time, "from": id!, "to": recipientId, "amount": String(sendMoneyVC.amount), "balance": recipientBalance, "message": message])
-						self.activityIndicator.stopAnimating()
-						self.loadingView.isHidden = true
-						UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
-							self.confirmView.transform = CGAffineTransform(translationX: 0, y: -self.view.bounds.height)
-							self.view.backgroundColor = .clear
-						}) { finished in
-							if finished {
-								self.view.removeFromSuperview()
-								sendMoneyVC.navigationController?.popViewController(animated: true)
-							}
+			ref.child("transactions/\(id!)").childByAutoId().setValue(["time": Date().format("MMM d, yyyy @ h:mm a"), "from": id!, "to": users[sendMoneyVC.recipient!].id, "amount": sendMoneyVC.amount, "balance": balance - sendMoneyVC.amount, "message": message]) { error, reference in
+				if error == nil {
+					self.activityIndicator.stopAnimating()
+					self.loadingView.isHidden = true
+					UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
+						self.confirmView.transform = CGAffineTransform(translationX: 0, y: -self.view.bounds.height)
+						self.view.backgroundColor = .clear
+					}) { finished in
+						if finished {
+							self.view.removeFromSuperview()
+							sendMoneyVC.navigationController?.popViewController(animated: true)
 						}
-					} else if let error = error {
-						self.activityIndicator.stopAnimating()
-						self.loadingView.isHidden = true
-						AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-						switch error.localizedDescription {
-						case "Network error (such as timeout, interrupted connection or unreachable host) has occurred.":
-							self.showAlert("No internet")
-						default:
-							self.showAlert("There was a problem sending money. Please try again.")
-						}
+					}
+				} else if let error = error {
+					self.activityIndicator.stopAnimating()
+					self.loadingView.isHidden = true
+					AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+					print("yo" + error.localizedDescription)
+					switch error.localizedDescription {
+					case "Network error (such as timeout, interrupted connection or unreachable host) has occurred.":
+						self.showAlert("No internet")
+					default:
+						self.showAlert("There was a problem sending money. Please try again.")
 					}
 				}
 			}

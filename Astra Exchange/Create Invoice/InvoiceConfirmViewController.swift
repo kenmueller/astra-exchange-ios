@@ -64,7 +64,7 @@ class InvoiceConfirmViewController: UIViewController, UITextFieldDelegate {
 		activityIndicator.startAnimating()
 		let recipientId = users[createInvoiceVC.recipient!].id
 		let autoId = ref.childByAutoId().key!
-		let newInvoice = ["time": Date().format("MMM d, yyyy @ h:mm a"), "status": "pending", "from": id!, "to": recipientId, "amount": String(createInvoiceVC.amount), "message": message]
+		let newInvoice: [String: Any] = ["time": Date().format("MMM d, yyyy @ h:mm a"), "status": "pending", "from": id!, "to": recipientId, "amount": createInvoiceVC.amount, "message": message]
 		ref.child("invoices/\(id!)/\(autoId)").setValue(newInvoice) { error, reference in
 			if error == nil {
 				ref.child("invoices/\(recipientId)/\(autoId)").setValue(newInvoice)

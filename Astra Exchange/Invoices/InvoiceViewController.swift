@@ -138,21 +138,12 @@ class InvoiceViewController: UIViewController {
 	
 	@IBAction func confirm() {
 		let status = willAccept ? "accepted" : "declined"
-		let invoiceId = invoices[invoice].id
-		ref.child("invoices/\(id!)/\(invoiceId)/status").setValue(status)
-		ref.child("invoices/\(invoices[invoice].from)/\(invoiceId)/status").setValue(status)
+		let currentInvoice = invoices[invoice]
+		ref.child("invoices/\(id!)/\(currentInvoice.id)/status").setValue(status)
+		ref.child("invoices/\(currentInvoice.from)/\(currentInvoice.id)/status").setValue(status)
 		if willAccept {
-			ref.child("users/\(id!)/balance").setValue(String(balance - invoices[invoice].amount)) { error, reference in
-				if error == nil {
-					let fromId = invoices[self.invoice].from
-					guard let userIndex = User.id(fromId) else { return }
-					let fromBalance = String(users[userIndex].balance + invoices[self.invoice].amount)
-					ref.child("users/\(fromId)/balance").setValue(fromBalance)
-					guard let autoId = ref.childByAutoId().key else { return }
-					let time = Date().format("MMM d, yyyy @ h:mm a")
-					ref.child("transactions/\(id!)/\(autoId)").setValue(["time": time, "from": id!, "to": fromId, "amount": String(invoices[self.invoice].amount), "balance": String(balance), "message": invoices[self.invoice].message])
-					ref.child("transactions/\(fromId)/\(autoId)").setValue(["time": time, "from": id!, "to": fromId, "amount": String(invoices[self.invoice].amount), "balance": fromBalance, "message": invoices[self.invoice].message])
-				} else if let error = error {
+			ref.child("transactions/\(id!)").childByAutoId().setValue(["time": Date().format("MMM d, yyyy @ h:mm a"), "from": id!, "to": currentInvoice.from, "amount": currentInvoice.amount, "balance": balance - currentInvoice.amount, "message": currentInvoice.message]) { error, reference in
+				if let error = error {
 					AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
 					switch error.localizedDescription {
 					case "Network error (such as timeout, interrupted connection or unreachable host) has occurred.":
