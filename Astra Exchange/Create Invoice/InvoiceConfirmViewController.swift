@@ -82,7 +82,6 @@ class InvoiceConfirmViewController: UIViewController, UITextFieldDelegate {
 			} else if let error = error {
 				self.activityIndicator.stopAnimating()
 				self.loadingView.isHidden = true
-				AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
 				switch error.localizedDescription {
 				case "Network error (such as timeout, interrupted connection or unreachable host) has occurred.":
 					self.showAlert("No internet")

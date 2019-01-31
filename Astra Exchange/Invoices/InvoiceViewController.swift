@@ -144,7 +144,6 @@ class InvoiceViewController: UIViewController {
 		if willAccept {
 			ref.child("transactions/\(id!)").childByAutoId().setValue(["time": Date().format("MMM d, yyyy @ h:mm a"), "from": id!, "to": currentInvoice.from, "amount": currentInvoice.amount, "balance": balance - currentInvoice.amount, "message": currentInvoice.message]) { error, reference in
 				if let error = error {
-					AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
 					switch error.localizedDescription {
 					case "Network error (such as timeout, interrupted connection or unreachable host) has occurred.":
 						self.showAlert("No internet")

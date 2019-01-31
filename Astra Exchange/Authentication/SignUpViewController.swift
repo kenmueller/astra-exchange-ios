@@ -88,7 +88,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 		Auth.auth().createUser(withEmail: emailText, password: passwordText) { authResult, error in
 			if error == nil {
 				let userId = authResult!.user.uid
-				ref.child("users/\(userId)").setValue(["name": nameText, "email": emailText, "balance": "0.0"])
+				ref.child("users/\(userId)").setValue(["name": nameText, "email": emailText, "balance": 0])
 				id = userId
 				name = nameText
 				saveLogin(email: emailText, password: passwordText)
@@ -97,7 +97,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 				self.performSegue(withIdentifier: "signUp", sender: self)
 			} else if let error = error {
 				self.hideActivityIndicator()
-				AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
 				switch error.localizedDescription {
 				case "Network error (such as timeout, interrupted connection or unreachable host) has occurred.":
 					self.showAlert("No internet")

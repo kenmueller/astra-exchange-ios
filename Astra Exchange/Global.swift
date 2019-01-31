@@ -1,6 +1,7 @@
 import Foundation
 import CoreData
 import Firebase
+import AudioToolbox
 
 var ref: DatabaseReference! = Database.database().reference()
 var changeHandler: ((Change) -> Void)?
@@ -165,6 +166,7 @@ extension UIViewController {
 	}
 	
 	func showAlert(_ message: String) {
+		AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
 		showAlert("Error", message)
 	}
 }
