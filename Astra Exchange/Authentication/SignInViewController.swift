@@ -60,7 +60,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 				id = user?.user.uid
 				ref.child("users/\(id!)/name").observeSingleEvent(of: .value) { snapshot in
 					name = snapshot.value as? String
-					email = emailText
 					saveLogin(email: emailText, password: passwordText)
 					loadData()
 					self.hideActivityIndicator()
