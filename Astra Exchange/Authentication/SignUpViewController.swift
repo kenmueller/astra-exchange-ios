@@ -97,8 +97,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 			if error == nil {
 				id = authResult?.user.uid
 				ref.child("users/\(id!)").setValue(["name": nameText, "email": emailText, "balance": 0, "pin": self.generatePin()])
-				ref.child("companies/\(id!)").setValue(["industry": "Unspecified", "name": "\(nameText)'s Company", "pv": 0])
-				ref.child("companies/\(id!)/products").childByAutoId().setValue(["name": "\(nameText)'s First Product", "quantity": 10, "cost": 1])
 				name = nameText
 				saveLogin(email: emailText, password: passwordText)
 				loadData()
