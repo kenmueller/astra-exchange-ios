@@ -77,6 +77,27 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 		}
 	}
 	
+	@IBAction func forgotPassword() {
+		let alertController = UIAlertController(title: "Forgot Password", message: "Send a password reset email", preferredStyle: .alert)
+		alertController.addTextField { textField in
+			textField.placeholder = "Email"
+			textField.keyboardType = .emailAddress
+			textField.text = self.emailTextField.text?.trim()
+		}
+		let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		let send = UIAlertAction(title: "Send", style: .default) { action in
+			guard let text = alertController.textFields?[0].text?.trim() else { return }
+			Auth.auth().sendPasswordReset(withEmail: text) { error in
+				if let error = error {
+					self.showAlert(error.localizedDescription)
+				}
+			}
+		}
+		alertController.addAction(cancel)
+		alertController.addAction(send)
+		present(alertController, animated: true, completion: nil)
+	}
+	
 	func showActivityIndicator() {
 		signInButton.isEnabled = false
 		signInButton.setTitle(nil, for: .normal)

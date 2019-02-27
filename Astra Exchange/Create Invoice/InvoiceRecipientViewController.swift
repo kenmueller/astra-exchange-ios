@@ -67,11 +67,7 @@ class InvoiceRecipientViewController: UIViewController, UIPickerViewDataSource, 
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-		if let recipientName = recipients[row]?.name {
-			return recipientName
-		} else {
-			return "Select User"
-		}
+		return recipients[row]?.name ?? "Select User"
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
