@@ -23,7 +23,9 @@ class TransactionHistoryViewController: UIViewController, UITableViewDataSource,
 	}
 	
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return transactions[section].from == id ? "OUTGOING" : "INCOMING"
+		let from = transactions[section].from
+		let card = Card.id(from)
+		return card == nil ? from == id ? "OUTGOING" : "INCOMING" : cards[card!].name
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,7 +36,7 @@ class TransactionHistoryViewController: UIViewController, UITableViewDataSource,
 		let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 		let element = transactions[indexPath.section]
 		cell.textLabel?.text = element.time
-		cell.detailTextLabel?.text = element.from == id ? "-\(element.amount)" : "+\(element.amount)"
+		cell.detailTextLabel?.text = "\(element.from == id ? "-" : "+")\(element.amount)"
 		return cell
 	}
 	

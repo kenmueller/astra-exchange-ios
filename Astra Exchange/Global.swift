@@ -10,6 +10,7 @@ var id: String?
 var name: String?
 var email: String?
 var balance = 0.0
+var cards = [Card]()
 var users = [User]()
 var transactions = [Transaction]()
 var invoices = [Invoice]()
@@ -77,12 +78,27 @@ struct Invoice {
 	}
 }
 
+struct Card {
+	let id: String
+	let name: String
+	
+	static func id(_ t: String) -> Int? {
+		for i in 0..<cards.count {
+			if cards[i].id == t {
+				return i
+			}
+		}
+		return nil
+	}
+}
+
 enum Change {
 	case balance
 	case user
 	case transaction
 	case invoice
 	case invoiceStatus
+	case card
 }
 
 func loadData() {
@@ -90,9 +106,19 @@ func loadData() {
 		balance = snapshot.value as? Double ?? 0.0
 		callChangeHandler(.balance)
 	}
+	ref.child("users/\(id!)/cards").observe(.childAdded) { snapshot in
+		cards.append(Card(id: snapshot.key, name: snapshot.value as? String ?? "Debit Card"))
+		callChangeHandler(.card)
+	}
 	ref.child("transactions/\(id!)").observe(.childAdded) { snapshot in
-		transactions.insert(Transaction(id: snapshot.key, time: retrieveDataValue(snapshot: snapshot, field: "time") as? String ?? "Undefined", from: retrieveDataValue(snapshot: snapshot, field: "from") as? String ?? "Undefined", to: retrieveDataValue(snapshot: snapshot, field: "to") as? String ?? "Undefined", amount: retrieveDataValue(snapshot: snapshot, field: "amount") as? Double ?? 0.0, balance: retrieveDataValue(snapshot: snapshot, field: "balance") as? Double ?? 0.0, message: retrieveDataValue(snapshot: snapshot, field: "message") as? String ?? "Undefined"), at: 0)
+		transactions.insert(transactionFromSnapshot(snapshot), at: 0)
 		callChangeHandler(.transaction)
+	}
+	for card in cards {
+		ref.child("transactions/\(card.id)").observe(.childAdded) { snapshot in
+			transactions.insert(transactionFromSnapshot(snapshot), at: 0)
+			callChangeHandler(.transaction)
+		}
 	}
 	ref.child("invoices/\(id!)").observe(.childAdded) { snapshot in
 		invoices.insert(Invoice(id: snapshot.key, time: retrieveDataValue(snapshot: snapshot, field: "time") as? String ?? "Undefined", status: retrieveDataValue(snapshot: snapshot, field: "status") as? String ?? "Undefined", from: retrieveDataValue(snapshot: snapshot, field: "from") as? String ?? "Undefined", to: retrieveDataValue(snapshot: snapshot, field: "to") as? String ?? "Undefined", amount: retrieveDataValue(snapshot: snapshot, field: "amount") as? Double ?? 0.0, message: retrieveDataValue(snapshot: snapshot, field: "message") as? String ?? "Undefined"), at: 0)
@@ -117,6 +143,10 @@ func callChangeHandler(_ change: Change) {
 
 func updateChangeHandler(_ cH: ((Change) -> Void)?) {
 	changeHandler = cH
+}
+
+func transactionFromSnapshot(_ snapshot: DataSnapshot) -> Transaction {
+	return Transaction(id: snapshot.key, time: retrieveDataValue(snapshot: snapshot, field: "time") as? String ?? "Undefined", from: retrieveDataValue(snapshot: snapshot, field: "from") as? String ?? "Undefined", to: retrieveDataValue(snapshot: snapshot, field: "to") as? String ?? "Undefined", amount: retrieveDataValue(snapshot: snapshot, field: "amount") as? Double ?? 0.0, balance: retrieveDataValue(snapshot: snapshot, field: "balance") as? Double ?? 0.0, message: retrieveDataValue(snapshot: snapshot, field: "message") as? String ?? "Undefined")
 }
 
 func deleteLogin() {
