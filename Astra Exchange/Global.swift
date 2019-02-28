@@ -177,6 +177,10 @@ func saveLogin(email e: String, password p: String) {
 	} catch {}
 }
 
+func vibrate() {
+	AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+}
+
 extension UIViewController {
 	func hideKeyboard() {
 		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -196,7 +200,7 @@ extension UIViewController {
 	}
 	
 	func showAlert(_ message: String) {
-		AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+		vibrate()
 		showAlert("Error", message)
 	}
 }

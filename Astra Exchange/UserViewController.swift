@@ -15,7 +15,7 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	
 	let actions = [
 		[Action(name: "Send Money", action: #selector(sendMoney)), Action(name: "Create Invoice", action: #selector(createInvoice))],
-		[Action(name: "Transaction History", action: #selector(transactionHistory)), Action(name: "Invoices", action: #selector(showInvoices))]
+		[Action(name: "Your Cards", action: #selector(showCards)), Action(name: "Transaction History", action: #selector(transactionHistory)), Action(name: "Invoices", action: #selector(showInvoices))]
 	]
 	
 	override func viewDidLoad() {
@@ -120,6 +120,17 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	
 	@objc func createInvoice() {
 		performSegue(withIdentifier: "createInvoice", sender: self)
+	}
+	
+	@objc func showCards() {
+		if let cardsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "cards") as? CardsViewController {
+			cardsVC.card = cards[0]
+			addChild(cardsVC)
+			cardsVC.view.frame = view.frame
+			view.addSubview(cardsVC.view)
+			cardsVC.didMove(toParent: self)
+			navigationController?.setNavigationBarHidden(true, animated: true)
+		}
 	}
 	
 	@objc func transactionHistory() {
