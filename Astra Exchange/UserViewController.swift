@@ -14,7 +14,7 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	}
 	
 	let actions = [
-		[Action(name: "Send Money", action: #selector(sendMoney)), Action(name: "Create Invoice", action: #selector(createInvoice))],
+		[Action(name: "Send Money", action: #selector(sendMoney)), Action(name: "Create Invoice", action: #selector(createInvoice)), Action(name: "Quick Pay", action: #selector(quickPay))],
 		[Action(name: "Your Cards", action: #selector(showCards)), Action(name: "Transaction History", action: #selector(transactionHistory)), Action(name: "Invoices", action: #selector(showInvoices))]
 	]
 	
@@ -120,6 +120,10 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	
 	@objc func createInvoice() {
 		performSegue(withIdentifier: "createInvoice", sender: self)
+	}
+	
+	@objc func quickPay() {
+		
 	}
 	
 	@objc func showCards() {
