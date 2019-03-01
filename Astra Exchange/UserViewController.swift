@@ -123,7 +123,7 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	}
 	
 	@objc func quickPay() {
-		
+		performSegue(withIdentifier: "quickPay", sender: self)
 	}
 	
 	@objc func showCards() {

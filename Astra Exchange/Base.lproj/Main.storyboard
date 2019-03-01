@@ -186,6 +186,7 @@
                         <segue destination="yaM-b6-CXP" kind="show" identifier="transactionHistory" id="q1D-jB-nVN"/>
                         <segue destination="Fgu-Yq-s6I" kind="show" identifier="invoices" id="3Xk-YQ-pLf"/>
                         <segue destination="v1q-8J-zEu" kind="show" identifier="signOut" id="nAF-T6-eZw"/>
+                        <segue destination="u8h-0D-MNF" kind="show" identifier="quickPay" id="UBI-P7-MfD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -1154,10 +1155,10 @@
             </objects>
             <point key="canvasLocation" x="2859" y="133"/>
         </scene>
-        <!--View Controller-->
+        <!--Scan QR Code-->
         <scene sceneID="JHJ-ER-ty6">
             <objects>
-                <viewController id="u8h-0D-MNF" sceneMemberID="viewController">
+                <viewController title="Scan QR Code" id="u8h-0D-MNF" customClass="ScannerViewController" customModule="Astra_Exchange" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e6g-xF-AcP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1275,7 +1276,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOU-Iv-RYD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1500" y="-545"/>
+            <point key="canvasLocation" x="2180" y="-544"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="Kws-vx-bUV">
@@ -3100,7 +3101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jnX-PG-85V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2365" y="-544"/>
+            <point key="canvasLocation" x="1500" y="-544"/>
         </scene>
     </scenes>
     <resources>
