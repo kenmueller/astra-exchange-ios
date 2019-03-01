@@ -14,8 +14,8 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	}
 	
 	let actions = [
-		[Action(name: "Send Money", action: #selector(sendMoney)), Action(name: "Create Invoice", action: #selector(createInvoice)), Action(name: "Quick Pay", action: #selector(quickPay))],
-		[Action(name: "Your Cards", action: #selector(showCards)), Action(name: "Transaction History", action: #selector(transactionHistory)), Action(name: "Invoices", action: #selector(showInvoices))]
+		[Action(name: "Send Money", action: #selector(sendMoney)), Action(name: "Create Invoice", action: #selector(createInvoice)), Action(name: "Quick Pay", action: #selector(quickPay)), Action(name: "Pay with Card", action: #selector(showCards))],
+		[Action(name: "Transaction History", action: #selector(transactionHistory)), Action(name: "Invoices", action: #selector(showInvoices))]
 	]
 	
 	override func viewDidLoad() {
@@ -181,7 +181,7 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 				UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
 					cell.balanceLabel.transform = CGAffineTransform(scaleX: 2, y: 2)
 					cell.balanceLabel.alpha = 0.4
-					cell.balanceLabel.text = String(balance)
+					cell.balanceLabel.text = String(balance.round2Places())
 				}) { finished in
 					if finished {
 						UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
@@ -201,7 +201,7 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 								self.actionsTableView.reloadData()
 							}
 						}
-						cell.balanceLabel.text = String(balance)
+						cell.balanceLabel.text = String(balance.round2Places())
 					}
 				}
 				startup = false
@@ -213,7 +213,7 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 						self.actionsTableView.reloadData()
 					}
 				}
-				cell.balanceLabel.text = String(balance)
+				cell.balanceLabel.text = String(balance.round2Places())
 			}
 			return cell
 		} else {

@@ -232,3 +232,9 @@ extension Date {
 		return dateFormatter.string(from: self)
 	}
 }
+
+extension Double {
+	func round2Places() -> Double {
+		return Double((100 * self).rounded() / 100)
+	}
+}
