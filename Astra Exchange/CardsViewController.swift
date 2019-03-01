@@ -9,16 +9,17 @@ class CardsViewController: UIViewController {
 	
 	var card: Card?
 	var periodTimer: Timer!
-	var periods = 0
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		waitingImageViewWidthConstraint.constant = 0
 		cardView.layer.borderWidth = 0.5
 		cardView.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+		nameLabel.text = card?.name
 		loadQRCode()
 		waitForPayment()
-		cardView.transform = CGAffineTransform(scaleX: 0, y: -view.bounds.height)
+		(parent as? UserViewController)?.navigationController?.setNavigationBarHidden(true, animated: true)
+		cardView.transform = CGAffineTransform(translationX: view.bounds.width, y: 0)
 		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
 			self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
 			self.cardView.transform = .identity
@@ -52,10 +53,10 @@ class CardsViewController: UIViewController {
 	}
 	
 	func waitForPayment() {
-		periods = 0
+		var periods = 0
 		periodTimer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { _ in
-			self.waitingLabel.text = "Waiting for payment\(repeatElement(".", count: self.periods))"
-			self.periods = self.periods == 3 ? 0 : self.periods + 1
+			self.waitingLabel.text = "Waiting for payment\(repeatElement(".", count: periods).joined())"
+			periods = (periods + 1) % 4
 		}
 	}
 	
@@ -71,12 +72,11 @@ class CardsViewController: UIViewController {
 	
 	@IBAction func hideAnimation() {
 		UIView.animate(withDuration: 0.2, animations: {
-			self.cardView.transform = CGAffineTransform(scaleX: 0, y: -self.view.bounds.height)
+			self.cardView.transform = CGAffineTransform(translationX: self.view.bounds.width, y: 0)
 			self.view.backgroundColor = .clear
 		}) { finished in
 			if finished {
-				guard let userVC = self.parent as? UserViewController else { return }
-				userVC.navigationController?.setNavigationBarHidden(false, animated: true)
+				(self.parent as? UserViewController)?.navigationController?.setNavigationBarHidden(false, animated: true)
 				self.view.removeFromSuperview()
 			}
 		}

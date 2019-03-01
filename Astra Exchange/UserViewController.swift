@@ -129,7 +129,6 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 			cardsVC.view.frame = view.frame
 			view.addSubview(cardsVC.view)
 			cardsVC.didMove(toParent: self)
-			navigationController?.setNavigationBarHidden(true, animated: true)
 		}
 	}
 	
