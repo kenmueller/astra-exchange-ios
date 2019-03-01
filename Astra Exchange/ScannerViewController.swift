@@ -2,77 +2,61 @@ import UIKit
 import AVFoundation
 
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
-	var captureSession: AVCaptureSession!
-	var previewLayer: AVCaptureVideoPreviewLayer!
+	var captureSession = AVCaptureSession()
+	var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+	var qrCodeFrameView: UIView?
+	let supportedCodeTypes = [AVMetadataObject.ObjectType.upce, AVMetadataObject.ObjectType.code39, AVMetadataObject.ObjectType.code39Mod43, AVMetadataObject.ObjectType.code93, AVMetadataObject.ObjectType.code128, AVMetadataObject.ObjectType.ean8, AVMetadataObject.ObjectType.ean13, AVMetadataObject.ObjectType.aztec, AVMetadataObject.ObjectType.pdf417, AVMetadataObject.ObjectType.itf14, AVMetadataObject.ObjectType.dataMatrix, AVMetadataObject.ObjectType.interleaved2of5, AVMetadataObject.ObjectType.qr]
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		captureSession = AVCaptureSession()
-		guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
-		let videoInput: AVCaptureDeviceInput
-		do { videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice) } catch { return }
-		let metadataOutput = AVCaptureMetadataOutput()
-		if captureSession.canAddInput(videoInput) && captureSession.canAddOutput(metadataOutput) {
-			captureSession.addInput(videoInput)
-			captureSession.addOutput(metadataOutput)
-			metadataOutput.setMetadataObjectsDelegate(self, queue: .main)
-			metadataOutput.metadataObjectTypes = [.qr]
-			previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-			previewLayer.frame = view.layer.bounds
-			previewLayer.videoGravity = .resizeAspectFill
-			view.layer.addSublayer(previewLayer)
-			captureSession.startRunning()
-		} else {
-			failed()
+		let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
+		guard let captureDevice = deviceDiscoverySession.devices.first else { return }
+		do {
+			let input = try AVCaptureDeviceInput(device: captureDevice)
+			captureSession.addInput(input)
+			let captureMetadataOutput = AVCaptureMetadataOutput()
+			captureSession.addOutput(captureMetadataOutput)
+			captureMetadataOutput.setMetadataObjectsDelegate(self, queue: .main)
+			captureMetadataOutput.metadataObjectTypes = supportedCodeTypes
+		} catch {
+			navigationController?.popViewController(animated: true)
 		}
-	}
-	
-	func failed() {
-		let alertController = UIAlertController(title: "Scanning not supported", message: "", preferredStyle: .alert)
-		alertController.addAction(UIAlertAction(title: "OK", style: .default) { action in
-			self.navigationController?.popViewController(animated: true)
-		})
-		present(alertController, animated: true)
-		captureSession = nil
-	}
-	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		if !(captureSession?.isRunning ?? false) {
-			captureSession.startRunning()
-		}
-	}
-	
-	override func viewWillDisappear(_ animated: Bool) {
-		super.viewWillDisappear(animated)
-		if captureSession?.isRunning ?? false {
-			captureSession.stopRunning()
+		videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+		videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+		videoPreviewLayer?.frame = view.layer.bounds
+		view.layer.addSublayer(videoPreviewLayer!)
+		captureSession.startRunning()
+		qrCodeFrameView = UIView()
+		if let qrCodeFrameView = qrCodeFrameView {
+			qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
+			qrCodeFrameView.layer.borderWidth = 2
+			view.addSubview(qrCodeFrameView)
+			view.bringSubviewToFront(qrCodeFrameView)
 		}
 	}
 	
 	func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-		captureSession.stopRunning()
-		if let metadataObject = metadataObjects.first {
-			guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject, let stringValue = readableObject.stringValue else { return }
-			vibrate()
-			if let quickPayVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "quickPay") as? QuickPayViewController, let userIndex = User.id(stringValue) {
-				quickPayVC.user = users[userIndex]
-				addChild(quickPayVC)
-				quickPayVC.view.frame = view.frame
-				view.addSubview(quickPayVC.view)
-				quickPayVC.didMove(toParent: self)
-			} else {
-				showAlert("Invalid user")
+		if metadataObjects.count == 0 {
+			qrCodeFrameView?.frame = .zero
+		} else {
+			let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
+			if supportedCodeTypes.contains(metadataObj.type) {
+				let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
+				qrCodeFrameView?.frame = barCodeObject!.bounds
+				if let stringValue = metadataObj.stringValue {
+					if let quickPayVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "quickPay") as? QuickPayViewController, let userIndex = User.id(stringValue) {
+						vibrate()
+						navigationController?.popViewController(animated: true)
+						quickPayVC.user = users[userIndex]
+						addChild(quickPayVC)
+						quickPayVC.view.frame = view.frame
+						view.addSubview(quickPayVC.view)
+						quickPayVC.didMove(toParent: self)
+					} else {
+						showAlert("Invalid user")
+					}
+				}
 			}
 		}
-		dismiss(animated: true)
-	}
-	
-	override var prefersStatusBarHidden: Bool {
-		return true
-	}
-	
-	override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-		return .portrait
 	}
 }
