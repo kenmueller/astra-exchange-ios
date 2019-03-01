@@ -80,6 +80,15 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		actionsTableView.reloadData()
 	}
 	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		guard quickPayUser != nil, let quickPayVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "quickPay") as? QuickPayViewController else { return }
+		addChild(quickPayVC)
+		quickPayVC.view.frame = view.frame
+		view.addSubview(quickPayVC.view)
+		quickPayVC.didMove(toParent: self)
+	}
+	
 	func showHomeVC() {
 		performSegue(withIdentifier: "home", sender: self)
 	}

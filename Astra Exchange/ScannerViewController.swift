@@ -44,14 +44,10 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
 				let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
 				qrCodeFrameView?.frame = barCodeObject!.bounds
 				if let stringValue = metadataObj.stringValue {
-					if let quickPayVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "quickPay") as? QuickPayViewController, let userIndex = User.id(stringValue) {
+					if let userIndex = User.id(stringValue) {
 						vibrate()
+						quickPayUser = users[userIndex]
 						navigationController?.popViewController(animated: true)
-						quickPayVC.user = users[userIndex]
-						addChild(quickPayVC)
-						quickPayVC.view.frame = view.frame
-						view.addSubview(quickPayVC.view)
-						quickPayVC.didMove(toParent: self)
 					} else {
 						showAlert("Invalid user")
 					}

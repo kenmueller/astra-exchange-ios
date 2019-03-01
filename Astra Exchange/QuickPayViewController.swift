@@ -14,14 +14,13 @@ class QuickPayViewController: UIViewController {
 	@IBOutlet weak var remainingBalanceTextField: UITextField!
 	@IBOutlet weak var remainingBalanceBarView: UIView!
 	
-	var user: User?
 	var amount = 0.0
 	var valid = true
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		titleBar.roundCorners(corners: [.topLeft, .topRight], radius: 10)
-		recipientLabel.text = user?.name
+		recipientLabel.text = quickPayUser?.name
 		maxLabel.text = "MAX: \(balance)"
 		disable()
 		quickPayView.transform = CGAffineTransform(scaleX: 0, y: 0)
@@ -55,13 +54,14 @@ class QuickPayViewController: UIViewController {
 	}
 	
 	@IBAction func send() {
-		ref.child("transactions/\(id!)").childByAutoId().setValue(["time": Date().format("MMM d, yyyy @ h:mm a"), "from": id!, "to": user!.id, "amount": amount, "balance": balance - amount, "message": ""]) { error, reference in
+		ref.child("transactions/\(id!)").childByAutoId().setValue(["time": Date().format("MMM d, yyyy @ h:mm a"), "from": id!, "to": quickPayUser!.id, "amount": amount, "balance": balance - amount, "message": ""]) { error, reference in
 			if error == nil {
 				UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
 					self.quickPayView.transform = CGAffineTransform(translationX: 0, y: -self.view.bounds.height)
 					self.view.backgroundColor = .clear
 				}) { finished in
 					if finished {
+						quickPayUser = nil
 						self.view.removeFromSuperview()
 					}
 				}
@@ -82,6 +82,7 @@ class QuickPayViewController: UIViewController {
 			self.view.backgroundColor = .clear
 		}) { finished in
 			if finished {
+				quickPayUser = nil
 				self.view.removeFromSuperview()
 			}
 		}

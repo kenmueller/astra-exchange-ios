@@ -14,6 +14,7 @@ var cards = [Card]()
 var users = [User]()
 var transactions = [Transaction]()
 var invoices = [Invoice]()
+var quickPayUser: User?
 
 struct User {
 	let id: String
