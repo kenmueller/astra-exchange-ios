@@ -25,6 +25,7 @@
 		4D9804812229C5BA00CC57E3 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9804802229C5BA00CC57E3 /* ScannerViewController.swift */; };
 		4DBAA59A21EE733500F26913 /* SendMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBAA59921EE733500F26913 /* SendMoneyViewController.swift */; };
 		4DBAA59C21EE9E7000F26913 /* RecipientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBAA59B21EE9E7000F26913 /* RecipientViewController.swift */; };
+		4DCA13B5222A016400AA3E02 /* YourIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA13B4222A016400AA3E02 /* YourIDViewController.swift */; };
 		4DCAA3BE21F5A68300047426 /* UnpaidInvoicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAA3BD21F5A68300047426 /* UnpaidInvoicesViewController.swift */; };
 		4DD190F121ED6B4E003EE93A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD190F021ED6B4E003EE93A /* SignInViewController.swift */; };
 		4DD190F321ED6C43003EE93A /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD190F221ED6C43003EE93A /* Global.swift */; };
@@ -97,6 +98,7 @@
 		4D9804802229C5BA00CC57E3 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		4DBAA59921EE733500F26913 /* SendMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyViewController.swift; sourceTree = "<group>"; };
 		4DBAA59B21EE9E7000F26913 /* RecipientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipientViewController.swift; sourceTree = "<group>"; };
+		4DCA13B4222A016400AA3E02 /* YourIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourIDViewController.swift; sourceTree = "<group>"; };
 		4DCAA3BD21F5A68300047426 /* UnpaidInvoicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnpaidInvoicesViewController.swift; sourceTree = "<group>"; };
 		4DD190F021ED6B4E003EE93A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		4DD190F221ED6C43003EE93A /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				4D9804802229C5BA00CC57E3 /* ScannerViewController.swift */,
 				4D98047E2229BF9300CC57E3 /* QuickPayViewController.swift */,
 				4D3F103422283FAF00DB4D2F /* CardsViewController.swift */,
+				4DCA13B4222A016400AA3E02 /* YourIDViewController.swift */,
 				4DDF183521F1240300A61BED /* Authentication */,
 				4DDF183621F1243200A61BED /* Send Money */,
 				4DDF183721F1245F00A61BED /* Create Invoice */,
@@ -526,6 +529,7 @@
 				4D279DD721ED5FBC00D09DDA /* UserViewController.swift in Sources */,
 				4DDF183421F1081500A61BED /* CreateInvoiceViewController.swift in Sources */,
 				4DD190F321ED6C43003EE93A /* Global.swift in Sources */,
+				4DCA13B5222A016400AA3E02 /* YourIDViewController.swift in Sources */,
 				4D9804812229C5BA00CC57E3 /* ScannerViewController.swift in Sources */,
 				4D279DD521ED5FBC00D09DDA /* AppDelegate.swift in Sources */,
 				4DF9481621F04D650086A1FC /* TransactionViewController.swift in Sources */,

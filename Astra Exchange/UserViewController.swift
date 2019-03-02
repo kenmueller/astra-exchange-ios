@@ -14,8 +14,7 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	}
 	
 	let actions = [
-		[Action(name: "Send Money", action: #selector(sendMoney)), Action(name: "Create Invoice", action: #selector(createInvoice)), Action(name: "Quick Pay", action: #selector(quickPay)), Action(name: "Pay with Card", action: #selector(showCards))],
-		[Action(name: "Transaction History", action: #selector(transactionHistory)), Action(name: "Invoices", action: #selector(showInvoices))]
+		[Action(name: "Send Money", action: #selector(sendMoney)), Action(name: "Create Invoice", action: #selector(createInvoice)), Action(name: "Quick Pay", action: #selector(quickPay)), Action(name: "Pay with Card", action: #selector(showCards))], [Action(name: "Your ID", action: #selector(yourId)), Action(name: "Transaction History", action: #selector(transactionHistory)), Action(name: "Invoices", action: #selector(showInvoices))]
 	]
 	
 	override func viewDidLoad() {
@@ -142,6 +141,15 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 			cardsVC.view.frame = view.frame
 			view.addSubview(cardsVC.view)
 			cardsVC.didMove(toParent: self)
+		}
+	}
+	
+	@objc func yourId() {
+		if let yourIdVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "yourID") as? YourIDViewController {
+			addChild(yourIdVC)
+			yourIdVC.view.frame = view.frame
+			view.addSubview(yourIdVC.view)
+			yourIdVC.didMove(toParent: self)
 		}
 	}
 	
