@@ -34,6 +34,7 @@ class QuickPayViewController: UIViewController {
 		super.viewWillAppear(animated)
 		updateChangeHandler { change in
 			if change == .balance {
+				(self.parent as? UserViewController)?.actionsTableView.reloadData()
 				self.amountChanged()
 				UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
 					self.maxLabel.transform = CGAffineTransform(scaleX: 2, y: 2)

@@ -48,6 +48,8 @@ class YourIDViewController: UIViewController {
 						}
 					}
 				}
+			} else if change == .balance {
+				(self.parent as? UserViewController)?.actionsTableView.reloadData()
 			}
 		}
 	}
