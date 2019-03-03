@@ -1220,7 +1220,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting for payment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ja8-pD-SB6">
-                                        <rect key="frame" x="74" y="462.99999999999994" width="240" height="28"/>
+                                        <rect key="frame" x="74" y="462.99999999999994" width="206" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="qCI-lD-gCb"/>
                                         </constraints>
@@ -1231,17 +1231,19 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="mXh-LK-eqK" firstAttribute="centerX" secondItem="t1d-Iq-4hO" secondAttribute="centerX" id="0YD-Qc-Txb"/>
                                     <constraint firstItem="IRc-Dr-DSg" firstAttribute="leading" secondItem="t1d-Iq-4hO" secondAttribute="leading" constant="20" id="2Sd-Sw-yNN"/>
-                                    <constraint firstAttribute="trailing" secondItem="ja8-pD-SB6" secondAttribute="trailing" constant="40" id="Cdi-e6-a9b"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ja8-pD-SB6" secondAttribute="trailing" constant="40" id="Cdi-e6-a9b"/>
                                     <constraint firstItem="IRc-Dr-DSg" firstAttribute="top" secondItem="t1d-Iq-4hO" secondAttribute="top" constant="15" id="D5F-pJ-0Ou"/>
                                     <constraint firstItem="MPj-uP-PYj" firstAttribute="leading" secondItem="t1d-Iq-4hO" secondAttribute="leading" constant="40" id="JKD-Mp-tew"/>
                                     <constraint firstAttribute="trailing" secondItem="CY0-Ct-aLE" secondAttribute="trailing" constant="40" id="N11-fP-d68"/>
                                     <constraint firstItem="ja8-pD-SB6" firstAttribute="top" secondItem="CY0-Ct-aLE" secondAttribute="bottom" constant="40" id="Nev-Ma-Ohs"/>
+                                    <constraint firstItem="ja8-pD-SB6" firstAttribute="centerX" secondItem="t1d-Iq-4hO" secondAttribute="centerX" id="Nqt-Fb-bo6"/>
                                     <constraint firstItem="CY0-Ct-aLE" firstAttribute="leading" secondItem="t1d-Iq-4hO" secondAttribute="leading" constant="40" id="T72-dC-R5V"/>
                                     <constraint firstItem="ja8-pD-SB6" firstAttribute="leading" secondItem="MPj-uP-PYj" secondAttribute="trailing" constant="6" id="b7a-Ra-REe"/>
                                     <constraint firstItem="CY0-Ct-aLE" firstAttribute="top" secondItem="mXh-LK-eqK" secondAttribute="bottom" constant="40" id="eXz-bs-UJl"/>
                                     <constraint firstItem="mXh-LK-eqK" firstAttribute="top" secondItem="t1d-Iq-4hO" secondAttribute="top" constant="40" id="gyM-TC-Soc"/>
-                                    <constraint firstAttribute="trailing" secondItem="mXh-LK-eqK" secondAttribute="trailing" constant="40" id="nMf-RE-BRZ"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mXh-LK-eqK" secondAttribute="trailing" constant="40" id="nMf-RE-BRZ"/>
                                     <constraint firstAttribute="bottom" secondItem="MPj-uP-PYj" secondAttribute="bottom" constant="40" id="obW-JG-1Vz"/>
                                     <constraint firstAttribute="width" secondItem="t1d-Iq-4hO" secondAttribute="height" multiplier="1:1.5" id="sZI-C4-aWY"/>
                                     <constraint firstAttribute="bottom" secondItem="ja8-pD-SB6" secondAttribute="bottom" constant="40" id="sgY-hJ-iWV"/>
@@ -3153,7 +3155,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting for payment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wsr-50-l8F">
-                                        <rect key="frame" x="74" y="462.99999999999994" width="240" height="28"/>
+                                        <rect key="frame" x="74" y="462.99999999999994" width="206" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="Uz1-Ci-HSY"/>
                                         </constraints>
@@ -3166,18 +3168,20 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="5N7-pb-Ukc" secondAttribute="bottom" constant="40" id="3xe-jd-jas"/>
                                     <constraint firstItem="Wsr-50-l8F" firstAttribute="top" secondItem="TD8-To-wtO" secondAttribute="bottom" constant="40" id="7Dg-So-WG2"/>
+                                    <constraint firstItem="Wsr-50-l8F" firstAttribute="centerX" secondItem="LRr-fM-dfh" secondAttribute="centerX" id="D91-GL-0dy"/>
                                     <constraint firstItem="TD8-To-wtO" firstAttribute="top" secondItem="4gm-mH-YDK" secondAttribute="bottom" constant="40" id="Hp8-30-gc6"/>
                                     <constraint firstAttribute="width" secondItem="LRr-fM-dfh" secondAttribute="height" multiplier="1:1.5" id="JKo-X5-loB"/>
                                     <constraint firstItem="AUw-QR-CbT" firstAttribute="top" secondItem="LRr-fM-dfh" secondAttribute="top" constant="15" id="L7T-yF-baP"/>
+                                    <constraint firstItem="4gm-mH-YDK" firstAttribute="centerX" secondItem="LRr-fM-dfh" secondAttribute="centerX" id="MbD-A0-T5Z"/>
                                     <constraint firstAttribute="bottom" secondItem="Wsr-50-l8F" secondAttribute="bottom" constant="40" id="NpB-cC-oUW"/>
                                     <constraint firstItem="Wsr-50-l8F" firstAttribute="leading" secondItem="5N7-pb-Ukc" secondAttribute="trailing" constant="6" id="P9e-7b-iLL"/>
                                     <constraint firstItem="5N7-pb-Ukc" firstAttribute="leading" secondItem="LRr-fM-dfh" secondAttribute="leading" constant="40" id="eAk-Pr-AHL"/>
                                     <constraint firstItem="TD8-To-wtO" firstAttribute="leading" secondItem="LRr-fM-dfh" secondAttribute="leading" constant="40" id="ffB-rQ-C83"/>
-                                    <constraint firstAttribute="trailing" secondItem="4gm-mH-YDK" secondAttribute="trailing" constant="40" id="hgW-ks-Cc5"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4gm-mH-YDK" secondAttribute="trailing" constant="40" id="hgW-ks-Cc5"/>
                                     <constraint firstItem="4gm-mH-YDK" firstAttribute="top" secondItem="LRr-fM-dfh" secondAttribute="top" constant="40" id="lzT-gR-aZz"/>
                                     <constraint firstItem="4gm-mH-YDK" firstAttribute="leading" secondItem="LRr-fM-dfh" secondAttribute="leading" constant="40" id="oYp-qj-ABp"/>
                                     <constraint firstAttribute="trailing" secondItem="TD8-To-wtO" secondAttribute="trailing" constant="40" id="tPa-kS-gOW"/>
-                                    <constraint firstAttribute="trailing" secondItem="Wsr-50-l8F" secondAttribute="trailing" constant="40" id="uU0-Qc-343"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Wsr-50-l8F" secondAttribute="trailing" constant="40" id="uU0-Qc-343"/>
                                     <constraint firstItem="AUw-QR-CbT" firstAttribute="leading" secondItem="LRr-fM-dfh" secondAttribute="leading" constant="20" id="voo-Nm-EFb"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
