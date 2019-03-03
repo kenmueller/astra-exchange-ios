@@ -39,6 +39,7 @@ class LeaderboardViewController: UIViewController, UICollectionViewDataSource, U
 		cell.rankLabel.text = "#\(indexPath.item + 1)"
 		cell.nameLabel.text = element.name
 		cell.balanceLabel.text = String(element.balance.round2Places())
+		cell.crownImageView.isHidden = indexPath.item != 0
 		if element.id == id {
 			cell.backgroundColor = .lightGray
 			cell.layer.borderWidth = 0.5
@@ -61,4 +62,5 @@ class LeaderboardCollectionViewCell: UICollectionViewCell {
 	@IBOutlet weak var rankLabel: UILabel!
 	@IBOutlet weak var nameLabel: UILabel!
 	@IBOutlet weak var balanceLabel: UILabel!
+	@IBOutlet weak var crownImageView: UIImageView!
 }
