@@ -67,12 +67,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 				}
 			} else if let error = error {
 				self.hideActivityIndicator()
-				switch error.localizedDescription {
-				case "Network error (such as timeout, interrupted connection or unreachable host) has occurred.":
-					self.showAlert("No internet")
-				default:
-					self.showAlert("Invalid email/password")
-				}
+				self.handleError(error, default: "Invalid email/password")
 			}
 		}
 	}

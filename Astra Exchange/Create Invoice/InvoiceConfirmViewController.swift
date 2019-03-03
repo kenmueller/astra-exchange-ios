@@ -82,12 +82,7 @@ class InvoiceConfirmViewController: UIViewController, UITextFieldDelegate {
 			} else if let error = error {
 				self.activityIndicator.stopAnimating()
 				self.loadingView.isHidden = true
-				switch error.localizedDescription {
-				case "Network error (such as timeout, interrupted connection or unreachable host) has occurred.":
-					self.showAlert("No internet")
-				default:
-					self.showAlert("There was a problem creating an invoice. Please try again.")
-				}
+				self.handleError(error, default: "There was a problem creating an invoice. Please try again.")
 			}
 		}
 	}

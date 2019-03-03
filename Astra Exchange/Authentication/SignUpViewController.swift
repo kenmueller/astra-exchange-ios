@@ -104,12 +104,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 				self.performSegue(withIdentifier: "signUp", sender: self)
 			} else if let error = error {
 				self.hideActivityIndicator()
-				switch error.localizedDescription {
-				case "Network error (such as timeout, interrupted connection or unreachable host) has occurred.":
-					self.showAlert("No internet")
-				default:
-					self.showAlert("There was a problem creating a new account")
-				}
+				self.handleError(error, default: "There was a problem creating a new account")
 			}
 		}
 	}

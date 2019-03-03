@@ -49,7 +49,7 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 									loadData()
 									self.activityIndicator.stopAnimating()
 									self.loadingView.isHidden = true
-									self.createSignOutBarButtonItem()
+									self.createBarButtonItems()
 								}
 							} else if let error = error {
 								switch error.localizedDescription {
@@ -68,7 +68,7 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 				} catch {}
 			}
 		} else {
-			createSignOutBarButtonItem()
+			createBarButtonItems()
 		}
 		navigationController?.navigationBar.tintColor = .white
 		navigationItem.title = name
@@ -93,9 +93,16 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		performSegue(withIdentifier: "home", sender: self)
 	}
 	
-	func createSignOutBarButtonItem() {
-		let signOutBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOut))
-		navigationItem.setLeftBarButton(signOutBarButtonItem, animated: false)
+	func createBarButtonItems() {
+		navigationItem.setLeftBarButton(UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOut)), animated: false)
+		let leaderboardButton = UIButton(type: .custom)
+		leaderboardButton.setImage(#imageLiteral(resourceName: "Leaderboard"), for: .normal)
+		leaderboardButton.addTarget(self, action: #selector(showLeaderboard), for: .touchUpInside)
+		leaderboardButton.widthAnchor.constraint(equalToConstant: 32).isActive = true
+		leaderboardButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
+		let leaderboardBarButtonItem = UIBarButtonItem()
+		leaderboardBarButtonItem.customView = leaderboardButton
+		navigationItem.setRightBarButton(leaderboardBarButtonItem, animated: false)
 	}
 	
 	@objc func signOut() {
@@ -121,6 +128,10 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		alertController.addAction(cancel)
 		alertController.addAction(signOut)
 		present(alertController, animated: true, completion: nil)
+	}
+	
+	@objc func showLeaderboard() {
+		performSegue(withIdentifier: "leaderboard", sender: self)
 	}
 	
 	@objc func sendMoney() {

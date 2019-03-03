@@ -204,6 +204,15 @@ extension UIViewController {
 		vibrate()
 		showAlert("Error", message)
 	}
+	
+	func handleError(_ error: Error, default d: String) {
+		switch error.localizedDescription {
+		case "Network error (such as timeout, interrupted connection or unreachable host) has occurred.":
+			self.showAlert("No internet")
+		default:
+			self.showAlert(d)
+		}
+	}
 }
 
 extension String {

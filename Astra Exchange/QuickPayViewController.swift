@@ -67,12 +67,7 @@ class QuickPayViewController: UIViewController {
 					}
 				}
 			} else if let error = error {
-				switch error.localizedDescription {
-				case "Network error (such as timeout, interrupted connection or unreachable host) has occurred.":
-					self.showAlert("No internet")
-				default:
-					self.showAlert("There was a problem sending money. Please try again.")
-				}
+				self.handleError(error, default: "There was a problem sending money. Please try again.")
 			}
 		}
 	}
