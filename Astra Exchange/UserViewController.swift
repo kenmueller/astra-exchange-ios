@@ -24,6 +24,7 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 			activityIndicator.startAnimating()
 			ref.child("users").observe(.childAdded) { snapshot in
 				users.append(User(id: snapshot.key, name: retrieveDataValue(snapshot: snapshot, field: "name") as? String ?? "Undefined", email: retrieveDataValue(snapshot: snapshot, field: "email") as? String ?? "Undefined", balance: retrieveDataValue(snapshot: snapshot, field: "balance") as? Double ?? 0.0))
+				users.sort { return $0.name < $1.name }
 				callChangeHandler(.user)
 				ref.child("users/\(snapshot.key)/balance").observe(.value) { balanceSnapshot in
 					guard let userIndex = User.id(snapshot.key) else { return }
