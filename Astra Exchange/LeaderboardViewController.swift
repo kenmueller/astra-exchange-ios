@@ -8,7 +8,7 @@ class LeaderboardViewController: UIViewController, UICollectionViewDataSource, U
 	override func viewDidLoad() {
         super.viewDidLoad()
 		let layout = UICollectionViewFlowLayout()
-		layout.itemSize = CGSize(width: view.bounds.width - 40, height: 100)
+		layout.itemSize = CGSize(width: view.bounds.width - 16, height: 100)
 		layout.minimumLineSpacing = 8
 		layout.sectionInset = UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
 		leaderboardCollectionView.collectionViewLayout = layout
@@ -35,8 +35,8 @@ class LeaderboardViewController: UIViewController, UICollectionViewDataSource, U
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! LeaderboardCollectionViewCell
-		let element = sortedUsers[indexPath.row]
-		cell.rankLabel.text = "#\(indexPath.row + 1)"
+		let element = sortedUsers[indexPath.item]
+		cell.rankLabel.text = "#\(indexPath.item + 1)"
 		cell.nameLabel.text = element.name
 		cell.balanceLabel.text = String(element.balance.round2Places())
 		if element.id == id {
@@ -46,6 +46,12 @@ class LeaderboardViewController: UIViewController, UICollectionViewDataSource, U
 			cell.rankLabel.textColor = .darkGray
 			cell.nameLabel.textColor = .darkGray
 			cell.balanceLabel.textColor = .darkGray
+		} else {
+			cell.backgroundColor = #colorLiteral(red: 0.2823529412, green: 0.8, blue: 0.4980392157, alpha: 1)
+			cell.layer.borderWidth = 0
+			cell.rankLabel.textColor = .white
+			cell.nameLabel.textColor = .white
+			cell.balanceLabel.textColor = .white
 		}
 		return cell
 	}
