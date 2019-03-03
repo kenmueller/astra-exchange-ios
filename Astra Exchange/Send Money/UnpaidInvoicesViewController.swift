@@ -40,12 +40,14 @@ class UnpaidInvoicesViewController: UIViewController {
 		updateChangeHandler { change in
 			if change == .invoice {
 				if let sendMoneyVC = self.parent as? SendMoneyViewController {
+					sendMoneyVC.loadActions()
 					sendMoneyVC.sendMoneyTableView.reloadData()
 				}
 				self.loadUnpaidInvoices()
 				self.loadInvoice()
 			} else if change == .invoiceStatus {
 				if let sendMoneyVC = self.parent as? SendMoneyViewController {
+					sendMoneyVC.loadActions()
 					sendMoneyVC.sendMoneyTableView.reloadData()
 				}
 				self.loadInvoice()

@@ -99,11 +99,7 @@ class SendMoneyViewController: UIViewController, UITableViewDataSource, UITableV
 		actions = [Action(group: "RECIPIENT", label: "Select User", action: #selector(showUsers)), Action(group: "AMOUNT", label: "0.0", action: #selector(showAmount))]
 		let unpaidInvoices = invoices.filter { $0.to == id && $0.status == "pending" }
 		if !unpaidInvoices.isEmpty {
-			if unpaidInvoices.count == 1 {
-				actions.insert(Action(group: nil, label: "⚠️ 1 unpaid invoice", action: #selector(payInvoices)), at: 0)
-			} else {
-				actions.insert(Action(group: nil, label: "⚠️ \(unpaidInvoices.count) unpaid invoices", action: #selector(payInvoices)), at: 0)
-			}
+			actions.insert(Action(group: nil, label: "⚠️ \(unpaidInvoices.count) unpaid invoice\(unpaidInvoices.count == 1 ? "" : "s")", action: #selector(payInvoices)), at: 0)
 		}
 	}
 	
@@ -127,7 +123,7 @@ class SendMoneyViewController: UIViewController, UITableViewDataSource, UITableV
 			cell.textLabel?.textColor = .red
 			cell.detailTextLabel?.text = "Pay now"
 			cell.detailTextLabel?.textColor = .red
-			cell.backgroundColor = UIColor(red: 249 / 255, green: 222 / 255, blue: 75 / 255, alpha: 1)
+			cell.backgroundColor = #colorLiteral(red: 0.9764705882, green: 0.8705882353, blue: 0.2941176471, alpha: 1)
 		}
 		return cell
 	}
