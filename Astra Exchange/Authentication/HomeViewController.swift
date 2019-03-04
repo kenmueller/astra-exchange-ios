@@ -11,8 +11,13 @@ class HomeViewController: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		updateChangeHandler(nil)
+		updateChangeHandler { change in
+			if change == .version {
+				self.showUpdateVC()
+			}
+		}
 		navigationController?.isNavigationBarHidden = true
+		if startup { observeVersion() }
 		startup = false
 	}
 }

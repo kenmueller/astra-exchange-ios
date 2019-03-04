@@ -73,7 +73,9 @@ class InvoiceViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		updateChangeHandler { change in
-			if change == .invoiceStatus {
+			if change == .version {
+				self.showUpdateVC()
+			} else if change == .invoiceStatus {
 				if invoices[self.invoice].status != self.initialStatus {
 					UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveLinear, animations: {
 						self.declineButton.transform = CGAffineTransform(translationX: 0, y: 60)

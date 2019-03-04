@@ -27,7 +27,9 @@ class RecipientViewController: UIViewController, UIPickerViewDataSource, UIPicke
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		updateChangeHandler { change in
-			if change == .user {
+			if change == .version {
+				self.showUpdateVC()
+			} else if change == .user {
 				var usersCopy: [User?] = users
 				usersCopy.insert(nil, at: 0)
 				self.recipients = usersCopy.filter { $0?.id != id }

@@ -12,7 +12,9 @@ class TransactionHistoryViewController: UIViewController, UITableViewDataSource,
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		updateChangeHandler { change in
-			if change == .transaction {
+			if change == .version {
+				self.showUpdateVC()
+			} else if change == .transaction {
 				self.transactionsTableView.reloadData()
 			}
 		}

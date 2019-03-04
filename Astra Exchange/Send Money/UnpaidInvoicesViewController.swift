@@ -38,7 +38,9 @@ class UnpaidInvoicesViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		updateChangeHandler { change in
-			if change == .invoice {
+			if change == .version {
+				self.showUpdateVC()
+			} else if change == .invoice {
 				if let sendMoneyVC = self.parent as? SendMoneyViewController {
 					sendMoneyVC.loadActions()
 					sendMoneyVC.sendMoneyTableView.reloadData()

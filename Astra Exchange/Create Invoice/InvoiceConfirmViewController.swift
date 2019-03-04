@@ -32,7 +32,9 @@ class InvoiceConfirmViewController: UIViewController, UITextFieldDelegate {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		updateChangeHandler { change in
-			if change == .balance {
+			if change == .version {
+				self.showUpdateVC()
+			} else if change == .balance {
 				if let createInvoiceVC = self.parent as? CreateInvoiceViewController {
 					self.newBalanceText.text = String(balance + createInvoiceVC.amount)
 				}

@@ -47,6 +47,7 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 									self.navigationItem.title = name
 									email = localEmail
 									loadData()
+									observeVersion()
 									self.activityIndicator.stopAnimating()
 									self.loadingView.isHidden = true
 									self.createBarButtonItems()
@@ -213,9 +214,13 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 			}
 			if startup {
 				updateChangeHandler { change in
-					if change == .balance {
+					if change == .version {
+						self.showUpdateVC()
+					} else if change == .balance {
 						updateChangeHandler { change in
-							if change == .balance {
+							if change == .version {
+								self.showUpdateVC()
+							} else if change == .balance {
 								updateFunction()
 							} else if change == .invoice || change == .invoiceStatus {
 								self.actionsTableView.reloadData()
@@ -227,7 +232,9 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 				startup = false
 			} else {
 				updateChangeHandler { change in
-					if change == .balance {
+					if change == .version {
+						self.showUpdateVC()
+					} else if change == .balance {
 						updateFunction()
 					} else if change == .invoice || change == .invoiceStatus {
 						self.actionsTableView.reloadData()

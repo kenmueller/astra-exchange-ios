@@ -33,7 +33,9 @@ class QuickPayViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		updateChangeHandler { change in
-			if change == .balance {
+			if change == .version {
+				self.showUpdateVC()
+			} else if change == .balance {
 				(self.parent as? UserViewController)?.actionsTableView.reloadData()
 				self.amountChanged()
 				UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseIn, animations: {

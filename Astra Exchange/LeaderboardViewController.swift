@@ -17,7 +17,9 @@ class LeaderboardViewController: UIViewController, UICollectionViewDataSource, U
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		updateChangeHandler { change in
-			if change == .user {
+			if change == .version {
+				self.showUpdateVC()
+			} else if change == .user {
 				self.sortedUsers = self.sortUsersByBalance()
 				self.leaderboardCollectionView.reloadData()
 			}

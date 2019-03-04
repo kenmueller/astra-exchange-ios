@@ -21,7 +21,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		updateChangeHandler { change in
-			if change == .user {
+			if change == .version {
+				self.showUpdateVC()
+			} else if change == .user {
 				self.nameTextFieldChanged()
 				self.emailTextFieldChanged()
 			}

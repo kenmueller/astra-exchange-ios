@@ -12,7 +12,9 @@ class InvoicesViewController: UIViewController, UITableViewDataSource, UITableVi
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		updateChangeHandler { change in
-			if change == .invoice || change == .invoiceStatus {
+			if change == .version {
+				self.showUpdateVC()
+			} else if change == .invoice || change == .invoiceStatus {
 				self.invoicesTableView.reloadData()
 			}
 		}

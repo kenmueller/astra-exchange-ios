@@ -29,7 +29,9 @@ class CardsViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		updateChangeHandler { change in
-			if change == .transaction && transactions[0].from == self.card?.id {
+			if change == .version {
+				self.showUpdateVC()
+			} else if change == .transaction && transactions[0].from == self.card?.id {
 				vibrate()
 				self.waitingImageViewWidthConstraint.constant = 28
 				UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {

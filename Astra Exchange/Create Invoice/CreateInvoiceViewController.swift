@@ -20,7 +20,11 @@ class CreateInvoiceViewController: UIViewController, UITableViewDataSource, UITa
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		updateChangeHandler(nil)
+		updateChangeHandler { change in
+			if change == .version {
+				self.showUpdateVC()
+			}
+		}
 		createInvoiceTableView.reloadData()
 	}
 	

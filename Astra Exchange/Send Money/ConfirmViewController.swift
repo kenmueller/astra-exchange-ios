@@ -35,7 +35,9 @@ class ConfirmViewController: UIViewController, UITextFieldDelegate {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		updateChangeHandler { change in
-			if change == .balance {
+			if change == .version {
+				self.showUpdateVC()
+			} else if change == .balance {
 				if let sendMoneyVC = self.parent as? SendMoneyViewController {
 					self.amountText.text = String(sendMoneyVC.amount)
 					self.remainingBalanceText.text = String(balance - sendMoneyVC.amount)

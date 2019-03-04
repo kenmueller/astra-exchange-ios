@@ -22,6 +22,7 @@
 		4D47AAE021EF05C200FD40EC /* AmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D47AADF21EF05C200FD40EC /* AmountViewController.swift */; };
 		4D5A27A121ED9D5200232294 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5A27A021ED9D5200232294 /* HomeViewController.swift */; };
 		4D5A27A321EDA89A00232294 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5A27A221EDA89A00232294 /* SignUpViewController.swift */; };
+		4D690F94222CACF10067DAC5 /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D690F93222CACF10067DAC5 /* UpdateViewController.swift */; };
 		4D98047F2229BF9300CC57E3 /* QuickPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D98047E2229BF9300CC57E3 /* QuickPayViewController.swift */; };
 		4D9804812229C5BA00CC57E3 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9804802229C5BA00CC57E3 /* ScannerViewController.swift */; };
 		4DBAA59A21EE733500F26913 /* SendMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBAA59921EE733500F26913 /* SendMoneyViewController.swift */; };
@@ -96,6 +97,7 @@
 		4D47AADF21EF05C200FD40EC /* AmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountViewController.swift; sourceTree = "<group>"; };
 		4D5A27A021ED9D5200232294 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4D5A27A221EDA89A00232294 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		4D690F93222CACF10067DAC5 /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
 		4D98047E2229BF9300CC57E3 /* QuickPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPayViewController.swift; sourceTree = "<group>"; };
 		4D9804802229C5BA00CC57E3 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		4DBAA59921EE733500F26913 /* SendMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				4DD190F221ED6C43003EE93A /* Global.swift */,
 				4D279DD821ED5FBC00D09DDA /* Main.storyboard */,
 				4D279DD621ED5FBC00D09DDA /* UserViewController.swift */,
+				4D690F93222CACF10067DAC5 /* UpdateViewController.swift */,
 				4D30FEC2222B7DC700FA065B /* LeaderboardViewController.swift */,
 				4D9804802229C5BA00CC57E3 /* ScannerViewController.swift */,
 				4D98047E2229BF9300CC57E3 /* QuickPayViewController.swift */,
@@ -525,6 +528,7 @@
 				4D98047F2229BF9300CC57E3 /* QuickPayViewController.swift in Sources */,
 				4DF9481421F03E940086A1FC /* TransactionHistoryViewController.swift in Sources */,
 				4D5A27A321EDA89A00232294 /* SignUpViewController.swift in Sources */,
+				4D690F94222CACF10067DAC5 /* UpdateViewController.swift in Sources */,
 				4DDF183E21F124DC00A61BED /* InvoiceConfirmViewController.swift in Sources */,
 				4D3F103522283FAF00DB4D2F /* CardsViewController.swift in Sources */,
 				4D279DDD21ED5FBC00D09DDA /* Astra_Exchange.xcdatamodeld in Sources */,

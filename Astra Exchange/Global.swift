@@ -3,6 +3,7 @@ import CoreData
 import Firebase
 import AudioToolbox
 
+let appVersion = "1.0"
 var ref: DatabaseReference! = Database.database().reference()
 var changeHandler: ((Change) -> Void)?
 var startup = true
@@ -100,6 +101,7 @@ enum Change {
 	case invoice
 	case invoiceStatus
 	case card
+	case version
 }
 
 func loadData() {
@@ -148,6 +150,14 @@ func updateChangeHandler(_ cH: ((Change) -> Void)?) {
 
 func transactionFromSnapshot(_ snapshot: DataSnapshot) -> Transaction {
 	return Transaction(id: snapshot.key, time: retrieveDataValue(snapshot: snapshot, field: "time") as? String ?? "Undefined", from: retrieveDataValue(snapshot: snapshot, field: "from") as? String ?? "Undefined", to: retrieveDataValue(snapshot: snapshot, field: "to") as? String ?? "Undefined", amount: retrieveDataValue(snapshot: snapshot, field: "amount") as? Double ?? 0.0, balance: retrieveDataValue(snapshot: snapshot, field: "balance") as? Double ?? 0.0, message: retrieveDataValue(snapshot: snapshot, field: "message") as? String ?? "Undefined")
+}
+
+func observeVersion() {
+	ref.child("version").observe(.value) { snapshot in
+		if retrieveDataValue(snapshot: snapshot, field: "number") as? String != appVersion {
+			callChangeHandler(.version)
+		}
+	}
 }
 
 func deleteLogin() {
@@ -212,6 +222,14 @@ extension UIViewController {
 		default:
 			self.showAlert(d)
 		}
+	}
+	
+	func showUpdateVC() {
+		guard let updateVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "update") as? UpdateViewController else { return }
+		addChild(updateVC)
+		updateVC.view.frame = view.frame
+		view.addSubview(updateVC.view)
+		updateVC.didMove(toParent: self)
 	}
 }
 

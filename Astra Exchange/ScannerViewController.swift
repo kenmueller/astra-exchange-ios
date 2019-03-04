@@ -37,7 +37,11 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		updateChangeHandler(nil)
+		updateChangeHandler { change in
+			if change == .version {
+				self.showUpdateVC()
+			}
+		}
 	}
 	
 	func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
