@@ -62,7 +62,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
 	}
 	
 	func loadSettings() {
-		settings = [[Setting(key: "Name", value: name!, action: nil), Setting(key: "Email", value: email!, action: nil), Setting(key: "Balance", value: String(balance.round2Places()), action: nil)], [Setting(key: "Password", value: showPassword(), action: #selector(resetPassword)), Setting(key: "Independence", value: independence == 0 ? "Pending" : String(independence!), action: nil)], [Setting(key: "Name", value: cards[0].name, action: nil), Setting(key: "Pin", value: cards[0].pin, action: nil)]]
+		settings = [[Setting(key: "Name", value: name!, action: nil), Setting(key: "Email", value: email!, action: nil), Setting(key: "Balance", value: String(balance.round2Places()), action: nil)], [Setting(key: "Password", value: showPassword(), action: #selector(resetPassword)), Setting(key: "Independence", value: independence == 0 ? "Pending" : String(independence!), action: nil)], [Setting(key: "Name", value: cards[0].name, action: nil), Setting(key: "Pin", value: cards[0].pin, action: nil)], [Setting(key: "Report a Bug", value: "Tell us more", action: #selector(bugReport))]]
 	}
 	
 	func showPassword() -> String {
@@ -93,6 +93,10 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
 		present(alertController, animated: true, completion: nil)
 	}
 	
+	@objc func bugReport() {
+		// show bug report VC
+	}
+	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return settings.count
 	}
@@ -118,6 +122,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
 			return 2
 		case 2:
 			return 2
+		case 3:
+			return 1
 		default:
 			return 0
 		}
@@ -129,6 +135,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
 		cell.textLabel?.text = element.key
 		cell.detailTextLabel?.text = element.value
 		cell.accessoryType = element.action == nil ? .none : .disclosureIndicator
+		if indexPath.section == 3 && indexPath.row == 0 { cell.textLabel?.textColor = #colorLiteral(red: 0.8, green: 0.2, blue: 0.2, alpha: 1) }
 		return cell
 	}
 	
