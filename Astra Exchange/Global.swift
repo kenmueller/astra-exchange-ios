@@ -3,7 +3,6 @@ import CoreData
 import Firebase
 import AudioToolbox
 
-let appVersion = "1.0"
 var ref: DatabaseReference! = Database.database().reference()
 var changeHandler: ((Change) -> Void)?
 var startup = true
@@ -161,7 +160,7 @@ func transactionFromSnapshot(_ snapshot: DataSnapshot) -> Transaction {
 
 func observeVersion() {
 	ref.child("version").observe(.value) { snapshot in
-		if retrieveDataValue(snapshot: snapshot, field: "number") as? String != appVersion {
+		if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, retrieveDataValue(snapshot: snapshot, field: "number") as? String != version {
 			callChangeHandler(.version)
 		}
 	}
