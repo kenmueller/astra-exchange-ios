@@ -42,10 +42,11 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 						Auth.auth().signIn(withEmail: localEmail!, password: login[0].value(forKey: "password") as? String ?? "") { user, error in
 							if error == nil {
 								id = user?.user.uid
-								ref.child("users/\(id!)/name").observeSingleEvent(of: .value) { snapshot in
-									name = snapshot.value as? String
+								ref.child("users/\(id!)").observeSingleEvent(of: .value) { snapshot in
+									name = retrieveDataValue(snapshot: snapshot, field: "name") as? String
 									self.navigationItem.title = name
 									email = localEmail
+									independence = retrieveDataValue(snapshot: snapshot, field: "independence") as? Int
 									loadData()
 									observeVersion()
 									self.activityIndicator.stopAnimating()
@@ -95,7 +96,14 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	}
 	
 	func createBarButtonItems() {
-		navigationItem.setLeftBarButton(UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOut)), animated: false)
+		let settingsButton = UIButton(type: .custom)
+		settingsButton.setImage(#imageLiteral(resourceName: "Settings"), for: .normal)
+		settingsButton.addTarget(self, action: #selector(settings), for: .touchUpInside)
+		settingsButton.widthAnchor.constraint(equalToConstant: 32).isActive = true
+		settingsButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
+		let settingsBarButtonItem = UIBarButtonItem()
+		settingsBarButtonItem.customView = settingsButton
+		navigationItem.setLeftBarButton(settingsBarButtonItem, animated: false)
 		let leaderboardButton = UIButton(type: .custom)
 		leaderboardButton.setImage(#imageLiteral(resourceName: "Leaderboard"), for: .normal)
 		leaderboardButton.addTarget(self, action: #selector(showLeaderboard), for: .touchUpInside)
@@ -106,29 +114,8 @@ class UserViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		navigationItem.setRightBarButton(leaderboardBarButtonItem, animated: false)
 	}
 	
-	@objc func signOut() {
-		let alertController = UIAlertController(title: "Sign Out", message: "Are you sure?", preferredStyle: .alert)
-		let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-		let signOut = UIAlertAction(title: "Sign Out", style: .default) { action in
-			do {
-				try Auth.auth().signOut()
-				ref.child("users/\(id!)/balance").removeAllObservers()
-				ref.child("transactions/\(id!)").removeAllObservers()
-				ref.child("invoices/\(id!)").removeAllObservers()
-				for invoice in invoices {
-					ref.child("invoices/\(id!)/\(invoice.id)/status").removeAllObservers()
-				}
-				transactions.removeAll()
-				invoices.removeAll()
-				deleteLogin()
-				self.performSegue(withIdentifier: "signOut", sender: self)
-			} catch let error {
-				self.showAlert(error.localizedDescription)
-			}
-		}
-		alertController.addAction(cancel)
-		alertController.addAction(signOut)
-		present(alertController, animated: true, completion: nil)
+	@objc func settings() {
+		performSegue(withIdentifier: "settings", sender: self)
 	}
 	
 	@objc func showLeaderboard() {

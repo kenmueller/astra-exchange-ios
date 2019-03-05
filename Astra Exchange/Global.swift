@@ -11,6 +11,7 @@ var id: String?
 var name: String?
 var email: String?
 var balance = 0.0
+var independence: Int?
 var cards = [Card]()
 var users = [User]()
 var transactions = [Transaction]()
@@ -83,6 +84,7 @@ struct Invoice {
 struct Card {
 	let id: String
 	let name: String
+	let pin: String
 	
 	static func id(_ t: String) -> Int? {
 		for i in 0..<cards.count {
@@ -102,6 +104,7 @@ enum Change {
 	case invoiceStatus
 	case card
 	case version
+	case independence
 }
 
 func loadData() {
@@ -109,8 +112,12 @@ func loadData() {
 		balance = snapshot.value as? Double ?? 0.0
 		callChangeHandler(.balance)
 	}
+	ref.child("users/\(id!)/independence").observe(.value) { snapshot in
+		independence = snapshot.value as? Int ?? 0
+		callChangeHandler(.independence)
+	}
 	ref.child("users/\(id!)/cards").observe(.childAdded) { snapshot in
-		cards.append(Card(id: snapshot.key, name: snapshot.value as? String ?? "Debit Card"))
+		cards.append(Card(id: snapshot.key, name: retrieveDataValue(snapshot: snapshot, field: "name") as? String ?? "Debit Card", pin: retrieveDataValue(snapshot: snapshot, field: "pin") as? String ?? "Error"))
 		callChangeHandler(.card)
 	}
 	ref.child("transactions/\(id!)").observe(.childAdded) { snapshot in
@@ -135,7 +142,7 @@ func loadData() {
 }
 
 func retrieveDataValue(snapshot: DataSnapshot, field: String) -> Any? {
-	return (snapshot.value as? [String: AnyObject])?[field]
+	return (snapshot.value as? [String: Any])?[field]
 }
 
 func callChangeHandler(_ change: Change) {

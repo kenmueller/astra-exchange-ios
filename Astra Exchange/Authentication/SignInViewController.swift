@@ -62,9 +62,10 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 		Auth.auth().signIn(withEmail: emailText, password: passwordText) { user, error in
 			if error == nil {
 				id = user?.user.uid
-				ref.child("users/\(id!)/name").observeSingleEvent(of: .value) { snapshot in
-					name = snapshot.value as? String
+				ref.child("users/\(id!)").observeSingleEvent(of: .value) { snapshot in
+					name = retrieveDataValue(snapshot: snapshot, field: "name") as? String
 					saveLogin(email: emailText, password: passwordText)
+					independence = retrieveDataValue(snapshot: snapshot, field: "independence") as? Int
 					loadData()
 					self.hideActivityIndicator()
 					self.performSegue(withIdentifier: "signIn", sender: self)

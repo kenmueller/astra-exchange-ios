@@ -83,14 +83,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 		updateSignUpButton()
 	}
 	
-	func generatePin() -> String {
-		var result = ""
-		repeat {
-			result = String(format: "%04d", arc4random_uniform(10000))
-		} while result.count < 4
-		return result
-	}
-	
 	@IBAction func signUp() {
 		guard let nameText = nameTextField.text?.trim(), let emailText = emailTextField.text?.trim(), let passwordText = passwordTextField.text?.trim() else { return }
 		showActivityIndicator()
@@ -98,9 +90,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 		Auth.auth().createUser(withEmail: emailText, password: passwordText) { authResult, error in
 			if error == nil {
 				id = authResult?.user.uid
-				ref.child("users/\(id!)").setValue(["name": nameText, "email": emailText, "balance": 0, "pin": self.generatePin()])
+				ref.child("users/\(id!)").setValue(["name": nameText, "email": emailText, "balance": 0])
 				name = nameText
 				saveLogin(email: emailText, password: passwordText)
+				independence = 0
 				loadData()
 				self.hideActivityIndicator()
 				self.performSegue(withIdentifier: "signUp", sender: self)
