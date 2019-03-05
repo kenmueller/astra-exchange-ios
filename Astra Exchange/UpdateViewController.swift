@@ -8,6 +8,7 @@ class UpdateViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		parent?.navigationController?.setNavigationBarHidden(true, animated: true)
 		titleBar.roundCorners(corners: [.topLeft, .topRight], radius: 10)
 		ref.child("version").observeSingleEvent(of: .value) { snapshot in
 			self.versionLabel.text = retrieveDataValue(snapshot: snapshot, field: "number") as? String
