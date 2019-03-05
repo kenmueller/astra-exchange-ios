@@ -24,7 +24,6 @@
 		4D5A27A321EDA89A00232294 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5A27A221EDA89A00232294 /* SignUpViewController.swift */; };
 		4D67B31A222DD555004AC357 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D67B319222DD555004AC357 /* SettingsViewController.swift */; };
 		4D690F94222CACF10067DAC5 /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D690F93222CACF10067DAC5 /* UpdateViewController.swift */; };
-		4D7DED73222E302400C1F107 /* BugReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7DED72222E302400C1F107 /* BugReportViewController.swift */; };
 		4D98047F2229BF9300CC57E3 /* QuickPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D98047E2229BF9300CC57E3 /* QuickPayViewController.swift */; };
 		4D9804812229C5BA00CC57E3 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9804802229C5BA00CC57E3 /* ScannerViewController.swift */; };
 		4DBAA59A21EE733500F26913 /* SendMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBAA59921EE733500F26913 /* SendMoneyViewController.swift */; };
@@ -101,7 +100,6 @@
 		4D5A27A221EDA89A00232294 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4D67B319222DD555004AC357 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4D690F93222CACF10067DAC5 /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
-		4D7DED72222E302400C1F107 /* BugReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BugReportViewController.swift; sourceTree = "<group>"; };
 		4D98047E2229BF9300CC57E3 /* QuickPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPayViewController.swift; sourceTree = "<group>"; };
 		4D9804802229C5BA00CC57E3 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		4DBAA59921EE733500F26913 /* SendMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyViewController.swift; sourceTree = "<group>"; };
@@ -203,7 +201,6 @@
 				4D279DD621ED5FBC00D09DDA /* UserViewController.swift */,
 				4D690F93222CACF10067DAC5 /* UpdateViewController.swift */,
 				4D67B319222DD555004AC357 /* SettingsViewController.swift */,
-				4D7DED72222E302400C1F107 /* BugReportViewController.swift */,
 				4D30FEC2222B7DC700FA065B /* LeaderboardViewController.swift */,
 				4D9804802229C5BA00CC57E3 /* ScannerViewController.swift */,
 				4D98047E2229BF9300CC57E3 /* QuickPayViewController.swift */,
@@ -542,7 +539,6 @@
 				4D205F9421F16676006C2965 /* InvoiceViewController.swift in Sources */,
 				4D279DD721ED5FBC00D09DDA /* UserViewController.swift in Sources */,
 				4DDF183421F1081500A61BED /* CreateInvoiceViewController.swift in Sources */,
-				4D7DED73222E302400C1F107 /* BugReportViewController.swift in Sources */,
 				4DD190F321ED6C43003EE93A /* Global.swift in Sources */,
 				4DCA13B5222A016400AA3E02 /* YourIDViewController.swift in Sources */,
 				4D9804812229C5BA00CC57E3 /* ScannerViewController.swift in Sources */,
