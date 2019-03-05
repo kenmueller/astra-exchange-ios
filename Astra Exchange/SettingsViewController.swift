@@ -1,8 +1,9 @@
 import UIKit
 import CoreData
 import Firebase
+import MessageUI
 
-class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate {
 	@IBOutlet weak var settingsTableView: UITableView!
 	
 	struct Setting {
@@ -94,7 +95,23 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
 	}
 	
 	@objc func bugReport() {
-		// show bug report VC
+		if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, MFMailComposeViewController.canSendMail() {
+			let mail = MFMailComposeViewController()
+			mail.mailComposeDelegate = self
+			mail.setToRecipients(["ken@astra.exchange"])
+			mail.setSubject("Bug Report for Astra Exchange Version \(version)")
+			present(mail, animated: true)
+		} else {
+			showAlert("Your device cannot send mail")
+		}
+	}
+
+	func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+		if error == nil {
+			controller.dismiss(animated: true)
+		} else {
+			showAlert("There was a problem sending a bug report. Please try again.")
+		}
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
