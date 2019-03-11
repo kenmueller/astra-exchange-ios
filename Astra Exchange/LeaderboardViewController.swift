@@ -28,7 +28,7 @@ class LeaderboardViewController: UIViewController, UICollectionViewDataSource, U
 	}
 	
 	func sortUsersByBalance() -> [User] {
-		return users.sorted { return $0.balance > $1.balance }
+		return users.filter { return $0.id != "h621pgey1vPfxrmoW5LUkZaHkhT2" }.sorted { return $0.balance > $1.balance }
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
