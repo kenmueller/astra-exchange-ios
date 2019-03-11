@@ -3,6 +3,7 @@ import CoreData
 import Firebase
 import AudioToolbox
 
+let teacherId = "h621pgey1vPfxrmoW5LUkZaHkhT2"
 var ref: DatabaseReference! = Database.database().reference()
 var changeHandler: ((Change) -> Void)?
 var startup = true
@@ -166,6 +167,10 @@ func observeVersion() {
 	}
 }
 
+func isTeacher() -> Bool {
+	return id?.isTeacher() ?? false
+}
+
 func deleteLogin() {
 	guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
 	let managedContext = appDelegate.persistentContainer.viewContext
@@ -246,6 +251,10 @@ extension String {
 	
 	func checkEmail() -> Bool {
 		return NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}").evaluate(with: self)
+	}
+	
+	func isTeacher() -> Bool {
+		return self == teacherId
 	}
 }
 
