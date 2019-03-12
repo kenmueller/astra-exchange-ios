@@ -85,6 +85,11 @@ class InvoiceRecipientViewController: UIViewController, UISearchBarDelegate, UIP
 	
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 		let searchText = searchText.trimAll().lowercased()
+		if searchText.isEmpty && usersPickerView.selectedRow(inComponent: 0) == 0 {
+			disable()
+		} else {
+			enable()
+		}
 		recipients = createRecipients { return searchText.isEmpty ? true : $0?.name.trimAll().lowercased().contains(searchText) ?? false }
 		usersPickerView.reloadAllComponents()
 	}
