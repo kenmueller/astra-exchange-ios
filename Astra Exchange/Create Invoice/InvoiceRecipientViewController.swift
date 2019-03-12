@@ -1,21 +1,19 @@
 import UIKit
 
-class InvoiceRecipientViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class InvoiceRecipientViewController: UIViewController, UISearchBarDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
 	@IBOutlet weak var recipientView: UIView!
+	@IBOutlet weak var recipientViewVerticalConstraint: NSLayoutConstraint!
 	@IBOutlet weak var titleBar: UIView!
 	@IBOutlet weak var selectButton: UIButton!
 	@IBOutlet weak var usersPickerView: UIPickerView!
 	
-	var recipients: [User?] = {
-		var usersCopy: [User?] = users
-		usersCopy.insert(nil, at: 0)
-		return usersCopy.filter { $0?.id != id }
-	}()
+	var recipients = [User?]()
 	var selectedUserId: String?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		titleBar.roundCorners(corners: [.topLeft, .topRight], radius: 10)
+		recipients = createRecipients(nil)
 		disable()
 		recipientView.transform = CGAffineTransform(scaleX: 0, y: 0)
 		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
@@ -36,6 +34,8 @@ class InvoiceRecipientViewController: UIViewController, UIPickerViewDataSource, 
 				self.usersPickerView.reloadAllComponents()
 			}
 		}
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 	}
 	
 	@IBAction func select() {
@@ -58,6 +58,35 @@ class InvoiceRecipientViewController: UIViewController, UIPickerViewDataSource, 
 				self.view.removeFromSuperview()
 			}
 		}
+	}
+	
+	@objc func keyboardWillShow(notification: NSNotification) {
+		if let height = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height {
+			recipientViewVerticalConstraint.constant = recipientView.frame.height / 2 - height
+			UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
+				self.view.layoutIfNeeded()
+			}, completion: nil)
+		}
+	}
+	
+	@objc func keyboardWillHide(notification: NSNotification) {
+		recipientViewVerticalConstraint.constant = 0
+		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveLinear, animations: {
+			self.view.layoutIfNeeded()
+		}, completion: nil)
+	}
+	
+	func createRecipients(_ filter: ((User?) -> Bool)?) -> [User?] {
+		let filter = filter ?? { _ in return true }
+		var usersCopy: [User?] = users
+		usersCopy.insert(nil, at: 0)
+		return usersCopy.filter { $0?.id != id && filter($0) }
+	}
+	
+	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+		let searchText = searchText.trimAll().lowercased()
+		recipients = createRecipients { return searchText.isEmpty ? true : $0?.name.trimAll().lowercased().contains(searchText) ?? false }
+		usersPickerView.reloadAllComponents()
 	}
 	
 	func numberOfComponents(in pickerView: UIPickerView) -> Int {

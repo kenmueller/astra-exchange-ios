@@ -725,22 +725,35 @@
                                         </constraints>
                                     </view>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="98Y-D4-I1T">
-                                        <rect key="frame" x="20" y="40" width="294" height="294"/>
+                                        <rect key="frame" x="8" y="96" width="318" height="216"/>
                                         <connections>
                                             <outlet property="dataSource" destination="Nt5-2R-gOP" id="rAr-N3-NHc"/>
                                             <outlet property="delegate" destination="Nt5-2R-gOP" id="tTB-n0-We8"/>
                                         </connections>
                                     </pickerView>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="7RT-DG-5RX">
+                                        <rect key="frame" x="0.0" y="40" width="334" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="ig6-F1-ECs"/>
+                                        </constraints>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Nt5-2R-gOP" id="rOp-FX-S9L"/>
+                                        </connections>
+                                    </searchBar>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="NKB-o9-uht" secondAttribute="height" multiplier="1:1" id="18S-L0-cOX"/>
                                     <constraint firstAttribute="trailing" secondItem="s6j-6o-A21" secondAttribute="trailing" id="7gl-rC-AFv"/>
                                     <constraint firstItem="s6j-6o-A21" firstAttribute="top" secondItem="NKB-o9-uht" secondAttribute="top" id="98I-Nz-Wji"/>
-                                    <constraint firstItem="98Y-D4-I1T" firstAttribute="top" secondItem="s6j-6o-A21" secondAttribute="bottom" id="BGL-38-mS8"/>
-                                    <constraint firstItem="98Y-D4-I1T" firstAttribute="leading" secondItem="NKB-o9-uht" secondAttribute="leading" constant="20" id="RXX-TJ-cVK"/>
-                                    <constraint firstAttribute="trailing" secondItem="98Y-D4-I1T" secondAttribute="trailing" constant="20" id="TK3-nb-ZVR"/>
-                                    <constraint firstAttribute="bottom" secondItem="98Y-D4-I1T" secondAttribute="bottom" id="mOJ-vk-eRC"/>
+                                    <constraint firstItem="7RT-DG-5RX" firstAttribute="top" secondItem="s6j-6o-A21" secondAttribute="bottom" id="Gxi-aW-hlW"/>
+                                    <constraint firstItem="98Y-D4-I1T" firstAttribute="top" secondItem="7RT-DG-5RX" secondAttribute="bottom" id="RQw-UL-DAG"/>
+                                    <constraint firstItem="98Y-D4-I1T" firstAttribute="leading" secondItem="NKB-o9-uht" secondAttribute="leading" constant="8" id="RXX-TJ-cVK"/>
+                                    <constraint firstAttribute="trailing" secondItem="98Y-D4-I1T" secondAttribute="trailing" constant="8" id="TK3-nb-ZVR"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="98Y-D4-I1T" secondAttribute="bottom" id="mOJ-vk-eRC"/>
+                                    <constraint firstAttribute="trailing" secondItem="7RT-DG-5RX" secondAttribute="trailing" id="rrc-lx-xLe"/>
+                                    <constraint firstItem="7RT-DG-5RX" firstAttribute="leading" secondItem="NKB-o9-uht" secondAttribute="leading" id="yq8-lc-dyL"/>
                                     <constraint firstItem="s6j-6o-A21" firstAttribute="leading" secondItem="NKB-o9-uht" secondAttribute="leading" id="zqb-BN-znT"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -761,6 +774,7 @@
                     </view>
                     <connections>
                         <outlet property="recipientView" destination="NKB-o9-uht" id="eRH-Ma-OnP"/>
+                        <outlet property="recipientViewVerticalConstraint" destination="75A-mg-gsx" id="C0q-Na-fzX"/>
                         <outlet property="selectButton" destination="KbZ-xJ-ac9" id="ce9-2Y-qdR"/>
                         <outlet property="titleBar" destination="s6j-6o-A21" id="Evz-FP-dZE"/>
                         <outlet property="usersPickerView" destination="98Y-D4-I1T" id="2FC-6E-HS4"/>
@@ -768,7 +782,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rgP-O8-9LM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1500" y="133"/>
+            <point key="canvasLocation" x="1500.0000000000002" y="132.88043478260872"/>
         </scene>
         <!--Amount View Controller-->
         <scene sceneID="hgF-44-sMB">
@@ -1977,23 +1991,36 @@
                                         </constraints>
                                     </view>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T9q-aK-b24">
-                                        <rect key="frame" x="20" y="40" width="294" height="294"/>
+                                        <rect key="frame" x="8" y="96" width="318" height="216"/>
                                         <connections>
                                             <outlet property="dataSource" destination="qlc-Gh-lWx" id="FRt-kW-eCE"/>
                                             <outlet property="delegate" destination="qlc-Gh-lWx" id="X9i-Ji-9cv"/>
                                         </connections>
                                     </pickerView>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="6DM-Ke-ipA">
+                                        <rect key="frame" x="0.0" y="40" width="334" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="Cd7-QF-c5R"/>
+                                        </constraints>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="qlc-Gh-lWx" id="3z0-yX-Ufi"/>
+                                        </connections>
+                                    </searchBar>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="amz-TR-3Kz" firstAttribute="leading" secondItem="oFG-hG-bZS" secondAttribute="leading" id="80i-U5-NlH"/>
-                                    <constraint firstItem="T9q-aK-b24" firstAttribute="top" secondItem="amz-TR-3Kz" secondAttribute="bottom" id="98G-aO-sDM"/>
+                                    <constraint firstItem="6DM-Ke-ipA" firstAttribute="leading" secondItem="oFG-hG-bZS" secondAttribute="leading" id="9Zo-Py-wqr"/>
                                     <constraint firstAttribute="width" secondItem="oFG-hG-bZS" secondAttribute="height" multiplier="1:1" id="B82-Ur-Cgq"/>
+                                    <constraint firstAttribute="trailing" secondItem="6DM-Ke-ipA" secondAttribute="trailing" id="FVp-ht-rsH"/>
+                                    <constraint firstItem="T9q-aK-b24" firstAttribute="top" secondItem="6DM-Ke-ipA" secondAttribute="bottom" id="NlG-vQ-4hb"/>
+                                    <constraint firstItem="6DM-Ke-ipA" firstAttribute="top" secondItem="amz-TR-3Kz" secondAttribute="bottom" id="NzJ-Qs-AF2"/>
                                     <constraint firstItem="amz-TR-3Kz" firstAttribute="top" secondItem="oFG-hG-bZS" secondAttribute="top" id="TMz-aS-Qrm"/>
                                     <constraint firstAttribute="trailing" secondItem="amz-TR-3Kz" secondAttribute="trailing" id="dno-vd-P1x"/>
-                                    <constraint firstAttribute="bottom" secondItem="T9q-aK-b24" secondAttribute="bottom" id="p6S-aA-VGo"/>
-                                    <constraint firstAttribute="trailing" secondItem="T9q-aK-b24" secondAttribute="trailing" constant="20" id="w0G-GY-iZf"/>
-                                    <constraint firstItem="T9q-aK-b24" firstAttribute="leading" secondItem="oFG-hG-bZS" secondAttribute="leading" constant="20" id="zVh-4j-gYh"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="T9q-aK-b24" secondAttribute="bottom" id="p6S-aA-VGo"/>
+                                    <constraint firstAttribute="trailing" secondItem="T9q-aK-b24" secondAttribute="trailing" constant="8" id="w0G-GY-iZf"/>
+                                    <constraint firstItem="T9q-aK-b24" firstAttribute="leading" secondItem="oFG-hG-bZS" secondAttribute="leading" constant="8" id="zVh-4j-gYh"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -2013,6 +2040,7 @@
                     </view>
                     <connections>
                         <outlet property="recipientView" destination="oFG-hG-bZS" id="P9s-fL-hTd"/>
+                        <outlet property="recipientViewVerticalConstraint" destination="j9e-vA-TpE" id="qfY-JQ-zIg"/>
                         <outlet property="selectButton" destination="prX-PR-wA7" id="5GW-uz-QUB"/>
                         <outlet property="titleBar" destination="amz-TR-3Kz" id="DEV-22-adG"/>
                         <outlet property="usersPickerView" destination="T9q-aK-b24" id="MUb-Ad-dmL"/>
