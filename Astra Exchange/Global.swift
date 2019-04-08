@@ -160,7 +160,7 @@ func transactionFromSnapshot(_ snapshot: DataSnapshot) -> Transaction {
 }
 
 func observeVersion() {
-	ref.child("version").observe(.value) { snapshot in
+	ref.child("versions/Astra-Exchange").observe(.value) { snapshot in
 		if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, retrieveDataValue(snapshot: snapshot, field: "number") as? String != version {
 			callChangeHandler(.version)
 		}
