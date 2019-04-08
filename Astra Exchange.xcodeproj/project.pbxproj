@@ -54,7 +54,9 @@
 		4DF9481221EFD3300086A1FC /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9481121EFD3300086A1FC /* ConfirmViewController.swift */; };
 		4DF9481421F03E940086A1FC /* TransactionHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9481321F03E940086A1FC /* TransactionHistoryViewController.swift */; };
 		4DF9481621F04D650086A1FC /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9481521F04D650086A1FC /* TransactionViewController.swift */; };
+		5C97CD8FCA5AC20233EC4172 /* Pods_Astra_ExchangeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95C4C4661CAA17CF5C780CD /* Pods_Astra_ExchangeUITests.framework */; };
 		8244812523AFF8A43090B916 /* Pods_Astra_Exchange.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DCC27FDC3647EBDF1337B3B /* Pods_Astra_Exchange.framework */; };
+		F6A170888DC2981BA93CA5F5 /* Pods_Astra_ExchangeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8573BC66CA0EB1D31236285 /* Pods_Astra_ExchangeTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,8 +77,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0101B812F461905A7C17C6A2 /* Pods-Astra ExchangeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Astra ExchangeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Astra ExchangeUITests/Pods-Astra ExchangeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		06B2727D55133C5733F79845 /* Pods-Astra Exchange.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Astra Exchange.release.xcconfig"; path = "Pods/Target Support Files/Pods-Astra Exchange/Pods-Astra Exchange.release.xcconfig"; sourceTree = "<group>"; };
 		0DCC27FDC3647EBDF1337B3B /* Pods_Astra_Exchange.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Astra_Exchange.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		397D8AB4FEE2F4D7778642FE /* Pods-Astra ExchangeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Astra ExchangeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Astra ExchangeTests/Pods-Astra ExchangeTests.release.xcconfig"; sourceTree = "<group>"; };
 		4D205F9321F16676006C2965 /* InvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceViewController.swift; sourceTree = "<group>"; };
 		4D279DD121ED5FBC00D09DDA /* Astra Exchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Astra Exchange.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D279DD421ED5FBC00D09DDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -130,7 +134,9 @@
 		4DF9481121EFD3300086A1FC /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		4DF9481321F03E940086A1FC /* TransactionHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryViewController.swift; sourceTree = "<group>"; };
 		4DF9481521F04D650086A1FC /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
+		9E37380C1225B7F6EADFB32B /* Pods-Astra ExchangeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Astra ExchangeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Astra ExchangeUITests/Pods-Astra ExchangeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B32D42D0C3E79E2DC3BD681E /* Pods-Astra Exchange.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Astra Exchange.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Astra Exchange/Pods-Astra Exchange.debug.xcconfig"; sourceTree = "<group>"; };
+		BF742243B30EA946EC3F31FD /* Pods-Astra ExchangeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Astra ExchangeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Astra ExchangeTests/Pods-Astra ExchangeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D8573BC66CA0EB1D31236285 /* Pods_Astra_ExchangeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Astra_ExchangeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F95C4C4661CAA17CF5C780CD /* Pods_Astra_ExchangeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Astra_ExchangeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -148,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6A170888DC2981BA93CA5F5 /* Pods_Astra_ExchangeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C97CD8FCA5AC20233EC4172 /* Pods_Astra_ExchangeUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +325,10 @@
 			children = (
 				B32D42D0C3E79E2DC3BD681E /* Pods-Astra Exchange.debug.xcconfig */,
 				06B2727D55133C5733F79845 /* Pods-Astra Exchange.release.xcconfig */,
+				BF742243B30EA946EC3F31FD /* Pods-Astra ExchangeTests.debug.xcconfig */,
+				397D8AB4FEE2F4D7778642FE /* Pods-Astra ExchangeTests.release.xcconfig */,
+				9E37380C1225B7F6EADFB32B /* Pods-Astra ExchangeUITests.debug.xcconfig */,
+				0101B812F461905A7C17C6A2 /* Pods-Astra ExchangeUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -347,6 +359,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4D279DFF21ED5FBC00D09DDA /* Build configuration list for PBXNativeTarget "Astra ExchangeTests" */;
 			buildPhases = (
+				4A92F4354D4616E86B6F9EF9 /* [CP] Check Pods Manifest.lock */,
 				4D279DE421ED5FBC00D09DDA /* Sources */,
 				4D279DE521ED5FBC00D09DDA /* Frameworks */,
 				4D279DE621ED5FBC00D09DDA /* Resources */,
@@ -365,6 +378,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4D279E0221ED5FBC00D09DDA /* Build configuration list for PBXNativeTarget "Astra ExchangeUITests" */;
 			buildPhases = (
+				34E4FF7A3174C2625AA99F0D /* [CP] Check Pods Manifest.lock */,
 				4D279DEF21ED5FBC00D09DDA /* Sources */,
 				4D279DF021ED5FBC00D09DDA /* Frameworks */,
 				4D279DF121ED5FBC00D09DDA /* Resources */,
@@ -465,6 +479,50 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		34E4FF7A3174C2625AA99F0D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Astra ExchangeUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4A92F4354D4616E86B6F9EF9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Astra ExchangeTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6AED3D5F4402CDF523D202A2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -759,6 +817,7 @@
 		};
 		4D279E0021ED5FBC00D09DDA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF742243B30EA946EC3F31FD /* Pods-Astra ExchangeTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -780,6 +839,7 @@
 		};
 		4D279E0121ED5FBC00D09DDA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 397D8AB4FEE2F4D7778642FE /* Pods-Astra ExchangeTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -801,6 +861,7 @@
 		};
 		4D279E0321ED5FBC00D09DDA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E37380C1225B7F6EADFB32B /* Pods-Astra ExchangeUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -821,6 +882,7 @@
 		};
 		4D279E0421ED5FBC00D09DDA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0101B812F461905A7C17C6A2 /* Pods-Astra ExchangeUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

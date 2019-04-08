@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "430B069711623F5FEDB71B783BE97DE0"
-               BlueprintName = "Pods-Astra Exchange"
+               BlueprintIdentifier = "71EE203526F48D3FE53236D179EC8A65"
+               BlueprintName = "Pods-Astra ExchangeUITests"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "Pods-Astra Exchange.framework">
+               BuildableName = "Pods-Astra ExchangeUITests.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

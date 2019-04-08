@@ -1,0 +1,6 @@
+framework module Pods_Astra_ExchangeTests {
+  umbrella header "Pods-Astra ExchangeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
