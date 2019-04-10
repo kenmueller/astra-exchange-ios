@@ -405,13 +405,16 @@
 				TargetAttributes = {
 					4D279DD021ED5FBC00D09DDA = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					4D279DE721ED5FBC00D09DDA = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 4D279DD021ED5FBC00D09DDA;
 					};
 					4D279DF221ED5FBC00D09DDA = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 4D279DD021ED5FBC00D09DDA;
 					};
 				};
@@ -791,7 +794,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "exchange.astra.Astra-Exchange";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -810,7 +813,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "exchange.astra.Astra-Exchange";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -831,7 +834,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "exchange.astra.Astra-ExchangeTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Astra Exchange.app/Astra Exchange";
 			};
@@ -853,7 +856,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "exchange.astra.Astra-ExchangeTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Astra Exchange.app/Astra Exchange";
 			};
@@ -874,7 +877,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "exchange.astra.Astra-ExchangeUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Astra Exchange";
 			};
@@ -895,7 +898,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "exchange.astra.Astra-ExchangeUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Astra Exchange";
 			};
