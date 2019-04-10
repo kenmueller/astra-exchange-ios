@@ -10,7 +10,7 @@ class UpdateViewController: UIViewController {
 		super.viewDidLoad()
 		parent?.navigationController?.setNavigationBarHidden(true, animated: true)
 		titleBar.roundCorners(corners: [.topLeft, .topRight], radius: 10)
-		ref.child("version").observeSingleEvent(of: .value) { snapshot in
+		ref.child("versions/Astra-Exchange").observeSingleEvent(of: .value) { snapshot in
 			self.versionLabel.text = retrieveDataValue(snapshot: snapshot, field: "number") as? String
 			self.changesTextView.text = retrieveDataValue(snapshot: snapshot, field: "changes") as? String
 		}
